@@ -1,0 +1,47 @@
+{
+	"project": "refappqrcodegenerator",
+	"version": "0.0.1",
+	"runtime": "nodejs10",
+	"library": "./lib",
+	"services": {
+		"em-srv": {
+		  "type": "x",
+		  "instance": "y",
+		  "key": "z"
+		},
+		"destination-srv": {
+			"type": "x",
+			"instance": "y",
+			"key": "z"
+		  }
+	  },
+	  "secrets": {
+		"destination-name": {
+		  "source": "./data/destination"
+		}
+	  },
+	"configs": {
+		"amqp-service-config": {
+		  "source": "./data/xbem-config"
+		}
+	  },
+	"functions": {
+		"qrcodegenerator": {
+			"module": "index.js",
+			"handler": "handler",
+			"services": [
+				"destination-srv"
+			  ],
+			  "secrets": [
+				"destination-name"
+			  ]
+		}
+	},
+	"triggers": {
+		"qrcodegenerator": {
+			"type": "AMQP",
+			"service": "em-srv",
+      		"config": "amqp-service-config"
+		}
+	}
+}

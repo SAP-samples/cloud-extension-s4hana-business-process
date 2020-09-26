@@ -1,0 +1,8 @@
+{
+  "rules": [
+    {
+      "filter": { "incoming": "inp1" },
+      "action": { "function": "qrcodegenerator", "failure": "accept", "content": "application/json" }
+    }
+  ]
+}
