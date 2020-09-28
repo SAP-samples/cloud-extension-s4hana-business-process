@@ -6,8 +6,8 @@ The main intent of this scenario is to complement an existing business process i
 This application showcases:
 
 - Building application on SAP Cloud Platform(CP) using [SAP Cloud Application Programming Model(CAP)](https://cap.cloud.sap/docs/)
-- Consuming events from SAP ANA on premise using [SAP Cloud Platform Enterprise Messaging](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/df532e8735eb4322b00bfc7e42f84e8d.html)
-- Consuming REST APIs from SAP S/4HANA on premise using SAP CP Connectivity Service
+- Consuming events from SAP S/4HANA on premise using [SAP Cloud Platform Enterprise Messaging](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/df532e8735eb4322b00bfc7e42f84e8d.html)
+- Consuming REST APIs from SAP S/4HANA on premise using SAP Cloud Platform Connectivity Service
 - Building and deploying a function in [SAP Cloud Platform Serverless Runtime](https://help.sap.com/viewer/bf7b2ff68518427c85b30ac3184ad215/Cloud/en-US/7b8cc2b0e8d141d6aa37c7dff4d70b82.html)
 
 ## Business Scenario
