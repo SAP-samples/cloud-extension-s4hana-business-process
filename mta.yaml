@@ -22,7 +22,7 @@ modules:
    type: nodejs
    path: gen/srv
    parameters:
-     memory: 128MB
+     memory: 256MB
    properties:
      EXIT: 1  # required by deploy.js task to terminate 
    requires:
