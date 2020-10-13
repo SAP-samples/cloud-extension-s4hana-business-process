@@ -96,9 +96,6 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
        cf p -f gen/db
        cf p -f gen/srv --random-route
        ```
-
- ![Run command](./images/dev-cap-app-13.png)
-  ![Run command](./images/dev-cap-app-14.png)
  
 15.  Go to the terminal and execute *CF apps*, then copy the URL of the BusinessPartnerValidation-srv which you should now see listed
 
