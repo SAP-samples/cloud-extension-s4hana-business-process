@@ -40,10 +40,10 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    cd projects
    ``` 
  
-9.	Clone the project from GitHub: 
+9.	Clone the project from your personal GitHub: 
 
     ```
-    git clone https://github.tools.sap/refapps/cloud-cap-s4ems-bp.git
+    git clone <YourPersonalGitHub>
      ```
  
 10.	Click on *File* in the menu on the top and choose *Open Workspace* in the drop down.
