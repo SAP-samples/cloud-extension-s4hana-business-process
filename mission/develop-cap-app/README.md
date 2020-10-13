@@ -50,9 +50,8 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
     ![Open Workspace](./images/dev-cap-app-7.png)
  
-11.	Open the project by selecting projects -> cloud-cap-s4ems-bp and click on *Open*
+11.	Open the project by selecting projects -> cloud-extension-s4hana-business-process and click on *Open*
 
-    ![Open Project](./images/dev-cap-app-8.png)
  
 12.   For the next steps you need the terminal again. Go to *Terminal* -> *New Terminal*
      
