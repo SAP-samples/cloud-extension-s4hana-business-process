@@ -75,13 +75,13 @@ cds watch
 
 2.	Replace your code with reference application code 
 
-Clone the code from our reference application GitHub https://github.tools.sap/refapps/cloud-cap-s4ems-bp. 
+Clone the code from our reference application GitHub https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
 
 ```
-git clone https://github.tools.sap/refapps/cloud-cap-s4ems-bp
+git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
 ```
 
-Then copy everything in the directory created (cloud-cap-s4ems-bp) over to your directory (BpValidationMockS4), replacing the original content.
+Then copy everything in the directory created (cloud-extension-s4hana-business-process) over to your directory (BpValidationMockS4), replacing the original content.
 
 3.	Update your GitHub repository  
 
