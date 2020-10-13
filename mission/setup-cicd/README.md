@@ -26,8 +26,6 @@ git clone <your GitHub repository>
 
 5. Execute the command *cds add pipeline*
 
- ![add pipeline](./images/cicd1.png)
- 
 6. Open config.yml file and edit with the snippets provided below 
 
 You can find the config.yml file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
@@ -37,7 +35,7 @@ You can find the config.yml file on the left in the Explorer window of the Busin
 
 ```bash
   unsafeMode: false
-  projectName: 'cloud-cap-s4ems-bp'
+  projectName: 'cloud-extension-s4hana-business-process'
   productiveBranch: 'master'
 ```  
   
