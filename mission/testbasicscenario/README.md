@@ -57,3 +57,4 @@ Now it is time to test your basic scenario. As a result of the following steps y
 ![Details Page](./image/basicendtoend10.png)
 
 12. Optionally you can click on edit and check out your options.
+
