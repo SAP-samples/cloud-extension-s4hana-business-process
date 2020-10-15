@@ -77,13 +77,15 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
     cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
-    cf cs connectivity lite BusinessPartnerValidation-cs
+    cf cs connectivity lite BusinessPartnerValidation-cs        
+    cf create-service-key BusinessPartnerValidation-ems emkey
     cds build --production
                
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
 
-13.	 Open the manifest.yaml file and add your service names / replace existing ones with your services: ems, dest, xsuaa, database. Then open the manifest.yaml in gen/srv as well and add the services there as well.
+13.	 Open the manifest.yaml file and add your service names / replace existing ones with your services: ems, dest, xsuaa, database. Then open the manifest.yaml in gen/srv as well and add the services there as well. 
+Set the Memory as 256MB.
 
 > Hint: to make sure that the services names match, execute the CF command *CF services* which lists the services you have created including their names.
 
@@ -110,7 +112,6 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    
       
          cf p -f app/BusinessPartners --random-route
-
 
 ### Test your application
 
