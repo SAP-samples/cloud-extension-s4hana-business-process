@@ -17,7 +17,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 
  ![Open Enterprise Messaging Instance](./images/configureeventbased1.png)
 
-4. Find and copy your Enterprise Messaging token endpoint URL. Look for token endpoint and then copy the URL.
+4. Find and copy your Enterprise Messaging token endpoint URL. Look for tokenendpoint and then copy the URL.
 
  ![Token Endpoint](./images/configureeventbased2.png)
 
