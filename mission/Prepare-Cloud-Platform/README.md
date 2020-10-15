@@ -119,7 +119,7 @@ In this scenario differed applications are needed. To use these services, you fi
 
  ![Subscribe CICID](./images/Prepare-Cloud-Platform-19.png)
   
-3.	Click a *+*:
+3.	Click on *+*:
 
         Name:'Serverless_RoleCollection'
         Description: ''
