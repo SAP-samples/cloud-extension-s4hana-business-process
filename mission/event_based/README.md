@@ -24,6 +24,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
  
 6.  Under service keys, click on menu. Click on view
 
+
   ![view key](./images/EMKeyView.png)
   
 7. Find and copy your Enterprise Messaging token endpoint URL. Look for token endpoint and then copy the URL.
