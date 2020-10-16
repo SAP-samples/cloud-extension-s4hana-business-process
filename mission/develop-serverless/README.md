@@ -90,7 +90,7 @@ Alternatively you can just use *cf login* and you will then be asked for additio
 7. Register Enterprise Messaging Service instance
 
 ```bash
-xfsrt-cli faas service register -b <Enterprise_Messaging_service_key_name> -s <service_name>
+xfsrt-cli faas service register -b <Enterprise_Messaging_service_key_name> -s <Enterprise_Message_instance_name>
 ```
 e.g.  xfsrt-cli faas service register -b emskey -s BusinessPartnerValidation-ems
 
@@ -98,7 +98,7 @@ Select Target - most likely 1 for you.
 
 8. Register Destination Service instance
 ```bash
-xfsrt-cli faas service register -b <Destination_service_key_name> -s <service_name>
+xfsrt-cli faas service register -b <Destination_service_key_name> -s <sDestination_instance_name>
 ```
 e.g. xfsrt-cli faas service register -b destkey -s BusinessPartnerValidation-dest
 
@@ -249,11 +249,17 @@ In case you are wondering where to get this data from - use the command *cf serv
   ```bash
   xfsrt-cli faas service list
   
-  cf service-key BusinessPartnerValidation-ems < Your EMS Key>
-  
-  cf service-key BusinessPartnerValidation-dest < Your Dest Key >
+  cf service-key <Enterprise_Messaging_instance_name> <Enterprise_Messaging_service_key_name>
+  ```
+   eg: cf service-key BusinessPartnerValidation-ems emskey
+   
+  ```bash
+  cf service-key <Destination_instance_name> <Destination_service_key_name>
   
   ```
+  eg: cf service-key BusinessPartnerValidation-dest destkey
+  
+  
 
 - Provide the destination created in a previous step under secret-values -> destination-name -> name -> name
 

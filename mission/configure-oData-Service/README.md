@@ -20,7 +20,7 @@ We are going to activate our Business Partner OData service and create a technic
 4.	Enter *System Alias* 'LOCAL',  *External Service Name* 'API_BUSINESS_PARTNER' and click enter to search for all matching services
 5.	Choose the checkbox to select service and click on *Add Selected Services*
 
-   ![Select Service](./images/configure-oData-Service-3.png)
+   ![Select Service](./images/configure-odata-Service-3.png)
    
 6.	On the next screen specify *Package Assignment* e.g. $TMP by clicking on *Local Object*
 7.	Check checkbox for "Enable OAuth for Service“ and click on *Continue*
