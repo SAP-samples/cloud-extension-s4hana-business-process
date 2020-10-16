@@ -5,13 +5,13 @@ module.exports = async srv => {
     // Mock events for s4
     srv.after("CREATE", data => {
         const payload = {KEY: [{BUSINESSPARTNER: data.BusinessPartner}]};
-        messaging.emit("refapps/s4ems/abc/S4H/BO/BusinessPartner/Created", payload);
+        messaging.emit("refapps/bpems/abc/S4H/BO/BusinessPartner/Created", payload);
         console.log('<< event emitted', payload);
     });
 
     srv.after("UPDATE", data => {
         const payload = {KEY: [{BUSINESSPARTNER: data.BusinessPartner}]};
-        messaging.emit("refapps/s4ems/abc/S4H/BO/BusinessPartner/Changed", payload);
+        messaging.emit("refapps/bpems/abc/S4H/BO/BusinessPartner/Changed", payload);
         console.log('<< event emitted', payload);
     });
 }
