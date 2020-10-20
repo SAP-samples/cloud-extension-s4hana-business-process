@@ -91,10 +91,10 @@ Set the Memory as 256MB.
 
  ![Edit manifest](./images/dev-cap-app-12.png)
  
-14. In this step you will create queue in Enterprise Messaging for the application to read the events from S4 HANA.
+14. Create a queue in Enterprise Messaging for the application to read events from SAP S/4HANA.
 
-- Go to SAP Cloud Platform Cockpit
-- Click on Subscription
+- Go to the SAP Cloud Platform Cockpit
+- Click on Subscriptions
 - Click on "Go to Application" for Enterprise Messaging
 
 ![Enterprise Messaging](../develop-serverless/images/serverless15-1.png)
@@ -109,7 +109,6 @@ Set the Memory as 256MB.
 
 - Click on Queues.
 - Click on Create Queue
-
 - Provide name for the queue - BusinessPartnerValidation-srv/1234. Including the namespace, the name would be 'refapps/bpems/abc/BusinessPartnerValidation-srv/1234'
 - Click on Create
 
