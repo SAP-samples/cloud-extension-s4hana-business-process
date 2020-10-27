@@ -65,11 +65,11 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 
 ### Step 1: Setup Cloud platform subaccount
 
-You can use [SAP Cloud Platform - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Validation/en-US/fb1b56148f834749a2bf51127421610b.html) to setup the subaccount. Boosters Will create the subaccount with the required entitlements, subscriptions and assign the required roles to your user to run this application. Steps to run the booster are provided in [link](./documentation/mission/Prepare-Cloud-Platform/Booster.md). You can create subaccount manually also following [link](./documentation/mission/Prepare-Cloud-Platform/README.md)
+You can use [SAP Cloud Platform - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Validation/en-US/fb1b56148f834749a2bf51127421610b.html) to setup the subaccount. Boosters Will create the subaccount with the required entitlements, subscriptions and assign the required roles to your user to run this application. Steps to run the booster are provided in [link](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/Booster.md). You can create subaccount manually also following [link](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/README.md)
 
-### Step 2: [S/4HANA Enable OData Service for business partner](./documentation/mission/configure-oData-Service/README.md)
+### Step 2: [S/4HANA Enable OData Service for business partner](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/configure-oData-Service/README.md)
 
-### Step 3: [Setup connectivity between S/4HANA system, SAP CP](./documentation/mission/cloud-connector/README.md)
+### Step 3: [Setup connectivity between S/4HANA system, SAP CP](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/cloud-connector/README.md)
 
 ### Step 4: Build and deploy the CAP application
 
