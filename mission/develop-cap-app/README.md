@@ -91,38 +91,16 @@ Set the Memory as 256MB.
 
  ![Edit manifest](./images/dev-cap-app-12.png)
  
-14. Create a queue in Enterprise Messaging for the application to read events from SAP S/4HANA.
-
-- Go to the SAP Cloud Platform Cockpit
-- Click on Subscriptions
-- Click on "Go to Application" for Enterprise Messaging
-
-![Enterprise Messaging](../develop-serverless/images/serverless15-1.png)
-
-- Login using email and password
-
-![Enterprise Messaging](../develop-serverless/images/serverless15-2.png)
-
-- Click on your message client
-
-![Enterprise Messaging](../develop-serverless/images/serverless15-3.png)
-
-- Click on Queues.
-- Click on Create Queue
-- Provide name for the queue - BusinessPartnerValidation-srv/1234. Including the namespace, the name would be 'refapps/bpems/abc/BusinessPartnerValidation-srv/1234'
-- Click on Create
-
-
-15.	Go back to the terminal and run following commands:
+14.	Go back to the terminal and run following commands:
 
        ```
        cf p -f gen/db
        cf p -f gen/srv --random-route
        ```
  
-16.  Go to the terminal and execute *CF apps*, then copy the URL of the BusinessPartnerValidation-srv which you should now see listed
+15.  Go to the terminal and execute *CF apps*, then copy the URL of the BusinessPartnerValidation-srv which you should now see listed
 
-17. Go to *< Your Project Directory >/app/BusinessPartners* in your Business Application Studio and open the *manifest.yml* in that folder
+16. Go to *< Your Project Directory >/app/BusinessPartners* in your Business Application Studio and open the *manifest.yml* in that folder
 
    i. Replace the URL in the manifest file (env -> destinations --> service-binding) with the one you have just copied. Make sure you add an *https://* in the beginning of the URL.
 
@@ -130,7 +108,7 @@ Set the Memory as 256MB.
 
 > Hint: you can check on your service names using *CF services*
 
-18. Go to the terminal again and execute the below command
+17. Go to the terminal again and execute the below command
    
       
          cf p -f app/BusinessPartners --random-route
