@@ -63,21 +63,20 @@ module.exports = async srv => {
     return req.info({numericSeverity:1, target: 'postalCode'});  
   });
 
-  function emitEvent(result, req){
-    // const result =  await cds.run(SELECT.one.from("my.businessPartnerValidation.Notification as N").leftJoin("my.businessPartnerValidation.Address as A").on({"N.businessPartnerId":"A.businessPartnerId"}).where("N.businessPartnerId", bp));
+  async function emitEvent(result, req){
+    const resultJoin =  await cds.tx(req).run(SELECT.one("my.businessPartnerValidation.Notifications as N").leftJoin("my.businessPartnerValidation.Addresses as A").on("N.businessPartnerId = A.businessPartnerId").where({"N.ID": result.ID}));
     const statusValues={"N":"NEW", "P":"PROCESS", "INV":"INVALID", "V":"VERIFIED"}
     // Format JSON as per serverless requires
     const payload = {
-      "businessPartner": result.businessPartnerId,
-      "businessPartnerName": result.businessPartnerName,
-      "verificationStatus": statusValues[result.verificationStatus_code],
-      "addressId":  result.addresses && result.addresses[0].addressId,
-      "streetName":  result.addresses && result.addresses[0].streetName,
-      "postalCode":  result.addresses && result.addresses[0].postalCode,
-      "country":  result.addresses && result.addresses[0].country,
-      "addressModified":  result.addresses && result.addresses[0].isModified
+      "businessPartner": resultJoin.businessPartnerId,
+      "businessPartnerName": resultJoin.businessPartnerName,
+      "verificationStatus": statusValues[resultJoin.verificationStatus_code],
+      "addressId":  resultJoin.addressId,
+      "streetName":  resultJoin.streetName,
+      "postalCode":  resultJoin.postalCode,
+      "country":  resultJoin.country,
+      "addressModified":  resultJoin.isModified
     }
-
     console.log("<< formatted >>>>>", payload);
     messaging.tx(req).emit(`${namespace}/SalesService/d41d/BusinessPartnerVerified`, payload)
   }
