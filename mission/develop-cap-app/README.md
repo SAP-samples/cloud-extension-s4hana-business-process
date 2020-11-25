@@ -14,9 +14,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
     ![Open Business Application Studio](./images/dev-cap-app-1.png)
    
-3.	Open the application 'Business Application Studio' and login via your username and password
-
-     ![Log in Business Application Studio](./images/dev-cap-app-2.png)
+3.	Open the application 'Business Application Studio'
  
 4.	In Business Application Studio click the button *Create Dev Space*
 
