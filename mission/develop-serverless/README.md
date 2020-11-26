@@ -244,22 +244,11 @@ In case you are wondering where to get this data from - use the command *cf serv
 
 - Open values.yaml file
 
-- Update *type*, *instance id* and *key name* from the details of registered Enterprise Messaging Service under em-srv. Execute the below commands to get the details. The first command will provide you the list of services. Then, in a next step, you get the service-key for these services.
+- Update *type*, *instance id* and *key name* from the details of registered Enterprise Messaging Service under em-srv and destination service under destination-srv. Execute the below commands to get the details. The first command will provide you the list of services. Then, in a next step, you get the service-key for these services.
 
   ```bash
   xfsrt-cli faas service list
-  
-  cf service-key <Enterprise_Messaging_instance_name> <Enterprise_Messaging_service_key_name>
   ```
-   eg: cf service-key BusinessPartnerValidation-ems emskey
-   
-  ```bash
-  cf service-key <Destination_instance_name> <Destination_service_key_name>
-  
-  ```
-  eg: cf service-key BusinessPartnerValidation-dest destkey
-  
-  
 
 - Provide the destination created in a previous step under secret-values -> destination-name -> name -> name
 
