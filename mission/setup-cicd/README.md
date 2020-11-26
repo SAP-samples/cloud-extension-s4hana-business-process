@@ -36,7 +36,7 @@ You can find the config.yml file on the left in the Explorer window of the Busin
 ```bash
   unsafeMode: false
   projectName: 'cloud-extension-s4hana-business-process'
-  productiveBranch: 'master'
+  productiveBranch: 'main'
 ```  
   
 - Go to the *steps* section
@@ -123,7 +123,7 @@ Hint: you might have to configure your Git before.
 - Enter job name ‘CustomLogic’
 - Enter your GitHub repo url
 - Select the repository credential from the dropdown. Pick *github*
-- Provide branch as master
+- Provide branch as main
 - Pipeline type – sap-cloud-sdk
 - Set logs to –’20’ 
 - Click on ‘create’
