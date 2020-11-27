@@ -128,13 +128,13 @@ Hint: you might have to configure your Git before.
 - Set logs to –’20’ 
 - Click on ‘create’
 
- ![add credentials](./images/cicd6.png)
+ ![add credentials](./images/screenshot_cicd6.png)
  
 11. Configure Webhooks
 
 - Click on the URL provided
  
- ![add credentials](./images/cicd7.png)
+ ![add credentials](./images/screenshot_cicd7.png)
  
 - Click on ‘Add webhook’ 
  
@@ -175,7 +175,7 @@ git push
  - Goto the CI/CD app 
  - Check on the right hand side that the build has been triggered
  
-  ![add credentials](./images/cicd11.png)
+  ![add credentials](./images/screenshot_cicd11.png)
  
 
  
