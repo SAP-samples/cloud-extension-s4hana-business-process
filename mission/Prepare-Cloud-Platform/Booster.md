@@ -53,7 +53,19 @@ You will now prepare your SAP Cloud Platform Account, configure your entitlement
 13. Click on *Edit*, then '+'. Select on 'ODPManage' from the dropdown and click on *Add*
 
    ![Edit Role collection](./images/booster9.png)
-
+   
+   
 14. Click on save
 
 ![Save Role collection](./images/booster10.png)
+   
+15. Navigate back to your Subaccount -> Entitlements
+
+16. Click on *Configure Entitlements* then choose *Add Service Plans*
+
+17. Search for "HANA" in the pop-up window and select *SAP HANA Service*
+
+18. Choose '64STANDARD' in the Available Plans section on the right
+
+19. Click on *Add 1 Service Plan* and save
+
