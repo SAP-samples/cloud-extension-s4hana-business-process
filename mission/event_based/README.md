@@ -18,7 +18,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 
  ![Open Enterprise Messaging Instance](./images/EMInstance.png)
  
-5. Provide a service key name. click on create.
+5. Provide a service key name. Click on create.
 
  ![create key](./images/EMKeyCreate.png)
  
@@ -46,7 +46,7 @@ Hint: it is sufficient to export any of the three certificates. Later on you wil
 
  ![Site Information Button](./images/configureeventbased4.png)
 
-11. Next choose the tab *Details* and click on the buttoon *Copy to files*, then choose *Next*
+11. Next choose the tab *Details* and click on the button *Copy to files*, then choose *Next*
 
  ![Copy to Files](./images/configureeventbased5.png)
 
@@ -218,7 +218,7 @@ Make sure the channel is active.
 
 ![Event enablement channel](./images/configureeventbased32.png) 
 
-84. Click on the *mirror ico*n or press F4 in keyboard
+84. Click on the *mirror icon* or press F4 in keyboard
 85. Select BO/BusinessPartner/Created in the Topic Filter field
 86. Click on the mirror icon or press F4 in keyboard
 87. Select BO/BusinessPartner/Changed in the Topic Filter field
