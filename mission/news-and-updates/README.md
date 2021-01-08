@@ -1,6 +1,6 @@
 # News
 
-This is the first version of this mission. It is currently getting verified.
+This is the first version of this mission. It has been verified successfully and works end to end.
 
 # Version Updates
 
