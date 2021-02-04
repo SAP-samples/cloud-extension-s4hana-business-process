@@ -1,14 +1,14 @@
-# Prepare and configure your SAP Cloud Platform environment 
+# Prepare and configure your SAP Business Technology Platform environment 
 
 ## Introduction
 
-You will now prepare your SAP Cloud Platform Account, configure your entitlements and configure your account for our extension scenario.
+You will now prepare your SAP Business Technology Platform Account, configure your entitlements and configure your account for our extension scenario.
 
 **Persona:** SCP Developer
 
-### Prepare your SAP Cloud Platform Account
+### Prepare your SAP BTP Account
 
-1.	Open your *SAP Cloud Platform Cockpit*
+1.	Open your *SAP BTP Cockpit*
 2.	Navigate to your *Global Account-> Subaccounts*
 3.	Press button to create a *New Subaccount*
 
@@ -38,7 +38,7 @@ You will now prepare your SAP Cloud Platform Account, configure your entitlement
 
    ![Add Member](./images/Prepare-Cloud-Platform-5.png)
    
-   Hint: Depending on your Cloud Platform Cockpit, there might be an alternative route to add users. Go to *Org Members* on the left in case that your menu structure looks different and then follow the steps below.
+   Hint: Depending on your SAP BTP Cockpit, there might be an alternative route to add users. Go to *Org Members* on the left in case that your menu structure looks different and then follow the steps below.
    
 10.	Add Users to the Space by adding their IDs in the text field. *Assign Roles* as Organization Manager. Click on *OK*
 
@@ -101,7 +101,7 @@ In this scenario differed applications are needed. To use these services, you fi
    
 2.	Search for 'Continuous Integration & Delivery'
 
-![Add Service Plansa](./images/Prepare-Cloud-Platform-17.png)
+![Add Service Plans](./images/Prepare-Cloud-Platform-17.png)
 
   ![Search CI/CD](./images/Prepare-Cloud-Platform-18.png)
    
