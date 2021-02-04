@@ -61,7 +61,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
     cf target -o org -s space
     
          
-   ii. Then you will get the guid of your HANA service. Please note that, in case that you do not have a HANA service in    your SAP Cloud Platform environment yet, you will have to create one. You can find a tutorial for creating a HANA Service instance [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html).
+   ii. Then you will get the guid of your HANA cloud instance. Please note that, in case that you do not have a HANA cloud instance in your SAP Cloud Platform environment yet, you will have to create one. You can find a tutorial for creating a HANA Cloud instance [here](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_04_QRC/en-US/03982b3b93664f089b084713285e3c81.html).
      
   
       cf service <HANA-Service> --guid
