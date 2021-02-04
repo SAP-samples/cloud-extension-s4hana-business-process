@@ -1,17 +1,17 @@
-# Configure event based communication between S/4 and SAP Cloud Platform Enterprise Messaging
+# Configure event based communication between S/4 and SAP Enterprise Messaging
 ## Introduction
 
-In this how to guide, you will establish a connection between your S/4 HANA on Premise System and Enterprise Messaging. This connection is needed to transport events from the SAP S/4HANA system to Enterprise Messaging. 
+In this how to guide, you will establish a connection between your S/4HANA on Premise System and Enterprise Messaging. This connection is needed to transport events from the SAP S/4HANA system to Enterprise Messaging. 
 
 Additional documentation on configuring trust and creating the RFC destination can be found  in the official guide:
  
 https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/12559a8c26f34e0bbe8c6d82b7501424.html
 
-**Persona:** S/4 HANA Developer
+**Persona:** S/4HANA Developer
 
 ### Configure Endpoint
 
-1. Open your browser. Then go to your sub account in SAP Cloud Platform and from there to your BusinessPartner space. 
+1. Open your browser. Then go to your sub account in SAP BTP and from there to your BusinessPartner space. 
 2. Click on *Service Instances* (on the left).
 3. Click on your Enterprise Messaging instance.
 4. Click on the menu option (3 dots) followed by Create service key (on the right) 
@@ -171,7 +171,7 @@ You will end up importing a single certificate of choice to the Anonymous Node.
 63. Enter 'EMS4' destination 
 64. Enter the topic name created in CP
 
-To identify your topic name, go the the SAP Cloud Platform Cockpit and click on *Subscriptions*. Look up the *Enterprise Messaging* tile. Click on *Go to Application*. This opens up Enterprise Messaging. Click on your messaging client and copy the value under *Namespace*. 
+To identify your topic name, go the the SAP BTP Cockpit and click on *Subscriptions*. Look up the *Enterprise Messaging* tile. Click on *Go to Application*. This opens up Enterprise Messaging. Click on your messaging client and copy the value under *Namespace*. 
 
 65. Enter a Description
 66. Click on save to finish
