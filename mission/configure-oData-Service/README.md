@@ -6,7 +6,7 @@ We are going to activate our Business Partner OData service and create a technic
 
 **Persona:** S/4HANA Admin
 
-### Activate OData service in S/4 HANA on premise backend system
+### Activate OData service in S/4HANA on premise backend system
 
 1.	Open your S/4HANA on premise system
 2.	Navigate to transaction code: '/IWFND/MAINT_SERVICE'
