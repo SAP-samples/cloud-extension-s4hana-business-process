@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this section you will configure the Cloud Connector for connecting the on premise backend system to the SAP Cloud Platform. 
+In this section you will configure the Cloud Connector for connecting the on premise backend system to the SAP Business Technology Platform. 
 
 **Persona:** SCP Admin
 
@@ -80,7 +80,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 ### Create Cloud Foundry Destination
 
-1.	Open your *SAP Cloud Platform Account* and navigate to your *Subaccount*
+1.	Open your *SAP BTP Account* and navigate to your *Subaccount*
 2.	Choose *Connectivity* in the menu on the left then choose *Cloud Connectors* to check the host details
 
 ![Check host detail](./images/cloud-connector-11.png)
