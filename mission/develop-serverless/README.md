@@ -74,7 +74,7 @@ e.g cf create-service-key BusinessPartnerValidation-ems emskey
 6. Login to the Serverless Runtime instance
 
 ```bash
-xfsrt-cli login -k <serverless_instance_key_name> -n <service_instance_name>
+xfsrt-cli login -b <serverless_instance_key_name> -s <service_instance_name>
 ```
 
 or alternatively log in and then select from the options
