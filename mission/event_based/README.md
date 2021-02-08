@@ -116,8 +116,8 @@ You will end up importing a single certificate of choice to the Anonymous Node.
  ![Security](./images/configureeventbased17.png) 
 
 38. Scroll to security options 
-39. Select SSL client 'Anonymous'
-40. Click on radio button "active"  for SSl
+39. Click on radio button "active"  for SSl
+40. Select SSL client 'Anonymous'
 41. Click on *save*
 42. Click on *back* 
 43. Click on *back*
