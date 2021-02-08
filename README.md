@@ -55,7 +55,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 |-----------------------------------|------------|:-------------------:|
 | Enterprise Messaging              | default    |          1          |
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
-| SAP HANA Service                  | 64standard |          1          |
+| SAP HANA Cloud                    | hana       |          1          |
 | Application Runtime               |            |          1          |
 | Extension Factory Runtime         |            |          1          |
 
@@ -63,7 +63,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 ## Configuration
 
 
-### Step 1: Setup Cloud platform subaccount
+### Step 1: Setup SAP BTP subaccount
 
 You can use [SAP BTP - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Validation/en-US/fb1b56148f834749a2bf51127421610b.html) to setup the subaccount. Boosters Will create the subaccount with the required entitlements, subscriptions and assign the required roles to your user to run this application. Steps to run the booster are provided in [link](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/Booster.md). You can create subaccount manually also following [link](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/README.md)
 
