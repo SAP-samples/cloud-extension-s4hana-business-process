@@ -45,7 +45,7 @@ You can find the config.yml file on the left in the Explorer window of the Busin
 ```bash
   artifactPrepareVersion:
     buildTool: 'mta'
-  npmExecute::
+  npmExecute:
     dockerImage: 'ppiper/node-browsers:v2'
   cloudFoundryDeploy:
     dockerImage: 'ppiper/cf-cli'
