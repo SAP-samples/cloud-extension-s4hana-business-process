@@ -80,7 +80,7 @@ You will now prepare your SAP Business Technology Platform Account, configure yo
 
    ![Entitlement](./images/Prepare-Cloud-Platform-14.png)
    
-3.	Search for 'Enterprise Messaging', then click on *Enterprise Messaging*
+3.	Search for 'Event Mesh', then click on *Event Mesh*
 
 4.	Select *Available Service Plans* -> 'default'
 
