@@ -33,7 +33,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
     
     ![Add Subaccount](./images/cloud-connector-1.png)
     
-    You can look up the required data in the SAP Cloud Platform Cockpit.
+    You can look up the required data in the SAP BTP Cockpit.
     
 4.	Navigate to *Cloud to On-Premise* 
 5.	To add a new system mapping click on the *'+'* on the right site of the screen
