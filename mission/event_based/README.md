@@ -1,9 +1,9 @@
-# Configure event based communication between S/4 and SAP Enterprise Messaging
+# Configure event based communication between S/4 and SAP Event Mesh
 ## Introduction
 
-In this how to guide, you will establish a connection between your S/4HANA on Premise System and Enterprise Messaging. This connection is needed to transport events from the SAP S/4HANA system to Enterprise Messaging. 
+In this how to guide, you will establish a connection between your S/4HANA on Premise System and Event Mesh. This connection is needed to transport events from the SAP S/4HANA system to Event Mesh. 
 
-Additional documentation on configuring trust and creating the RFC destination can be found  in the official guide:
+Additional documentation on configuring trust and creating the RFC destination can be found in the official guide:
  
 https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/12559a8c26f34e0bbe8c6d82b7501424.html
 
@@ -13,10 +13,10 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 
 1. Open your browser. Then go to your sub account in SAP BTP and from there to your BusinessPartner space. 
 2. Click on *Service Instances* (on the left).
-3. Click on your Enterprise Messaging instance.
+3. Click on your Event Mesh instance.
 4. Click on the menu option (3 dots) followed by Create service key (on the right) 
 
- ![Open Enterprise Messaging Instance](./images/EMInstance.png)
+ ![Open Event Mesh Instance](./images/EMInstance.png)
  
 5. Provide a service key name. Click on create.
 
@@ -27,11 +27,11 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 
   ![view key](./images/EMKeyView.png)
   
-7. Find and copy your Enterprise Messaging token endpoint URL. Look for token endpoint and then copy the URL.
+7. Find and copy your Event Mesh token endpoint URL. Look for token endpoint and then copy the URL.
 
  ![Token Endpoint](./images/configureeventbased2.png)
 
-8. In your browser, open your Enterprise Messaging token endpoint url (*https:// ... Enterprise Messaging URL ... /oauth/token*). 
+8. In your browser, open your Event Mesh token endpoint url (*https:// ... Event Mesh URL ... /oauth/token*). 
 
 9. Click on view site information button (lock symbol on top left corner)and open the *certificate*
 
@@ -171,7 +171,7 @@ You will end up importing a single certificate of choice to the Anonymous Node.
 63. Enter 'EMS4' destination 
 64. Enter the topic name created in CP
 
-To identify your topic name, go the the SAP BTP Cockpit and click on *Subscriptions*. Look up the *Enterprise Messaging* tile. Click on *Go to Application*. This opens up Enterprise Messaging. Click on your messaging client and copy the value under *Namespace*. 
+To identify your topic name, go the the SAP BTP Cockpit and click on *Subscriptions*. Look up the *Event Mesh* tile. Click on *Go to Application*. This opens up Event Mesh. Click on your messaging client and copy the value under *Namespace*. 
 
 65. Enter a Description
 66. Click on save to finish
