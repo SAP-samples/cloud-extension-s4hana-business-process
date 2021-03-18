@@ -111,9 +111,11 @@ You can use [SAP BTP - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c4
 3. Launch the URL in a browser.
 
 4. Click on Business Partner Validation tile
+
 ![fiori tile](./documentation/images/fioriLaunchpad.JPG)
 
 5. The list of BusinessPartners along with their verification status gets displayed. 
+
 ![BP list](./documentation/images/BPListView.JPG)
 
 6. Login to the S/4HANA on-premise system
