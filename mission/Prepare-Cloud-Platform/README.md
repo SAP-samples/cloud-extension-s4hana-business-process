@@ -109,7 +109,7 @@ In this scenario differed applications are needed. To use these services, you fi
 
   ![Search CI/CD](./images/Prepare-Cloud-Platform-18.png)
 
-4.	Repeat step 2&3 for 'Enterprise Messaging', 'Business Application Studio' and 'Extension Center' to subscribe to all needed applications.
+4.	Repeat step 2&3 for 'Event Mesh', 'Business Application Studio' and 'Extension Center' to subscribe to all needed applications.
 
 ### Set up roles
 
