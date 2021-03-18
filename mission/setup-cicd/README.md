@@ -8,7 +8,7 @@ We will now setup our CI/CD pipeline.
 
 2. Go to the Business Application Studio 
 
-- Go to the SAP Cloud Platform Cockpit
+- Go to the SAP BTP Cockpit
 - Go to *Subscriptions*
 - Start the Business Application Studio
 
