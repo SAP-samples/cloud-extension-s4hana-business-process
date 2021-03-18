@@ -48,7 +48,7 @@
 
  ![backend](./images/endtoend10.png)
 
-8. (Optional) You can configure Enterprise Messaging in a way so that you can see the created Event. For that you could create an additional queue that subscribes to the topic as well.
+8. (Optional) You can configure Event Mesh in a way so that you can see the created Event. For that you could create an additional queue that subscribes to the topic as well.
 
  ![backend](./images/endtoend11.png)
 
