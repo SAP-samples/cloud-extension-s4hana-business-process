@@ -22,9 +22,9 @@ First we are going to enable the IWBEP component in the S/4HANA On premise syste
 
 ## Configure OData Provisioning Destination
 
-1. Create an ODP destination in the SAP Cloud Platform Cockpit
+1. Create an ODP destination in the SAP BTP Cockpit
 
-- Go to the SAP Cloud Platform Cockpit
+- Go to the SAP BTP Cockpit
 - Expand Connectivity
 - Go to Destinations
 - Press button *New Destination*
