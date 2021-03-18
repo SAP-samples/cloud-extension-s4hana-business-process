@@ -5,14 +5,14 @@ The main intent of this scenario is to complement an existing business process i
 
 This application showcases:
 
-- Building application on SAP Cloud Platform(CP) using [SAP Cloud Application Programming Model(CAP)](https://cap.cloud.sap/docs/)
-- Consuming events from SAP S/4HANA on premise using [SAP Cloud Platform Enterprise Messaging](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/df532e8735eb4322b00bfc7e42f84e8d.html)
-- Consuming REST APIs from SAP S/4HANA on premise using SAP Cloud Platform Connectivity Service
-- Building and deploying a function in [SAP Cloud Platform Serverless Runtime](https://help.sap.com/viewer/bf7b2ff68518427c85b30ac3184ad215/Cloud/en-US/7b8cc2b0e8d141d6aa37c7dff4d70b82.html)
+- Building applications on SAP Business Technology Platform (BTP) using [SAP Cloud Application Programming Model(CAP)](https://cap.cloud.sap/docs/)
+- Consuming events from SAP S/4HANA on premise using [SAP Event Mesh](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/df532e8735eb4322b00bfc7e42f84e8d.html)
+- Consuming REST APIs from SAP S/4HANA on premise using SAP Business Technology Platform Connectivity Service
+- Building and deploying a function in [SAP BTP, Serverless runtime service](https://help.sap.com/viewer/bf7b2ff68518427c85b30ac3184ad215/Cloud/en-US/7b8cc2b0e8d141d6aa37c7dff4d70b82.html)
 
 ## Business Scenario
 
-A business scenario is used to showcase how to build a S/4 HANA on premise extension Application on SAP CP.
+A business scenario is used to showcase how to build a S/4 HANA on premise extension Application on SAP BTP.
 
 John who is an employee of Business Partner Validation Firm iCredible, which is a third-party vendor of ACME Corporation would like to get notifications whenever new Business Partners are added in the S/4HANA backend system of ACME Corporation. John would then be able to review the Business Partner details in his extension app. He would proceed to visit the Business Partner’s registered office and do some background verification. John would then proceed to update/validate the verification details into the extension app. Once the details are verified, the Business Partner gets activated in the S/4HANA system of ACME Corporation.
 
@@ -30,11 +30,11 @@ John who is an employee of Business Partner Validation Firm iCredible, which is 
 
 ![solution diagram](./documentation/images/solution-diagram.jpg)
 
-The Business Partner Validation application is developed using SAP Cloud Application programming Model (CAP) and runs and runs on the SAP Cloud Platform Cloud Foundry Environment. It consumes platform services like Enterprise Messaging, SAP HANA and Connectivity. The events generated in S/4 HANA on premise are inserted into the Enterprise messaging queue. The application running in Cloud Foundry polls the queue for these messages and inserts them into the HANA database. The Business Partner Validation Application also uses S/4 HANA REST API's to read data from Business Partner Data from S/4 HANA system. The Business Partner Validation App also places the processed events into a Enterprise Message Queue from where a Serverless Application consumes it and posts it back to S/4 HANA on premise system using OData provisioning.
+The Business Partner Validation application is developed using the SAP Cloud Application programming Model (CAP) and runs on the SAP BTP,  Cloud Foundry runtime. It consumes platform services like SAP Event Mesh, SAP HANA and Connectivity. The events occuring in S/4 HANA on premise are inserted into the Event Mesh queue. The application running in Cloud Foundry is notified on events, consumes them from the queue and inserts the event data into the HANA database. The Business Partner Validation Application uses S/4 HANA REST API's to read additional Business Partner Data from the S/4 HANA system. in a next step, the Business Partner Validation App uses an event-driven approach as well by firing events that get consumed by Serverless Application which posts the relevant business partner data to S/4 HANA on premise system using OData provisioning.
 
 ## Requirements
 * SAP S/4HANA on premise system.
-* SAP Cloud Platform account
+* SAP BTP account
 
 ### For local development you would require the following:
 * [Node js](https://nodejs.org/en/download/)
@@ -53,7 +53,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 
 | Service                           | Plan       | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
-| Enterprise Messaging              | default    |          1          |
+| Event Mesh                        | default    |          1          |
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
 | SAP HANA Service                  | 64standard |          1          |
 | Application Runtime               |            |          1          |
@@ -63,13 +63,13 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 ## Configuration
 
 
-### Step 1: Setup Cloud platform subaccount
+### Step 1: Setup BTP subaccount
 
-You can use [SAP Cloud Platform - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Validation/en-US/fb1b56148f834749a2bf51127421610b.html) to setup the subaccount. Boosters Will create the subaccount with the required entitlements, subscriptions and assign the required roles to your user to run this application. Steps to run the booster are provided in [link](./documentation/mission/Prepare-Cloud-Platform/Booster.md). You can create subaccount manually also following [link](./documentation/mission/Prepare-Cloud-Platform/README.md)
+You can use [SAP BTP - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c403bbc107264b8eccf4b/Validation/en-US/fb1b56148f834749a2bf51127421610b.html) to setup the subaccount. Boosters Will create the subaccount with the required entitlements, subscriptions and assign the required roles to your user to run this application. Steps to run the booster are provided in [link](./documentation/mission/Prepare-Cloud-Platform/Booster.md). You can create subaccount manually also following [link](./documentation/mission/Prepare-Cloud-Platform/README.md)
 
 ### Step 2: [S/4HANA Enable OData Service for business partner](./documentation/mission/configure-oData-Service/README.md)
 
-### Step 3: [Setup connectivity between S/4HANA system, SAP CP](./documentation/mission/cloud-connector/README.md)
+### Step 3: [Setup connectivity between S/4HANA system, SAP BTP](./documentation/mission/cloud-connector/README.md)
 
 ### Step 4: Build and deploy the CAP application
 
@@ -99,7 +99,7 @@ You can use [SAP Cloud Platform - Boosters](https://help.sap.com/viewer/DRAFT/65
 
 ### Step 5: [Build and deploy the serverless application](./serverlessQRCodeGenerator/README.md)
 
-### Step 6: [Configure event based communication between S/4HANA and enterprise messaging](https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/fbb2a5980cb54110a96d381e136e0dd8.html)
+### Step 6: [Configure event based communication between S/4HANA and event mesh](https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/fbb2a5980cb54110a96d381e136e0dd8.html)
 
 
 ## Demo script
