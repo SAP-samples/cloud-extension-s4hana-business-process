@@ -8,7 +8,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
 ### Create a new application in SAP Business Application Studio
 
-1.	Make sure you have opened your *SAP Cloud Platform Account* and navigate to your *Subaccount* 
+1.	Make sure you have opened your *SAP BTP Account* and navigate to your *Subaccount* 
    
 2.	Open the menu *Subscriptions* and then search for 'Business Application Studio'. Click on *Go to Application*.
 
@@ -69,7 +69,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    
             
    
-   iii. In a next step, using the guid of your HANA  service, you will create a number of services e.g. for HANA . You will do this executing the Cloud  Foundry Create Service command.
+   iii. In a next step, using the guid of your HANA  service, you will create a number of services e.g. for HANA . You will do this executing the Cloud Foundry Create Service command.
    
      
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
