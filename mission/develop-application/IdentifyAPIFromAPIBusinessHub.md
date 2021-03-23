@@ -4,7 +4,7 @@
 ## Introduction
 You will look up the required API on API Business Hub and download its specification as an EDMX file. 
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 
 ### Find and download API
