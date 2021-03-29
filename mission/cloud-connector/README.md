@@ -4,7 +4,7 @@
 
 In this section you will configure the Cloud Connector for connecting the on premise backend system to the SAP Business Technology Platform. 
 
-**Persona:** SCP Admin
+**Persona:** BTP Admin
 
 
 ### Configure Systems in Cloud Connector for access with technical user
