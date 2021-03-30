@@ -4,7 +4,7 @@
 
 With this guide you will set up Node, create a new GitHub Repository and prepare Visual Studio code for development on your local machine. 
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 ### Set up Node
 
