@@ -24,7 +24,7 @@ cd BpValidationMockS4
 cds import API_BUSINESS_PARTNER.edmx
 ```
 
-< Hint: make sure the EDMX file is in your folder or provide the path to the EDMX file. This is the file you have downloaded from the API Business Hub in an earlier step. 
+> Hint: make sure the EDMX file is in your folder or provide the path to the EDMX file. This is the file you have downloaded from the API Business Hub in an earlier step. 
 
 ![Import Business Partners](./images/develop-app-2.png)
 
