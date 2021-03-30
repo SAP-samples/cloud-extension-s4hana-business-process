@@ -4,7 +4,7 @@
 ## Introduction
 You will now test the application you have created against an S/4HANA mock service 
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 
 ### Test application 
