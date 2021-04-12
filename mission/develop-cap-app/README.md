@@ -1,44 +1,46 @@
+
+
 # Develop SAP Cloud Application Programming Model Application
 
 ## Introduction
 
 In this how to guide, you will create a new CAP application in SAP Business Application Studio and test your application.
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 ### Create a new application in SAP Business Application Studio
 
 1.	Make sure you have opened your *SAP BTP Account* and navigate to your *Subaccount* 
    
-2.	Open the menu *Subscriptions* and then search for 'Business Application Studio'. Click on *Go to Application*.
-
-    ![Open Business Application Studio](./images/dev-cap-app-1.png)
+2.	Open the menu *Services* and navigate to *Instances and Subscriptions*
    
-3.	Open the application 'Business Application Studio' and login via Default Identity Provider
+3.	Choose "SAP Business Application Studio" unter the *Subscriptions* tab and click on the icon to open the application
+     
+     ![Open SAP Business Application Studio](./images/dev-cap-app-1.png)
  
-4.	In Business Application Studio click the button *Create Dev Space*
+4.	 After opening the home sceen of SAP Business Application Studio, click the button *Create Dev Space*
 
      ![Create Dev Space](./images/dev-cap-app-3.png)
  
-5.	On the next screen enter a Dev space name e.g 'BusinessProcess', select the type *SAP Cloud Business Application*. Mark    *Serverless Runtime Development Tools* under additional tools. 
+5.	On the next screen you will create the new Dev Sapce. For this enter a Dev space name e.g 'BusinessProcess', select the type *SAP Cloud Business Application*. Mark    *Serverless Runtime Development Tools* under additional tools. 
     Don´t forget to click on the button *Create Dev Space*
 
       ![Configure Dev Space](./images/dev-cap-app-4.png)
       
  
-6.	Your Dev Space is now being created. As soon as the Dev Space is available you can click on your Dev Spaces name to  access
+6.	Your Dev Space is now being created. As soon as the Dev Space is running you can click on your Dev Spaces name to  access
 
 7.	Choose *Terminal -> New Terminal* in the menu on the top of your screen.
 
     ![Open Terminal](./images/dev-cap-app-5.png)
  
-8. Go to projects Folder
+8. In the opened terminal go to projects folder with executing
    
    ``` 
    cd projects
    ``` 
  
-9.	Clone the project from your personal GitHub: 
+9.	 Then clone the project from your personal GitHub and enter username and token to execute the command: 
 
     ```
     git clone <YourPersonalGitHub>
@@ -53,7 +55,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
  
 12.   For the next steps you need the terminal again. Go to *Terminal* -> *New Terminal*
      
-   i. First you need to login:
+   i. First you need to login. You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section:
  
     
     cf api <api endpoint>
@@ -61,28 +63,29 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
     cf target -o org -s space
     
          
-   ii. Then you will get the guid of your HANA service. Please note that, in case that you do not have a HANA service in    your SAP Cloud Platform environment yet, you will have to create one. You can find a tutorial for creating a HANA Service instance [here](https://help.sap.com/viewer/cc53ad464a57404b8d453bbadbc81ceb/Cloud/en-US/21418824b23a401aa116d9ad42dd5ba6.html).
+   ii. Then you will get the guid of your HANA Cloud. Please note that, in case that you do not have a HANA Cloud in your SAP BTP environment yet, you will have to create one. You can find a tutorial for creating a HANA Cloud instance [here](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
      
   
       cf service <HANA-Service> --guid
-      cf cs hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" : "<guid of HANA Service>"}'
+      cf create-service hana-cloud hana BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA Service>"}'
    
             
    
-   iii. In a next step, using the guid of your HANA  service, you will create a number of services e.g. for HANA . You will do this executing the Cloud Foundry Create Service command.
+   iii. In a next step, using the guid of your HANA  service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
    
      
-    cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
+    cf cs enterprise-messaging default BusinessPartnerValidation-em -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
     cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
-    cf cs connectivity lite BusinessPartnerValidation-cs        
+    cf cs connectivity lite BusinessPartnerValidation-cs
+    cf cs application-logs lite BusinessPartnerValidation-logs
     cds build --production
                
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
 
-13.	 Open the manifest.yml file ind gen/srv folder and add your service names / replace existing ones with your services: ems, dest, xsuaa, database. Then open the manifest.yaml in gen/srv as well and add the services there as well. 
-Set the Memory as 256MB.
+13.	 Open the manifest.yml file ind gen/srv folder and add your service names / replace existing ones with your services: em, dest, xsuaa, db and logs. 
+Set the Memory as 256MB. Don´t forget so save the file.
 
 > Hint: to make sure that the services names match, execute the CF command *CF services* which lists the services you have created including their names.
 
@@ -91,33 +94,28 @@ Set the Memory as 256MB.
 14.	Go back to the terminal and run following commands:
 
        ```
+       cds build --production
        cf p -f gen/db
        cf p -f gen/srv --random-route
        ```
  
-15.  Go to the terminal and execute *CF apps*, then copy the URL of the BusinessPartnerValidation-srv which you should now see listed
+15. Execute 
+       ```
+       cds add mta
+       ```
+> Hint: use cds add mta --force in case the mta already exsists in your project
 
-16. Go to *< Your Project Directory >/app/BusinessPartners* in your Business Application Studio and open the *manifest.yml* in that folder
-
-   i. Replace the URL in the manifest file (env -> destinations --> service-binding) with the one you have just copied. Make sure you add an *https://* in the beginning of the URL.
-
-   ii. Add your xsuaa service to the services like you have done in the other manifest.yml file above.
-
-> Hint: you can check on your service names using *CF services*
-
-17. Go to the terminal again and execute the below command
-   
-      
-         cf p -f app/BusinessPartners --random-route
 
 ### Test your application
 
-1. Go to the terminal and enter *cf apps*.
+1. Go to the terminal and enter 
+      ```
+       mbt build -p=cf
+       cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
+       ```
+2. Start your app with the command
+      ```
+      cf apps
+      ```
+3. Open the URL of your deployed UI application
 
- ![Run command](./images/dev-cap-app-18.png)
-
-2. Copy the UI url.
-
-3. Open your browser and paste the URL in there. Press enter. Enter user and password.
-
- ![Open APp](./images/dev-cap-app-19.png)
