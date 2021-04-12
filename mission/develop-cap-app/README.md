@@ -41,10 +41,9 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    ``` 
  
 9.	 Then clone the project from your personal GitHub and enter username and token to execute the command: 
-
-    ```
-    git clone <YourPersonalGitHub>
-    ```
+   ``` 
+   git clone <YourPersonalGitHub>
+   ``` 
  
 10.	Click on *File* in the menu on the top and choose *Open Workspace* in the drop down.
 
