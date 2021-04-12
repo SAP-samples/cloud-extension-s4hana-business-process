@@ -53,5 +53,5 @@ cd repo
 8.	Initialize CDS 
 ```
 cds init BpValidationMockS4
-```![image](https://user-images.githubusercontent.com/72131660/114375655-2e057f80-9b85-11eb-9676-d4eb45ad7420.png)
+```
 
