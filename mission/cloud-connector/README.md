@@ -11,7 +11,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 1.	Open your Cloud Connector administration UI for the S/4HANA on premise system.
 
-    Go to https://localhost:8443/   
+    Go to https://localhost:8443/   
     
     Hint: adjust the port if you specified another one during the installation. Potentially you might have to use the external IP of your system. 
 
@@ -87,18 +87,27 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 3.	Go back to Connectivity in the menu on the left then choose *Destinations -> New Destination*
 
-![New Destination](./images/cloud-connector-12.png)
-
 4.	Enter the following information to the Destination Configuration:
     - *Name:* bupa
-    - *Url:* insert url of the on Prem system (e.g. http://s4ext:500/sap/opu/odata/sap/API_BUSINESS_PARTNER)
+    - *Url:* insert url of the on Prem system (http://<virtual host>:<virtual port>/sap/opu/odata/sap/API_BUSINESS_PARTNER)
     - *Proxy Type*: OnPremise
     - Change *Proxy Type* to 'OnPremise'
     - Select *Authentication:* 'Basic Authentication'
     - Add location Id (In case of multiple CC)
-    -Basic Authentication with User and PWD
+    -Basic Authentication with User and Password
 5.	Click on *Save* (optionally you can also *check the connection*) and close the window
 
 ![Configure Destination](./images/cloud-connector-13.png)
 
-6.	Check Connection
+6. Repeat the step to create a new Destination: 
+    - *Name:* odataprov
+    - *Url:* insert url of the on Prem system (http://<virtual host>:<virtual port>/sap/iwbep?sap-client=100)
+    - *Proxy Type*: OnPremise
+    - Change *Proxy Type* to 'OnPremise'
+    - Select *Authentication:* 'Basic Authentication'
+    - Add location Id (In case of multiple CC)
+    -Basic Authentication with User and Password
+7.  Click on *New Property* and enter KEY 'odc' and Value 'true'
+
+8.	Click on *Save* (optionally you can also *check the connection*) and close the window!
+
