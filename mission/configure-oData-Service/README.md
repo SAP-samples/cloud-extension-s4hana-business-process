@@ -46,7 +46,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
    ![Change User](./images/configure-oData-Service-7.png)
 
 6.	Navigate to transaction code: '/nPFCG'
-7.	Enter 'ENTERPRISEMESSAGING' in the *Role* field, then click on the *Single Role* button
+7.	Enter 'EVENTMESH' in the *Role* field, then click on the *Single Role* button
 
  ![Assign Transaction](./images/configure-oData-Service-8.png)
 
@@ -58,7 +58,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
      ![Business Partner](./images/configure-oData-Service-9.png)
    
 12.	Select 'Authorization Default' from the 'Transaction dropdown' in the menu tab
-13.	In the pop-up window. Select 'TADIR Service' as Authorization Default from the pull down menu, and change *Object Type* to 'IWSG SAP Gateway: Service Groups Metadata'
+13.	In the pop-up window. Select 'SAP Gateway: Service Groups Metadata' as Authorization Default from the pull down menu, and change *Object Type* to 'IWSG SAP Gateway: Service Groups Metadata'
 14.	 Enter the name of active Business Partner API - you can look this up using the menu - into to the table and click on *Copy*
    
       ![Change Authorizations](./images/configure-oData-Service-10.png)
@@ -85,3 +85,4 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
 22.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
 23.	Log off from the admin user system by entering the transaction '/nEX'
 24.	Log on to the GUI using your newly created Technical User
+
