@@ -25,7 +25,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
   
 7. Find and copy your Event Mesh token endpoint URL. Look for token endpoint and then copy the URL. Make sure you have selected the Service Key in the dropdown
 
- ![Token Endpoint](./images/EventBased3.png)![image]
+ ![Token Endpoint](./images/EventBased3.png)
  
  ### Configure Channel
  
