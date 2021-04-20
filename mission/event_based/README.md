@@ -31,10 +31,13 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
  
  1. Open your S/4 HANA system and navigate to the transaction */IWXBE/CONFIG*
  2. Click on *via Service Key*
+ ![Configure Channel](./images/EventBased4.png)
  3. In the popup choose a *channel name* e.g. 'S4EM', provide a description and paste the *Service Key* you have created in the ealier steps
  4. Then click on *save configuration*
+  ![Create configuration](./images/EventBased5.png)
  5. After your configuration is saved, click on the *Activate - Deactivate* button
  6. Click on *Check connection*
  7. Then click on *Outbound Bindings* to start the configuration
- 8. In the next screen first click on *Create*, then select the according *topic*
-
+  ![Check Connection](./images/EventBased6.png)
+ 8. In the next screen first click on *Create*, then select the *topic*
+ ![Create Outbound Bindings(./images/EventBased7.png)
