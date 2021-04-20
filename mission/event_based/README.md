@@ -15,19 +15,17 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 2. Click on *Instances & Subscriptions * in the menu on the left.
 3. Scroll to the Instances tab, and look for Event Mesh in the table. Now click on the 3 dots to open the dropdown and choose 'Create Serive Key'
 
- ![Open Event Mesh Instance](./images/EMInstance.png)
+ ![Open Event Mesh Instance](./images/EventBased1.png)
  
 5. Provide a service key name e.g. EMServiceKey. Click on create.
 
- ![create key](./images/EMKeyCreate.png)
+ ![create key](./images/EventBased2.png)
  
-6.  Under service keys, click on menu. Click on view
-
-  ![view key](./images/EMKeyView.png)
+6.  Click on your created Service Key to open the detail view
   
-7. Find and copy your Event Mesh token endpoint URL. Look for token endpoint and then copy the URL.
+7. Find and copy your Event Mesh token endpoint URL. Look for token endpoint and then copy the URL. Make sure you have selected the Service Key in the dropdown
 
- ![Token Endpoint](./images/configureeventbased2.png)![image]
+ ![Token Endpoint](./images/EventBased3.png)![image]
  
  ### Configure Channel
  
