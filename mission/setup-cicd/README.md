@@ -77,7 +77,7 @@ You can find the config.yml file on the left in the Explorer window of the Busin
 
 - Go to the *cftargets* section, uncomment the section and update appropriately
 
-The data can be found in the Cloud Platform Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
+The data can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
 
 7. Push the pipeline code to GitHub.
 
