@@ -90,7 +90,7 @@ Hint: you might have to configure your Git before.
 8. Configure pipeline
 
 - Click on *Service Marketplace* or *Instances and Subscriptions*
-- Find *Continuous Integration & Delivery*
+- Find *Continuous Integration & Delivery* (you might use the search functionality)
 - Click on “Go to application”
 
  ![configure pipeline](./images/cicd2.png)
