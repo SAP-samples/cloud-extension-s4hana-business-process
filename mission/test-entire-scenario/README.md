@@ -3,7 +3,7 @@
 
 - In the command line interface run the command *cf apps*
 
-- Find the URL for the app BusinessPartnerValidation-ui - this is the launch URL for the Business Partner Validation application.
+- Find the URL for the app BusinessPartnerValidation-ui - this is the launch URL for the Business Partner Validation application
 
 - Launch the URL in a browser
 
