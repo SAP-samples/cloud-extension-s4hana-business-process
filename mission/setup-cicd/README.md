@@ -2,33 +2,36 @@
 
 We will now setup our CI/CD pipeline.
 
-1. Open GitHub repository and fork the repository
+1. Fork the GitHub repository
 
-- Go to the GitHub repository and fork the repository
+- Go to the GitHub repository. 
+- Fork the GitHub repository
 
 2. Go to the Business Application Studio 
 
 - Go to the SAP BTP Cockpit
-- Go to *Instances and Subscriptions* or to *Service Marketplace*
+- Go to *Instances and Subscriptions* or alternatively to *Service Marketplace*
 - Start the Business Application Studio by executing *Go to Application*
 
 3. Open a Terminal in the Business Application Studio
 
+- Go to *Terminal* and select *New Terminal*
+
 4. Clone the forked GitHub repository from the terminal in Business Application Studio
 
-- Go to the *projects* folder
+- Go to the *projects* folder in your terminal 
 - Execute the command below from the projects folder
-- Replace <your GitHub repository> with your GitHub repository
+- In this command replace <your GitHub repository> with your GitHub repository
 
 ```bash
 git clone <your GitHub repository>
 ```  
 
-5. Go to the folder you have just cloned. Execute the command *cds add pipeline*
+5. Go to the folder you have just cloned. 
+6. Execute the command *cds add pipeline*
 
-6. Open config.yml file and edit with the snippets provided below 
-
-You can find the config.yml file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
+7. Open config.yml file that you can find on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
+8. Edit the config.yml and add the code snippets below at the appropriate spots. 
 
 - Go to the *general* section. 
 - Copy the below over to the general section
@@ -79,7 +82,7 @@ You can find the config.yml file on the left in the Explorer window of the Busin
 
 The data can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
 
-7. Push the pipeline code to GitHub.
+9. Push the pipeline code to GitHub.
 
 - git add .
 - git commit –m “adding pipeline config”
@@ -87,7 +90,7 @@ The data can be found in the BTP Cockpit in the *Overview* part of your subaccou
 
 Hint: you might have to configure your Git before.
 
-8. Configure pipeline
+10. Configure pipeline
 
 - Click on *Service Marketplace* or *Instances and Subscriptions*
 - Find *Continuous Integration & Delivery* (you might use the search functionality)
@@ -95,7 +98,7 @@ Hint: you might have to configure your Git before.
 
  ![configure pipeline](./images/cicd2.png)
 
-9. Add credentials
+11. Add credentials
 
 - Click on credentials tab
 - Click on ‘+’
@@ -117,7 +120,7 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/cicd5.png)
  
- 10. Add jobs
+ 12. Add jobs
  
 - Click on jobs tab
 - Click on ’+’
@@ -131,7 +134,7 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/screenshot_cicd6.png)
  
-11. Configure Webhooks
+13. Configure Webhooks
 
 - Click on the URL provided
  
@@ -141,7 +144,7 @@ Hint: you might have to configure your Git before.
  
  ![add credentials](./images/cicd8.png)
  
-12. Configure Webhooks
+14. Configure Webhooks
 
 The data required below can be found in the CI/CD popup.
 
@@ -154,7 +157,7 @@ The details to be entered as available in the pop up in CI application.
 
  ![add credentials](./images/cicd9.png)
 
-13. Add credential to pipeline
+15. Add credential to pipeline
 
 - Open pipeline_config.yml file in github
 - Edit credentialId and adjust to the one created.
@@ -162,7 +165,7 @@ The details to be entered as available in the pop up in CI application.
 
  ![add credentials](./images/cicd10.png)
  
- 14. Test the pipeline (optional)
+ 16. Test the pipeline (optional)
  
  - Go to Business Application Studio
  - Make a minor change to for example the Readme.MD like e.g. adding an empty
