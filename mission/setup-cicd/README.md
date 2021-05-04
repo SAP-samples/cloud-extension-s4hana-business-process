@@ -186,7 +186,7 @@ The details to be entered as available in the pop up in CI/CD.
 
 - Click on ‘Add webhook’
 
- ![add credentials](./images/cicd6-3.png)
+ ![add credentials](./images/cicd6-4.png)
 
 15. Add credential to pipeline
 
