@@ -149,7 +149,7 @@ Hint: you might have to configure your Git before.
 - Leave the Upload to Cloud Transport Management step switched off.
 - Choose *Create*.
 
- ![add credentials](./images/screenshot_cicd6.png)
+ ![add credentials](./images/cicd6.png)
  
 13. Configure Webhooks
 
