@@ -216,7 +216,7 @@ git push
  - Goto the CI/CD app 
  - Check on the right hand side that the build has been triggered
  
-  ![add credentials](./images/screenshot_cicd11.png)
+  ![add credentials](./images/cicd6-5.png)
  
 
  
