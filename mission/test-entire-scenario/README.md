@@ -39,7 +39,7 @@
    
  ![backend](./images/endtoend8.png)
 
-5. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartners has come on the UI
+5. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartner has appeared as a new entry in the UI
 
  ![app](./images/endtoend9.png)
 
