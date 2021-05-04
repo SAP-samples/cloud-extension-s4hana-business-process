@@ -153,15 +153,18 @@ Hint: you might have to configure your Git before.
  
 13. Create a GitHub Webhook
 
-- To create a webhook in GitHub, you need some data that has been automatically created during the previous step. You can find this data (Payload URL and Secret) when you open the detail view of an existing repository in the Repositories tab
+To create a webhook in GitHub, you need some data that has been automatically created during the previous step. You can find this data (Payload URL and Secret) when you open the detail view of an existing repository in the Repositories tab
+
 - Click on Repositories
-- Click on the URL provided
+- Open on the Detail View of your repository by clicking on the arrow at the end of the row
+- The detail view opens up on the right hand side
+- Click on Webhook Data
  
- ![add credentials](./images/screenshot_cicd7.png)
+ ![webhook data](./images/cicd6-1.png)
  
-- Click on ‘Add webhook’ 
+- You will see a pop-up like the one below
  
- ![add credentials](./images/cicd8.png)
+ ![pop up](./images/cicd6-2.png)
  
 14. Configure Webhooks
 
