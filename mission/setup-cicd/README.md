@@ -98,7 +98,7 @@ Hint: you might have to configure your Git before.
 
  ![configure pipeline](./images/cicd2.png)
 
-11. Add credentials
+11. Add BTP credentials
 
 - Click on credentials tab
 - Click on ‘+’
@@ -112,7 +112,9 @@ Hint: you might have to configure your Git before.
 - Click on create
 
  ![add credentials](./images/cicd4.png)
- 
+
+11. Add GitHub credentials
+
 - Click on ‘+’
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
 - As type select *Basic Authentication* 
