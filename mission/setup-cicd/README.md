@@ -198,6 +198,12 @@ The details to be entered as available in the pop up in CI/CD.
  
  16. Test the pipeline (optional)
  
+ - Go to the terminal in Business Application Studio and sync the changes in GitHub 
+ 
+ ```bash
+ git pull
+ ```
+ 
  - Go to Business Application Studio
  - Make a minor change to for example the Readme.MD like e.g. adding a comment
  - Go to the terminal and execute the commands below
