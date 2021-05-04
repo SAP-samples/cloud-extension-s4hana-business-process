@@ -132,6 +132,9 @@ Hint: you might have to configure your Git before.
 - Add the repository name and the repository URL.
 - Select the repository credential from the dropdown. Pick *github*
 - Choose *Add*
+
+ ![add repository](./images/cicd5-1.png)
+
 - For Branch, enter the GitHub branch from which you want to receive push events. In this example, main.
 - As Pipeline, choose SAP Cloud Application Programming Model.
 - Keep the default values in the BUILD RETENTION tab.
