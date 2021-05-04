@@ -165,7 +165,13 @@ To create a webhook in GitHub, you need some data that has been automatically cr
 - You will see a pop-up like the one below
  
  ![pop up](./images/cicd6-2.png)
- 
+
+14. Add Webhook in GitHub
+
+- In your project in GitHub go to the Settings tab.
+- From the navigation pane, choose Webhooks.
+- Choose Add webhook.
+
 14. Configure Webhooks
 
 The data required below can be found in the CI/CD popup.
