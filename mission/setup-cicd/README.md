@@ -10,7 +10,7 @@ We will now setup our CI/CD pipeline.
 
 - Go to the SAP BTP Cockpit
 - Go to *Instances and Subscriptions* or to *Service Marketplace*
-- Start the Business Application Studio
+- Start the Business Application Studio by executing *Go to Application*
 
 3. Open a Terminal
 
