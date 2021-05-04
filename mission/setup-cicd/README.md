@@ -105,7 +105,7 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/cicd3.png)
  
-- Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is global.
+- Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *global*.
 - As type select *Basic Authentication* 
 - For Username, enter your GitHub username.
 - For Password, use the personal access token for GitHub (Hint: access tokens can be created in GitHub by going to *Settings* -> *Developer Settings*)
@@ -114,9 +114,9 @@ Hint: you might have to configure your Git before.
  ![add credentials](./images/cicd4.png)
  
 - Click on ‘+’
-- Provide name ‘github’
-- Provide username
-- Provide password
+- Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
+- For Username, enter your GitHub username.
+- For Password, use the personal access token for GitHub
 - Click on create
 
  ![add credentials](./images/cicd5.png)
