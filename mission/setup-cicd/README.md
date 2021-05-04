@@ -124,17 +124,27 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/cicd5.png)
  
- 12. Add jobs
+ 12. Configure a CI/CD Job
  
-- Click on jobs tab
-- Click on ’+’
-- Enter job name ‘CustomLogic’
-- Enter your GitHub repo url
+- In the Jobs tab in SAP Continuous Integration and Delivery, choose *+* to create a new job.
+- For Job Name, enter a freely chosen name for your job, which is unique in your SAP BTP subaccount, for example ‘CustomLogic’.
+- Under Repository, choose Add Repository.
+- Add the repository name and the repository URL.
 - Select the repository credential from the dropdown. Pick *github*
-- Provide branch as main
-- Pipeline type – sap-cloud-sdk
-- Set logs to –’20’ 
-- Click on ‘create’
+- Choose *Add*
+- For Branch, enter the GitHub branch from which you want to receive push events. In this example, main.
+- As Pipeline, choose SAP Cloud Application Programming Model.
+- Keep the default values in the BUILD RETENTION tab.
+- In the Stages tab, choose Job Editor from the Configuration Mode dropdown list.
+- For Build Tool, leave mta as preselected.
+- Leave the execution of the Maven Static Code Checks step switched off.
+- Leave the execution of the Lint Check step switched off.
+- Leave the execution of the Additional Unit Tests switched off.
+- Switch the execution of the Release stage on.
+- Switch the execution of the Deploy to Cloud Foundry step on.
+- Replace the placeholders in with the values of the space in the Cloud Foundry environment to which you want to deploy. You can get the values for <YOUR ORG NAME>, <YOUR SPACE NAME>, and <YOUR CLOUD FOUNDRY API ENDPOINT> from your subaccount overview in the SAP BTP cockpit:
+- Leave the Upload to Cloud Transport Management step switched off.
+- Choose *Create*.
 
  ![add credentials](./images/screenshot_cicd6.png)
  
