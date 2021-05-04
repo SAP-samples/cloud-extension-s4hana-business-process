@@ -14,11 +14,10 @@ We will now setup our CI/CD pipeline.
 
 3. Open a Terminal
 
-- Log in
-
 4. Clone the forked GitHub repository
 
-Execute the command from the projects folder
+- Go to the *projects* folder
+- Execute the command from the projects folder
 
 ```bash
 git clone <your GitHub repository>
