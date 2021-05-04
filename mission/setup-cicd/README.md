@@ -85,7 +85,7 @@ The data can be found in the BTP Cockpit in the *Overview* part of your subaccou
 9. Push the pipeline code to GitHub.
 
 - git add .
-- git commit –m “adding pipeline config”
+- git commit –m “adding pipeline config” or git commit -m 'adding pipeline config'
 - git push
 
 Hint: you might have to configure your Git before.
