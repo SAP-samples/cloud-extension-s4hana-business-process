@@ -145,7 +145,7 @@ Hint: you might have to configure your Git before.
 - Leave the execution of the Additional Unit Tests switched off.
 - Switch the execution of the Release stage on.
 - Switch the execution of the Deploy to Cloud Foundry step on.
-- Replace the placeholders in with the values of the space in the Cloud Foundry environment to which you want to deploy. You can get the values for <YOUR ORG NAME>, <YOUR SPACE NAME>, and <YOUR CLOUD FOUNDRY API ENDPOINT> from your subaccount overview in the SAP BTP cockpit.
+- Replace the placeholders in with the values of the space in the Cloud Foundry environment to which you want to deploy. You can get the values from your subaccount overview in the SAP BTP cockpit. Select the Credentials that you had created earlier for the SAP BTP from the dropdown menu.
 - Leave the Upload to Cloud Transport Management step switched off. Select the credentials from the drop down that you had created earlier for the SAP BTP.
 - Choose *Create*.
 
