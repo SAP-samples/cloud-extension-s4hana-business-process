@@ -2,7 +2,7 @@
 
 This serverless function is used to generate a qrcode for the updated Business Partner address and it uploads the same to the S/4HANA on premise system along with the business partner details.
 
-The implementation showcases the following features of the SAP Cloud Platform Serverless Runtime:
+The implementation showcases the following features of the SAP BTP, Serverless Runtime:
 
   - AMQP trigger for invoking the serverless function
   - OData Provisioning for registering the S/4HANA OData Services
@@ -10,7 +10,7 @@ The implementation showcases the following features of the SAP Cloud Platform Se
 
 ## Requirements
 
-* A working instance of Event Mesh.
+* A working instance of SAP Event Mesh.
 * A working instance of a Destination Service.
 * A queue has been set up for receiving messages sent by the cf application
 * Subscription for Extension Center
@@ -24,7 +24,7 @@ The implementation showcases the following features of the SAP Cloud Platform Se
 
 ![Business Application Studio](./images/serverless11.png)
 
-Hint: you should have enabled "SAP Cloud Platform Serverless Runtime Development" while creating a dev space in the Business Application Studio in one of the earlier steps. 
+Hint: you should have enabled "SAP BTP Serverless Runtime Development" while creating a dev space in the Business Application Studio in one of the earlier steps. 
 
 2. Open a Terminal and Login
 
