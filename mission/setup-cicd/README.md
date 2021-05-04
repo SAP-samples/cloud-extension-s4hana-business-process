@@ -12,12 +12,13 @@ We will now setup our CI/CD pipeline.
 - Go to *Instances and Subscriptions* or to *Service Marketplace*
 - Start the Business Application Studio by executing *Go to Application*
 
-3. Open a Terminal
+3. Open a Terminal in the Business Application Studio
 
-4. Clone the forked GitHub repository
+4. Clone the forked GitHub repository from the terminal in Business Application Studio
 
 - Go to the *projects* folder
-- Execute the command from the projects folder
+- Execute the command below from the projects folder
+- Replace <your GitHub repository> with your GitHub repository
 
 ```bash
 git clone <your GitHub repository>
