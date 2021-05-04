@@ -23,7 +23,7 @@ We will now setup our CI/CD pipeline.
 git clone <your GitHub repository>
 ```  
 
-5. Execute the command *cds add pipeline*
+5. Go to the folder you have just cloned. Execute the command *cds add pipeline*
 
 6. Open config.yml file and edit with the snippets provided below 
 
