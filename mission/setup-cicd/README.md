@@ -115,6 +115,7 @@ Hint: you might have to configure your Git before.
  
 - Click on ‘+’
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
+- As type select *Basic Authentication* 
 - For Username, enter your GitHub username.
 - For Password, use the personal access token for GitHub
 - Click on create
