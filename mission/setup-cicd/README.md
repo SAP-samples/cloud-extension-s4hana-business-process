@@ -181,11 +181,12 @@ The data required below can be found in the CI/CD popup.
 - Enter payload url
 - Select content type as application/json
 - Enter the secret
+
+The details to be entered as available in the pop up in CI/CD.
+
 - Click on ‘Add webhook’
 
-The details to be entered as available in the pop up in CI application.
-
- ![add credentials](./images/cicd9.png)
+ ![add credentials](./images/cicd6-3.png)
 
 15. Add credential to pipeline
 
