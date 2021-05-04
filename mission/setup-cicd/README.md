@@ -199,7 +199,7 @@ The details to be entered as available in the pop up in CI/CD.
  16. Test the pipeline (optional)
  
  - Go to Business Application Studio
- - Make a minor change to for example the Readme.MD like e.g. adding an empty
+ - Make a minor change to for example the Readme.MD like e.g. adding a comment
  - Go to the terminal and execute the commands below
  
  ```bash
