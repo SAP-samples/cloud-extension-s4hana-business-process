@@ -34,7 +34,7 @@ git clone <your GitHub repository>
 8. Edit the config.yml and add the code snippets below at the appropriate spots. 
 
 - Go to the *general* section. 
-- Copy the below over to the general section
+- Copy the below code snippet and paste it to the general section
 
 ```bash
   unsafeMode: false
