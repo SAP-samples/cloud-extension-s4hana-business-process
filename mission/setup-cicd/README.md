@@ -35,9 +35,13 @@ The steps below will guide your through settting up your pipeline.
 
 ![goto application](./images/cicd1-3.png)
 
+- Start the Business Application Studio and open your work environment
+
 4. Open a Terminal in the Business Application Studio
 
 - Go to *Terminal* and select *New Terminal*
+
+![new terminal](./images/cicd1-4.png)
 
 5. Clone the forked GitHub repository from the terminal in Business Application Studio
 
@@ -53,6 +57,9 @@ git clone <your GitHub repository>
 7. Execute the command *cds add pipeline*
 
 8. Open the config.yml file. You can find this file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
+
+![config file](./images/cicd1-5.png)
+
 9. Edit the config.yml and add the code snippets below at the appropriate spots 
 
 - Go to the *general* section
