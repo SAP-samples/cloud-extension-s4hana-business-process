@@ -33,6 +33,8 @@ The steps below will guide your through settting up your pipeline.
 - Go to *Instances and Subscriptions* or alternatively to *Service Marketplace*
 - Start the Business Application Studio by executing *Go to Application*
 
+![goto application](./images/cicd1-3.png)
+
 4. Open a Terminal in the Business Application Studio
 
 - Go to *Terminal* and select *New Terminal*
