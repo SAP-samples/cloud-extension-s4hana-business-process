@@ -109,7 +109,7 @@ git clone <your GitHub repository>
 
 - Go to the *cftargets* section, uncomment the section and update appropriately
 
-The data required ofr the update can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
+The data required for the update can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
 
 10. Push the pipeline code to GitHub.
 
