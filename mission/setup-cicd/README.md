@@ -9,11 +9,17 @@ The steps below will guide your through settting up your pipeline.
 - Got to the Service Marketplace
 - Type Continuous into the Search Box
 - Choose Create
+
+ ![choose create](./images/cicd1-1.png)
+
 - In your SAP BTP subaccount, choose Security -> Trust Configuration
 - Choose the name of your identity provider
 - Enter your email address
 - Choose Show Assignments
 - Choose Assign Role Collection
+
+ ![assign role_collection](./images/cicd1-2.png)
+
 - From the dropdown list, choose CICD Administrator
 
 2. Fork the GitHub repository
