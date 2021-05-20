@@ -4,7 +4,7 @@ This section describes how to configure and run a predefined continuous integrat
 
 The steps below will guide your through settting up your pipeline.
 
-1. Enable SAP Continuous Integration and Delivery (Optional Step - if you have executed the Booster you should be good)
+1. Enable SAP Continuous Integration and Delivery (optional Step - if you have executed the Booster you should be good)
 - Go to your subaccount in SAP BTP
 - Got to the Service Marketplace
 - Type Continuous into the Search Box
@@ -138,8 +138,8 @@ Hint: you might have to configure your Git before.
  
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *global*.
 - As type select *Basic Authentication* 
-- For Username, enter your GitHub username.
-- For Password, use the personal access token for GitHub (Hint: access tokens can be created in GitHub by going to *Settings* -> *Developer Settings*)
+- For Username, enter your BTP username.
+- For Password, enter your BTP password.
 - Click on create
 
  ![add btp_credentials_2](./images/cicd4.png)
@@ -150,7 +150,7 @@ Hint: you might have to configure your Git before.
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
 - As type select *Basic Authentication* 
 - For Username, enter your GitHub username.
-- For Password, use the personal access token for GitHub
+- For Password, use the personal access token for GitHub (Hint: access tokens can be created in GitHub by going to *Settings* -> *Developer Settings*)
 - Click on create
 
  ![add github_credentials](./images/cicd5.png)
