@@ -4,13 +4,15 @@ This section describes how to configure and run a predefined continuous integrat
 
 The steps below will guide your through settting up your pipeline.
 
-1. Enable SAP Continuous Integration and Delivery 
+1. Enable SAP Continuous Integration and Delivery (Optional Step - if you have executed the Booster you should be good)
 - Go to your subaccount in SAP BTP
 - Got to the Service Marketplace
 - Type Continuous into the Search Box
 - Choose Create
 
  ![choose create](./images/cicd1-1.png)
+
+2. Assign Role Collection
 
 - In your SAP BTP subaccount, choose Security -> Trust Configuration
 - Choose the name of your identity provider
@@ -22,12 +24,12 @@ The steps below will guide your through settting up your pipeline.
 
 - From the dropdown list, choose CICD Administrator
 
-2. Fork the GitHub repository
+3. Fork the GitHub repository
 
 - Go to the GitHub repository for this mission 
 - Fork the GitHub repository
 
-3. Go to the Business Application Studio 
+4. Go to the Business Application Studio 
 
 - Go to the SAP BTP Cockpit
 - Go to *Instances and Subscriptions* or alternatively to *Service Marketplace*
@@ -37,13 +39,13 @@ The steps below will guide your through settting up your pipeline.
 
 - Start the Business Application Studio and open your work environment
 
-4. Open a Terminal in the Business Application Studio
+5. Open a Terminal in the Business Application Studio
 
 - Go to *Terminal* and select *New Terminal*
 
 ![new terminal](./images/cicd1-4.png)
 
-5. Clone the forked GitHub repository from the terminal in Business Application Studio
+6. Clone the forked GitHub repository from the terminal in Business Application Studio
 
 - Go to the *projects* folder in your terminal 
 - Execute the command below from the projects folder
@@ -53,14 +55,14 @@ The steps below will guide your through settting up your pipeline.
 git clone <your GitHub repository>
 ```  
 
-6. Go to the folder you have just cloned 
-7. Execute the command *cds add pipeline*
+7. Go to the folder you have just cloned 
+8. Execute the command *cds add pipeline*
 
-8. Open the config.yml file. You can find this file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
+9. Open the config.yml file. You can find this file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
 
 ![config file](./images/cicd1-5.png)
 
-9. Edit the config.yml and add the code snippets below at the appropriate spots 
+10. Edit the config.yml and add the code snippets below at the appropriate spots 
 
 - Go to the *general* section
 - Copy the below code snippet and paste it to the general section
@@ -111,7 +113,7 @@ git clone <your GitHub repository>
 
 The data required for the update can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
 
-10. Push the pipeline code to GitHub.
+11. Push the pipeline code to GitHub.
 
 - git add .
 - git commit –m “adding pipeline config” (or git commit -m 'adding pipeline config')
@@ -119,7 +121,7 @@ The data required for the update can be found in the BTP Cockpit in the *Overvie
 
 Hint: you might have to configure your Git before.
 
-11. Configure pipeline
+12. Configure pipeline
 
 - Click on *Service Marketplace* or *Instances and Subscriptions*
 - Find *Continuous Integration & Delivery* (you might use the search functionality)
@@ -127,7 +129,7 @@ Hint: you might have to configure your Git before.
 
  ![configure pipeline](./images/cicd2.png)
 
-12. Add BTP credentials
+13. Add BTP credentials
 
 - Click on credentials tab
 - Click on ‘+’
@@ -142,7 +144,7 @@ Hint: you might have to configure your Git before.
 
  ![add btp_credentials_2](./images/cicd4.png)
 
-13. Add GitHub credentials
+14. Add GitHub credentials
 
 - Click on ‘+’
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
@@ -153,7 +155,7 @@ Hint: you might have to configure your Git before.
 
  ![add github_credentials](./images/cicd5.png)
  
-14. Configure a CI/CD Job
+15. Configure a CI/CD Job
  
 - In the Jobs tab in SAP Continuous Integration and Delivery, choose *+* to create a new job.
 - For Job Name, enter a freely chosen name for your job, which is unique in your SAP BTP subaccount, for example ‘CustomLogic’.
@@ -180,7 +182,7 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/cicd6.png)
  
-15. Create a GitHub Webhook
+16. Create a GitHub Webhook
 
 To create a webhook in GitHub, you need some data that has been automatically created during the previous step. You can find this data (Payload URL and Secret) when you open the detail view of an existing repository in the Repositories tab
 
@@ -195,7 +197,7 @@ To create a webhook in GitHub, you need some data that has been automatically cr
  
  ![pop up](./images/cicd6-2.png)
 
-16. Add Webhook in GitHub
+17. Add Webhook in GitHub
 
 - In your project in GitHub go to the Settings tab.
 - From the navigation pane, choose Webhooks.
@@ -203,7 +205,7 @@ To create a webhook in GitHub, you need some data that has been automatically cr
 
  ![add_webhook](./images/cicd6-3.png)
 
-17. Configure Webhooks
+18. Configure Webhooks
 
 The data required below can be found in the CI/CD popup.
 
@@ -217,7 +219,7 @@ The details to be entered as available in the pop up in CI/CD.
 
  ![add credentials](./images/cicd6-4.png)
 
-18. Add credential to pipeline
+19. Add credential to pipeline
 
 - Open pipeline_config.yml file in github
 - Edit credentialId and adjust to the one created.
@@ -225,7 +227,7 @@ The details to be entered as available in the pop up in CI/CD.
 
  ![add credentials_to_pipeline](./images/cicd10.png)
  
-19. Test the pipeline (optional)
+20. Test the pipeline (optional)
  
  - Go to the terminal in Business Application Studio and sync the changes in GitHub 
  
