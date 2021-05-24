@@ -5,7 +5,7 @@
   "license": "ISC",
   "dependencies": {
     "@sap/audit-logging": "^3.1.0",
-    "@sap/cds": "^4.2.3",
+    "@sap/cds": "4.6.5",
     "@sap/hana-client": "^2.4.182",
     "@sap/xb-msg-amqp-v100": "^0.9.39",
     "@sap/xsenv": "^2.1.0",
@@ -16,11 +16,11 @@
     "postcode-validator": "^3.1.0"
   },
   "scripts": {
-    "start": "npx cds run",
+    "start": "cds run",
     "test": "jest"
   },
   "devDependencies": {
-    "sqlite3": "^4.1.1",
+    "sqlite3": "^5.0.0",
     "jest": "*"
   },
   "cds": {
