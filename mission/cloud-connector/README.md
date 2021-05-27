@@ -25,7 +25,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
 2.	Choose *Add Subaccount* and then fill out the needed input:
 3.	Enter the following data:
     - Region
-    - Subaccount
+    - Subaccount ID
     - Display Name
     - Subaccount User
     - Password
