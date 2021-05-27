@@ -72,7 +72,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
  ![Button](./images/cloud-connector-9.png)
  
 15.	Enter the following data:
-    - URL Path
+    - URL Path: "/"
     - Check *Path and all sub-paths*
     - Description
     
