@@ -89,7 +89,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 4.	Enter the following information to the Destination Configuration:
     - *Name:* bupa
-    - *Url:* insert url of the on Prem system (http://<virtual host>:<virtual port>/sap/opu/odata/sap/API_BUSINESS_PARTNER)
+    - *Url:* insert url of the on Prem system (`http://<virtual host>:<virtual port>/sap/opu/odata/sap/API_BUSINESS_PARTNER`)
     - *Proxy Type*: OnPremise
     - Change *Proxy Type* to 'OnPremise'
     - Select *Authentication:* 'Basic Authentication'
@@ -101,7 +101,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 6. Repeat the step to create a new Destination: 
     - *Name:* odataprov
-    - *Url:* insert url of the on Prem system (http://<virtual host>:<virtual port>/sap/iwbep?sap-client=100)
+    - *Url:* insert url of the on Prem system (`http://<virtual host>:<virtual port>/sap/iwbep?sap-client=100`)
     - *Proxy Type*: OnPremise
     - Change *Proxy Type* to 'OnPremise'
     - Select *Authentication:* 'Basic Authentication'
