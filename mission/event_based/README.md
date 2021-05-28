@@ -45,6 +45,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
  
   ![Check Connection](./images/EventBased6.png)
   
- 8. In the next screen first click on *Create*, then select the *topic*
+ 8. In the next screen first click on *Create*, then click on *Topic* and choose: "BusinessPartner/created/V1" and
+"BusinessPartner/changed/V1"
  
  ![Create Outbound Bindings](./images/EventBased7.png)
