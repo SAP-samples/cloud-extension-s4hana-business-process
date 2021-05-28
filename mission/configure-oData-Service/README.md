@@ -40,7 +40,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
    
 3.	Change *User Type* to 'Dialog'
 4.	Create a new *Password* for your User and repeat it to verify
-5.	*Save* your Technical User with the save button
+6.	Switch to the *Address Tab* and add the corresponding lastname to the lastname field. *Save* your Technical User with the save button
 
    ![Change User](./images/configure-oData-Service-7.png)
 
