@@ -9,7 +9,7 @@ This implementation showcases:
   - Consumption of the registered S/4HANA oData services from a serverless function
 
 ## Enable IWBEP component in the S4HANA system
-1. Login to S4HANA System
+1. Login to S/4HANA System
 2. run transaction sicf
 3. click on execute
 4. Traverse to default -> host -> sap -> iwbep -> right click -> activate service
@@ -21,7 +21,7 @@ This implementation showcases:
  Authentication: Basic
  Location Id : CC location Id
  User: S4HANA System User name
- Password: S4HANA System password
+ Password: S/4HANA System password
  Additional Properties:
  odc: true
 2. Login to Extension Center
@@ -49,9 +49,9 @@ create service key for the xfsrt instance :
 cf create-service-key <XFSRT_SERVICE_INSTANCE_NAME> <XFSRT_SERVICE_KEY_NAME>
 ```
 
-Create Em service key
+Create EM service key
 ```bash
-cf create-service-key <ENTERPRISE_MESSAGING_SERVICE_INSTANCE_NAME> <ENTERPRISE_MESSAGING_SERVICE_KEY_NAME>
+cf create-service-key <EVENT_MESH_SERVICE_INSTANCE_NAME> <EVENT_MESH_SERVICE_KEY_NAME>
 ```
 
 Create destination service service - key
@@ -64,9 +64,9 @@ Login to Serverless instance
 xfsrt-cli login -k <serverless_instance_key_name> -n <service_instance_name>
 ```
 
-Register Enterprise Messaging Service instance
+Register Event Mesh Service instance
 ```bash
-xfsrt-cli faas service register -b <Enterprise_Messaging_service_key_name> -s <service_name>
+xfsrt-cli faas service register -b <Event_Mesh_service_key_name> -s <service_name>
 ```
 
 Register Destination Service instance

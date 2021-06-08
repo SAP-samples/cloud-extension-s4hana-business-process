@@ -29,19 +29,18 @@ async function processBpPayload(accessToken, destinationConfiguration, msg, dest
             bpDetails.businessPartnerIsBlocked = true;
         }
         try{
-            const headers = await fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
             if (bpDetails.addressModified && bpDetails.addressModified != undefined) {
-                await updateBpAddress(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext);
-                await updateBp(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext);
+                await updateBpAddress(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
+                await updateBp(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
                 if(!bpDetails.businessPartnerIsBlocked){
-                    await postGeneratedImage(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext);
+                    await postGeneratedImage(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
                     return "SUCCESS";
                 }
                 return "SUCCESS"; 
             } else {
-                await updateBp(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext);
+                await updateBp(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
                 if(!bpDetails.businessPartnerIsBlocked && bpDetails.addressId != undefined){
-                    await postGeneratedImage(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext);
+                    await postGeneratedImage(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
                     return "SUCCESS";
                 }
                 return "SUCCESS";
@@ -66,19 +65,15 @@ async function fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, 
                 'x-csrf-token': 'fetch'
             }
         }).then(response => {
-                const headers = {
-                    token: response.headers['x-csrf-token'],
-                    cookie: response.headers['set-cookie'][0]
-                };
-                logger.info("Success - Fetching CSRF Token : ");
-                return headers;
+                return response.headers;
         }).catch(error => {
             logger.info("Error - Fetching CSRF token Error");
             throw util.errorHandler(error, logger);
         });
 }
 
-async function updateBpAddress(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext) {
+async function updateBpAddress(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext) {
+     const headers = await fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
         const businessPartnerSrvApi = destinationNameFromContext.businessPartnerSrvApi;
         return await axios({
             method: 'patch',
@@ -86,8 +81,8 @@ async function updateBpAddress(destinationConfiguration, accessToken, headers, b
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
-                'x-csrf-token': headers.token,
-                'Cookie': headers.cookie
+                'x-csrf-token': headers['x-csrf-token'],
+                'Cookie': `${headers['set-cookie'][0]};${headers['set-cookie'][1]}`
             },
             data: {
                 "PostalCode": bpDetails.postalCode,
@@ -101,7 +96,8 @@ async function updateBpAddress(destinationConfiguration, accessToken, headers, b
         });
 }
 
-async function updateBp(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext) {
+async function updateBp(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext) {
+     const headers = await fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
     const businessPartnerSrvApi = destinationNameFromContext.businessPartnerSrvApi;
        return await axios({
             method: 'patch',
@@ -109,8 +105,8 @@ async function updateBp(destinationConfiguration, accessToken, headers, bpDetail
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
-                'x-csrf-token': headers.token,
-                'Cookie': headers.cookie
+                'x-csrf-token': headers['x-csrf-token'],
+                'Cookie': `${headers['set-cookie'][0]};${headers['set-cookie'][1]}`
             },
             data: {
                 "SearchTerm1": bpDetails.searchTerm1,
@@ -124,7 +120,8 @@ async function updateBp(destinationConfiguration, accessToken, headers, bpDetail
         });
 }
 
-async function postGeneratedImage(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext) {
+async function postGeneratedImage(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext) {
+     const headers = await fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, destinationNameFromContext);
     const attachmentSrvApi = destinationNameFromContext.attachmentSrvApi;
     const businessObjectTypeName = destinationNameFromContext.businessObjectTypeName;
             return await generateQRCode(bpDetails).then(async image =>{
@@ -138,8 +135,8 @@ async function postGeneratedImage(destinationConfiguration, accessToken, headers
                         'Slug': bp + '.jpg',
                         'BusinessObjectTypeName': businessObjectTypeName,
                         'LinkedSAPObjectKey': bp.padStart(10,0),
-                        'x-csrf-token': headers.token,
-                        'Cookie': headers.cookie
+                        'x-csrf-token': headers['x-csrf-token'],
+                        'Cookie': `${headers['set-cookie'][0]};${headers['set-cookie'][1]}`
                     },
                     data: image,
                 }).then(response =>{
