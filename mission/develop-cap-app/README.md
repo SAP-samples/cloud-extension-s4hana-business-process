@@ -66,7 +66,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
      
   
       cf service <HANA-Service> --guid
-      cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA Service>"}'
+      cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}' 
    
             
    
@@ -98,11 +98,11 @@ Set the Memory as 256MB. Don´t forget to save the file.
        cf p -f gen/srv --random-route
        ```
  
-15. Execute 
+15. Optional:
        ```
        cds add mta
        ```
-> Hint: use cds add mta --force in case the mta already exsists in your project
+> Hint: This step only needs to be executed in case you have created a new project. As we are using an exsisting project in this tutorial, you can skip this step as the mta file is already added
 
 
 ### Test your application
