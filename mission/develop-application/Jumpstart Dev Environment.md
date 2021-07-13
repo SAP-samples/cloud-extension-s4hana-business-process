@@ -40,6 +40,9 @@ npm i -g @sap/cds-dk
 ```
 git clone <Repository-link>
 ```
+
+> Hint: In case of any authorization issue  use the command: ``` git clone --single-branch --branch "main" "https://access_token@github.com/repo.gt/" ```
+
 6.	Install cds with the command: 
 
 ```
