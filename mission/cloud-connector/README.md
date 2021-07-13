@@ -52,26 +52,28 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 ![Select Screen](./images/cloud-connector-5.png)
 
-9.	Choose *Principal Type* 'None' and press *Next*
+9. Enter your values for the fields: *Virtual Host* and *Virtual Port* then choose Next
 
-10.	Select *Host in header* 'Use Virtual Host' and choose *Next*
+10.	Choose *Principal Type* 'None' and press *Next*
+
+11.	Select *Host in header* 'Use Virtual Host' and choose *Next*
 
 ![Select Host](./images/cloud-connector-6.png)
 
-11.	Add a *Description* for your system mapping
+12.	Add a *Description* for your system mapping
 
 ![Add Description](./images/cloud-connector-7.png)
 
-12.	Make sure all the values are correct in the summary and don´t forget to check the Internal Host checkmark.
-13.	Choose *Finish*
+13.	Make sure all the values are correct in the summary and don´t forget to check the Internal Host checkmark.
+14.	Choose *Finish*
 
 ![Check values](./images/cloud-connector-8.png)
 
-14.	Click on Button *'+'* to Add resource
+15.	Click on Button *'+'* to Add resource
 
  ![Button](./images/cloud-connector-9.png)
  
-15.	Enter the following data:
+16.	Enter the following data:
     - URL Path: "/"
     - Check *Path and all sub-paths*
     - Description
