@@ -19,6 +19,9 @@
     "start": "npx cds run",
     "test": "mocha tests/chai-test.js --timeout 15000 --exit"
   },
+   "engines": {
+    "node": "14.x"
+  },
   "devDependencies": {
     "sqlite3": "^4.1.1",
     "chai": "^4.3.4",
