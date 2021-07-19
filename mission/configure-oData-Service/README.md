@@ -76,7 +76,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
       ![Status](./images/configure-oData-Service-15.png)
 
 19.	Go to transaction /pfcg to open Role Maintenance. 
-      > HINT: You can find a detailed explanation of the next steps in this[tutorial](https://pages.github.tools.sap/CPES/CPAppDevelopment-dev/S4HANA_event_setup_2020/)
+      > HINT: You can find a detailed explanation of the next steps in this [tutorial](https://pages.github.tools.sap/CPES/CPAppDevelopment-dev/S4HANA_event_setup_2020/)
    
 20.	Enter Role as SAP_IWXBE_RT_XBE_ADM and Click on Change Icon.
 22.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
