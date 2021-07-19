@@ -93,7 +93,6 @@ Set the Memory as 256MB. Don´t forget to save the file.
 14.	Go back to the terminal and run following commands:
 
        ```
-       cds build --production
        cf p -f gen/db
        cf p -f gen/srv --random-route
        ```
