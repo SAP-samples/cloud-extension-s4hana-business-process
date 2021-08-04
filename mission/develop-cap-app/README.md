@@ -66,7 +66,8 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
      
   
       cf service <HANA-Service> --guid
-      cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}' 
+	   cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}'
+	   cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA Service>"}'  
    
             
    
