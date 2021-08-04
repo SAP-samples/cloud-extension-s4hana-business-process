@@ -23,19 +23,17 @@ With this guide you will set up Node, create a new GitHub Repository and prepare
 ### Prepare your local development environment
 
 1.	Open Visual Studio Code	
-2.	Click on *Terminal* and choose *New Terminal* in the dropdown menu	
+2.	Click on *Terminal* and choose *New Terminal* in the dropdown menu
+	
    ![New Terminal](././images/develop-application-1a.png)
-3.	To set the SAP npm registry write following command into the terminal: 
-```
-**npm set @sap:registry=https://npm.sap.com**
-```
-4. Run command 
+
+3. Run command 
 
 ```
 npm i -g @sap/cds-dk
 ```
 
-5.	Clone the repository you created ealier with executing the command: 
+4.	Clone the repository you created ealier with executing the command: 
 
 ```
 git clone <Repository-link>
@@ -43,17 +41,17 @@ git clone <Repository-link>
 
 > Hint: In case of any authorization issue  use the command: ``` git clone --single-branch --branch "main" "https://access_token@github.com/repo.gt/" ```
 
-6.	Install cds with the command: 
+5.	Install cds with the command: 
 
 ```
 npm i -g @sap/cds-dk
 ```
-7.	Change the directory to the directory right above the repository. 
+6.	Change the directory to the directory right above the repository. 
 ```
 cd repo
 ```
 
-8.	Initialize CDS 
+7.	Initialize CDS 
 ```
 cds init BpValidationMockS4
 ```
