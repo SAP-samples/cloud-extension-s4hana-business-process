@@ -75,17 +75,18 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
 
       ![Status](./images/configure-oData-Service-15.png)
 19.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
+20.	Go back and Switch to the User tab, select your technical user and click on User Comparison and click on full comparisons in the pop up
 
-20.	Go to transaction /pfcg to open Role Maintenance. 
+21.	Go to transaction /pfcg to open Role Maintenance. 
       > HINT: You can find a detailed explanation of the next steps in this [tutorial](https://pages.github.tools.sap/CPES/CPAppDevelopment-dev/S4HANA_event_setup_2020/)
    
-21.	Enter Role as SAP_IWXBE_RT_XBE_ADM and Click on Change Icon.
-22.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
-23.	Click on the *generate icon*
+22.	Enter Role as SAP_IWXBE_RT_XBE_ADM and Click on Change Icon.
+23.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
+24.	Click on the *generate icon*
 
    ![Generate Icon](./images/configure-oData-Service-16.png)
    
-24.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
-25.	Log off from the admin user system by entering the transaction '/nEX'
-26.	Log on to the GUI using your newly created Technical User
+25.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
+26.	Log off from the admin user system by entering the transaction '/nEX'
+27.	Log on to the GUI using your newly created Technical User
 
