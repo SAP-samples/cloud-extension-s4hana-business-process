@@ -65,7 +65,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    ii. Then you will get the guid of your HANA Cloud. Please note that, in case that you do not have a HANA Cloud in your SAP BTP environment yet, you will have to create one. You can find a tutorial for creating a HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
    
 	cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}'
-     	cf service --guid
+	cf service --guid
 	cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :""}'  
    
             
