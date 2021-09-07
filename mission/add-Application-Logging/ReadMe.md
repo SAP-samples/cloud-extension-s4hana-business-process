@@ -14,4 +14,4 @@ Make sure you have included the entitlement for application logging service in y
     -Field: component_name
     -Operator: is
     -Value: BusinessPartnerValidation-srv
-5. Then choose *save* and check the loaded logs in the dashboard
+5. Then choose *save* and check the displayed logs in the dashboard
