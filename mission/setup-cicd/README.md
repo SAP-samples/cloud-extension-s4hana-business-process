@@ -44,21 +44,21 @@ The steps below will guide your through settting up your pipeline.
  - Job Name: "customLogic"
  - Repository: Select *add repository*
  
-  ![add job(./images/ci-cd-1.png)
+  ![add job](./images/ci-cd-1.png)
 
  6.1 In the pop up add following data:
  - Name: "customLogicRepo"
  - Clone Url: provide URL of your repo
  - Credentials: Select *create credentials*
  
-  ![add repositorys(./images/ci-cd-2.png)
+  ![add repositorys](./images/ci-cd-2.png)
  
  6.2 In the pop up add following data:
  - Name: "github"
  - Username: add your GitHub username/ id
  - Password: enter your GitHub access token 
  
-   ![create credentials(./images/ci-cd-3.png)
+   ![create credentials](./images/ci-cd-3.png)
  
   Click on *create* to finish
   6.3 Back on the "Add repository" tab click on *add* button
@@ -66,13 +66,13 @@ The steps below will guide your through settting up your pipeline.
   - Branch: master
   - Pipeline: SAP Cloud Application Programming Model
   
- ![add job(./images/ci-cd-4.png)
+ ![add job](./images/ci-cd-4.png)
   
   6.5 Scroll down to *Stages* - *Release* and switch the toggle on
   - Switch on the toggle to deploy to cloud foundry
   - Now add credentials to your cf account
   - 
-  ![deploy to cf(./images/ci-cd-5.png)
+  ![deploy to cf](./images/ci-cd-5.png)
    
   6.6 Click on *create* to finish and create job
   
@@ -80,7 +80,7 @@ The steps below will guide your through settting up your pipeline.
   - On the top right, click on the 3 dots and choose *webhook* data from the dropdown
   - Copy the data from the pop up
   
-![webhook(./images/ci-cd-6.png)
+![webhook](./images/ci-cd-6.png)
 
 7. Add Webhook in GitHub
 
