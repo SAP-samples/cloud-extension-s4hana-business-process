@@ -29,99 +29,8 @@ The steps below will guide your through settting up your pipeline.
 - Go to the GitHub repository for this mission 
 - Fork the GitHub repository
 
-4. Go to the Business Application Studio 
 
-- Go to the SAP BTP Cockpit
-- Go to *Instances and Subscriptions* or alternatively to *Service Marketplace*
-- Start the Business Application Studio by executing *Go to Application*
-
-![goto application](./images/cicd1-3.png)
-
-- Start the Business Application Studio and open your work environment
-
-5. Open a Terminal in the Business Application Studio
-
-- Go to *Terminal* and select *New Terminal*
-
-![new terminal](./images/cicd1-4.png)
-
-6. Clone the forked GitHub repository from the terminal in Business Application Studio
-
-- Go to the *projects* folder in your terminal 
-- Execute the command below from the projects folder
-- In this command replace the placeholder with your specific GitHub repository
-
-```bash
-git clone <your GitHub repository>
-```  
-
-7. Go to the folder you have just cloned 
-8. Execute the command *cds add pipeline*
-
-9. Open the config.yml file. You can find this file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
-
-![config file](./images/cicd1-5.png)
-
-10. Edit the config.yml and add the code snippets below at the appropriate spots 
-
-- Go to the *general* section
-- Copy the below code snippet and paste it to the general section
-
-```bash
-  unsafeMode: false
-  projectName: 'cloud-extension-s4hana-business-process'
-  productiveBranch: 'main'
-```  
-  
-- Go to the *steps* section
-- Copy the below and add it to the steps section
-
-```bash
-  artifactPrepareVersion:
-    buildTool: 'mta'
-  npmExecute:
-    dockerImage: 'ppiper/node-browsers:v2'
-  cloudFoundryDeploy:
-    dockerImage: 'ppiper/cf-cli'
-    mtaDeployParameters: '-f --version-rule ALL'
-  mtaBuild:
-    mtaBuildTool: "cloudMbt"
-```
-
-- Go to the *stages* section
-- Copy the below over and add it to the section
-
-```bash
-  npmAudit:
-    auditedAdvisories:
-    # high
-      - 550   
-      - 593
-      - 1184
-      - 755
-      - 1065 
-      - 1164 
-      - 1316 
-      - 1324 
-      - 1325 
-    # moderate
-      - 535
-      - 1300 
-```
-
-- Go to the *cftargets* section, uncomment the section and update appropriately
-
-The data required for the update can be found in the BTP Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
-
-11. Push the pipeline code to GitHub.
-
-- git add .
-- git commit –m “adding pipeline config” (or git commit -m 'adding pipeline config')
-- git push
-
-Hint: you might have to configure your Git before.
-
-12. Configure pipeline
+4. Configure pipeline
 
 - Click on *Service Marketplace* or *Instances and Subscriptions*
 - Find *Continuous Integration & Delivery* (you might use the search functionality)
@@ -129,7 +38,7 @@ Hint: you might have to configure your Git before.
 
  ![configure pipeline](./images/cicd2.png)
 
-13. Add BTP credentials
+5. Add BTP credentials
 
 - Click on credentials tab
 - Click on ‘+’
@@ -144,7 +53,7 @@ Hint: you might have to configure your Git before.
 
  ![add btp_credentials_2](./images/cicd4.png)
 
-14. Add GitHub credentials
+6. Add GitHub credentials
 
 - Click on ‘+’
 - Enter a freely chosen name for your credential, which is unique in your SAP BTP subaccount. In this example, the name of the credential is *github*.
@@ -155,7 +64,7 @@ Hint: you might have to configure your Git before.
 
  ![add github_credentials](./images/cicd5.png)
  
-15. Configure a CI/CD Job
+7. Configure a CI/CD Job
  
 - In the Jobs tab in SAP Continuous Integration and Delivery, choose *+* to create a new job.
 - For Job Name, enter a freely chosen name for your job, which is unique in your SAP BTP subaccount, for example ‘CustomLogic’.
@@ -182,7 +91,7 @@ Hint: you might have to configure your Git before.
 
  ![add credentials](./images/cicd6.png)
  
-16. Create a GitHub Webhook
+8. Create a GitHub Webhook
 
 To create a webhook in GitHub, you need some data that has been automatically created during the previous step. You can find this data (Payload URL and Secret) when you open the detail view of an existing repository in the Repositories tab
 
@@ -197,7 +106,7 @@ To create a webhook in GitHub, you need some data that has been automatically cr
  
  ![pop up](./images/cicd6-2.png)
 
-17. Add Webhook in GitHub
+9. Add Webhook in GitHub
 
 - In your project in GitHub go to the Settings tab.
 - From the navigation pane, choose Webhooks.
@@ -205,7 +114,7 @@ To create a webhook in GitHub, you need some data that has been automatically cr
 
  ![add_webhook](./images/cicd6-3.png)
 
-18. Configure Webhooks
+10. Configure Webhooks
 
 The data required below can be found in the CI/CD popup.
 
@@ -219,7 +128,7 @@ The details to be entered as available in the pop up in CI/CD.
 
  ![add credentials](./images/cicd6-4.png)
 
-19. Add credential to pipeline
+11. Add credential to pipeline
 
 - Open pipeline_config.yml file in github
 - Edit credentialId and adjust to the one created.
@@ -227,7 +136,7 @@ The details to be entered as available in the pop up in CI/CD.
 
  ![add credentials_to_pipeline](./images/cicd10.png)
  
-20. Test the pipeline (optional)
+12. Test the pipeline (optional)
  
  - Go to the terminal in Business Application Studio and sync the changes in GitHub 
  
