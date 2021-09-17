@@ -7,7 +7,7 @@ applications:
   env:
     destinations: >
       [
-        {"name": "srv-binding", "url":"https://businesspartnervalidation-srv-friendly-wolverine.cfapps.eu10.hana.ondemand.com", "forwardAuthToken": true}
+        {"name": "srv-binding", "url":<URL of srv application>, "forwardAuthToken": true}
       ]
   services:
   - BusinessPartnerValidation-xsuaa
