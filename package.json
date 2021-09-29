@@ -1,66 +1,72 @@
 {
-  "name": "BusinessPartnerValidation",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "license": "ISC",
-  "dependencies": {
-    "@sap/audit-logging": "^3.1.0",
-    "@sap/cds": "4.6.5",
-    "@sap/hana-client": "^2.4.182",
-    "@sap/xb-msg-amqp-v100": "^0.9.39",
-    "@sap/xsenv": "^2.1.0",
-    "@sap/xssec": "^2.2.3",
-    "express": "^4",
-    "grunt": "^1.1.0",
-    "passport": "^0.4.1",
-    "postcode-validator": "^3.1.0"
-  },
-  "scripts": {
-    "start": "npx cds run",
-    "test": "mocha tests/chai-test.js --timeout 15000 --exit"
-  },
-  "devDependencies": {
-    "sqlite3": "^4.1.1",
-    "chai": "^4.3.4",
-    "chai-http": "^4.3.0",
-    "mocha": "^9.0.0"
-  },
-  "cds": {
-    "hana": {
-      "deploy-format": "hdbtable"
+    "name": "BusinessPartnerValidation",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "license": "ISC",
+    "dependencies": {
+        "@sap/audit-logging": "^5.0.0",
+        "@sap/cds": "5.4.5",
+        "@sap/hana-client": "^2.4.182",
+        "@sap/xb-msg-amqp-v100": "^0.9.39",
+        "@sap/xsenv": "^3.1.1",
+        "@sap/xssec": "^3.2.2",
+        "cf-nodejs-logging-support": "^6.5.0",
+        "express": "^4",
+        "grunt": "^1.1.0",
+        "passport": "^0.4.1",
+        "postcode-validator": "^3.1.1"
     },
-    "requires": {
-      "messaging": {
-        "kind": "local-messaging",
-        "[production]": {
-          "kind": "enterprise-messaging-shared",
-          "queue": {
-            "name": "refapps/bpems/abc/BusinessPartnerValidation-srv/1234"
-          }
+    "engines": {
+        "node": "14.x"
+    },
+    "scripts": {
+        "start": "npx cds run",
+        "test": "mocha tests/mocha.test.js --timeout 15000 --exit"
+    },
+    "devDependencies": {
+        "axios": "^0.21.1",
+        "jest": "*",
+        "mocha": "^8.3.2",
+        "chai": "^4.3.4",
+        "chai-http": "^4.3.0",
+        "sqlite3": "^5.0.0"
+    },
+    "cds": {
+        "hana": {
+            "deploy-format": "hdbtable"
+        },
+        "requires": {
+            "messaging": {
+                "kind": "local-messaging",
+                "[production]": {
+                    "kind": "enterprise-messaging-shared",
+                    "queue": {
+                        "name": "refapps/bpems/abc/BusinessPartnerValidation-srv/1234"
+                    }
+                }
+            },
+            "[production]": {
+                "db": {
+                    "kind": "hana",
+                    "model": [
+                        "db",
+                        "srv"
+                    ]
+                }
+            },
+            "API_BUSINESS_PARTNER": {
+                "kind": "odata",
+                "model": "srv/external/API_BUSINESS_PARTNER",
+                "[production]": {
+                    "credentials": {
+                        "destination": "bupa",
+                        "requestTimeout": 18000000
+                    }
+                }
+            },
+            "uaa": {
+                "kind": "xsuaa"
+            }
         }
-      },
-      "[production]": {
-        "db": {
-          "kind": "hana",
-          "model": [
-            "db",
-            "srv"
-          ]
-        }
-      },
-      "API_BUSINESS_PARTNER": {
-        "kind": "odata",
-        "model": "srv/external/API_BUSINESS_PARTNER",
-        "[production]": {
-          "credentials": {
-            "destination": "bupa",
-            "requestTimeout": 18000000
-          }
-        }
-      },
-      "uaa": {
-        "kind": "xsuaa"
-      }
     }
-  }
 }
