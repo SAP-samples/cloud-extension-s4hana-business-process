@@ -73,7 +73,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    iii. In a next step, using the guid of your HANA  service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
    
      
-    cf cs enterprise-messaging default BusinessPartnerValidation-em -c em.json
+    cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
     cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
     cf cs connectivity lite BusinessPartnerValidation-cs
