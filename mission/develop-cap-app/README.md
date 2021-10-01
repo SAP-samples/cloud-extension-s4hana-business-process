@@ -83,7 +83,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
 
-13.	 Open the manifest.yml file and gen/srv folder and add your service names / replace existing ones with your services: em, dest, xsuaa, db, cs and logs. 
+13.	 Open the manifest.yml file and gen/srv folder and add your service names / replace existing ones with your services: ems, dest, xsuaa, db, cs and logs. 
 Set the Memory as 256MB. Don´t forget to save the file.
 
 > Hint: to make sure that the services names match, execute the CF command *CF services* which lists the services you have created including their names.
