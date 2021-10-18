@@ -5,7 +5,7 @@
     "license": "ISC",
     "dependencies": {
         "@sap/audit-logging": "^5.0.0",
-        "@sap/cds": "5.4.5",
+        "@sap/cds": "5.5.4",
         "@sap/hana-client": "^2.4.182",
         "@sap/xb-msg-amqp-v100": "^0.9.39",
         "@sap/xsenv": "^3.1.1",
