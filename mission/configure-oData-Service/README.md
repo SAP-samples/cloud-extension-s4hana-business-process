@@ -36,57 +36,59 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
    
 2.	Enter your Technical User in the field *User*
 
+
    ![Copy User](./images/configure-oData-Service-6.png)
    
-3.	Change *User Type* to 'Dialog'
-4.	Create a new *Password* for your User and repeat it to verify
+3.	Click on "Create button" to create new technical user. 
+4.	Change *User Type* to 'Dialog'
+5.	Create a new *Password* for your User and repeat it to verify
 6.	Switch to the *Address Tab* and add the corresponding lastname to the lastname field. *Save* your Technical User with the save button
 
    ![Change User](./images/configure-oData-Service-7.png)
 
-6.	Navigate to transaction code: '/nPFCG'
-7.	Enter 'EVENTMESH' in the *Role* field, then click on the *Single Role* button
+7.	Navigate to transaction code: '/nPFCG'
+8.	Enter 'EVENTMESH' in the *Role* field, then click on the *Single Role* button
 
  ![Assign Transaction](./images/configure-oData-Service-8.png)
 
-8.	On the next screen enter a description first, then switch to the *Menu* tab and *save* the role in the pop-up window
-9.	Click on the *Transaction* button on the menu tab to enter a new Transaction
-10.	Enter the transaction code for which you need to provide access in the pop-up window. In our case enter 'BP'
-11.	Click on *Assign Transactions* to finish
+9.	On the next screen enter a description first, then switch to the *Menu* tab and *save* the role in the pop-up window
+10.	Click on the *Transaction* button on the menu tab to enter a new Transaction
+11.	Enter the transaction code for which you need to provide access in the pop-up window. In our case enter 'BP'
+12.	Click on *Assign Transactions* to finish
 
      ![Business Partner](./images/configure-oData-Service-9.png)
    
-12.	Select 'Authorization Default' from the 'Transaction dropdown' in the menu tab
-13.	In the pop-up window. Select 'SAP Gateway: Service Groups Metadata' as Authorization Default from the pull down menu, and change *Object Type* to 'IWSG SAP Gateway: Service Groups Metadata'
-14.	 Enter the name of active Business Partner API - you can look this up using the menu - into to the table and click on *Copy*
+13.	Select 'Authorization Default' from the 'Transaction dropdown' in the menu tab
+14.	In the pop-up window. Select 'SAP Gateway: Service Groups Metadata' as Authorization Default from the pull down menu, and change *Object Type* to 'IWSG SAP Gateway: Service Groups Metadata'
+15.	 Enter the name of active Business Partner API - you can look this up using the menu - into to the table and click on *Copy*
    
       ![Change Authorizations](./images/configure-oData-Service-10.png)
    
-15.	Now switch to the *Authorizations* tab and click on *Change Authorization Data* 
+16.	Now switch to the *Authorizations* tab and click on *Change Authorization Data* 
 
     ![Insert Authorizations](./images/configure-oData-Service-12.png)
    
-16.	Don´t forget to *Save* the role first
-17.	Navigate to *Edit->Insert Authorizations -> From template*
+17.	Don´t forget to *Save* the role first
+18.	Navigate to *Edit->Insert Authorizations -> From template*
 
 ![Apply Template](./images/configure-oData-Service-14.png)
 
-18.	Search for '/IWFND/RT_GW_USER' in the pop-up window and click on the checkmark to apply the template
+19.	Search for '/IWFND/RT_GW_USER' in the pop-up window and click on the checkmark to apply the template
 
       ![Status](./images/configure-oData-Service-15.png)
-19.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
-20.	Go back and Switch to the User tab, select your technical user and click on User Comparison and click on full comparisons in the pop up
+20.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
+21.	Go back and Switch to the User tab, select your technical user and click on User Comparison and click on full comparisons in the pop up
 
-21.	Go to transaction /pfcg to open Role Maintenance. 
+22.	Go to transaction /pfcg to open Role Maintenance. 
       > HINT: You can find a detailed explanation of the next steps in this [tutorial](https://pages.github.tools.sap/CPES/CPAppDevelopment-dev/S4HANA_event_setup_2020/)
    
-22.	Enter Role as SAP_IWXBE_RT_XBE_ADM and Click on Change Icon.
-23.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
-24.	Click on the *generate icon*
+23.	Enter Role as SAP_IWXBE_RT_XBE_ADM and Click on Change Icon.
+24.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
+25.	Click on the *generate icon*
 
    ![Generate Icon](./images/configure-oData-Service-16.png)
    
-25.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
-26.	Log off from the admin user system by entering the transaction '/nEX'
-27.	Log on to the GUI using your newly created Technical User
+26.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
+27.	Log off from the admin user system by entering the transaction '/nEX'
+28.	Log on to the GUI using your newly created Technical User
 
