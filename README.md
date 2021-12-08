@@ -58,7 +58,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 | SAP HANA Cloud           | 64standard |          1          |
 | Application Runtime               |            |          1          |
 | Extension Factory Runtime         |            |          1          |
-
+| Launchpad                         |standard    |          1          |
 
 ## Configuration
 
