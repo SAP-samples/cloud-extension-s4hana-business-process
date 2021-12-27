@@ -103,32 +103,9 @@ The details to be entered as available in the pop up in CI/CD.
 - Click on ‘Add webhook’
 
  ![add credentials](./images/cicd6-4.png)
-
-9. Add credential to pipeline
-
-- Open pipeline_config.yml file in github
-- Edit credentialId and adjust to the one created.
-- Click on Commit change
-
- ![add credentials_to_pipeline](./images/cicd10.png)
  
-10. Test the pipeline (optional)
+9. Test the pipeline (optional)
  
- - Go to the terminal in Business Application Studio and sync the changes in GitHub 
- 
- ```bash
- git pull
- ```
- 
- - Go to Business Application Studio
- - Make a minor change to for example the Readme.MD like e.g. adding a comment
- - Go to the terminal and execute the commands below
- 
- ```bash
-git add .
-git commit -m "minor change"
-git push
-```
  - Goto the CI/CD app 
  - Check on the right hand side that the build has been triggered
  
