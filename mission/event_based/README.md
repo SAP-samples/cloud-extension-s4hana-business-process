@@ -13,7 +13,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
 
 1. Open your browser. Then go to your sub account in SAP BTP Cockpit 
 2. Click on *Instances & Subscriptions * in the menu on the left.
-3. Scroll to the Instances tab, and look for Event Mesh in the table. Now click on the 3 dots to open the dropdown and choose 'Create Serive Key'
+3. Scroll to the Instances tab, and look for Event Mesh in the table. Now click on the 3 dots to open the dropdown and choose 'Create Service Key'
 
  ![Open Event Mesh Instance](./images/EventBased1.png)
  
