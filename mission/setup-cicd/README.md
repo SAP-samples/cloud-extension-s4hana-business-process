@@ -71,7 +71,7 @@ The steps below will guide your through settting up your pipeline.
   6.5 Scroll down to *Stages* - *Release* and switch the toggle on
   - Switch on the toggle to deploy to cloud foundry
   - Now add credentials to your cf account
-  - 
+ 
   ![deploy to cf](./images/ci-cd-5.png)
    
   6.6 Click on *create* to finish and create job
