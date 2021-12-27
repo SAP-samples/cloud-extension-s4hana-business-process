@@ -26,6 +26,7 @@ You will now prepare your SAP Business Technology Platform, configure your entit
    
 5. On the next screen you can set up your Subaccount: 
 
+ - In the section Entitlements look for *Cloud Foundry Runtime* Service and increase the required quota to 3 
  - Enter Subaccount name - eg: "Simplelogic"
  - You can edit the smaller org name, space name (optional)
 6. Click on *Next* to finish
