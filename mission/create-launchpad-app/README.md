@@ -20,7 +20,7 @@ In this section, the application will be connected to Central Fiori Launchpad
   
     <!-- <img src="././images/integrate_launchpad_2.png" width="80%"> -->
     
-7.  In the items table, click checkmark for the apps *Risks* and *Mitigations*. Click on the button *Add to My Content*  
+7.  In the items table, click checkmark for your app. Click on the button *Add to My Content*  
      <!-- <img src="././images/integrate_launchpad_3.png" width="80%"> -->
 
 8. Navigate back to *My Content* and click on role *Everyone* in table "Items"
