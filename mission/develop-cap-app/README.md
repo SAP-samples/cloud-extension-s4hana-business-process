@@ -102,7 +102,7 @@ Set the Memory as 256MB. Don´t forget to save the file.
        cds add mta
        ```
 > Hint: This step only needs to be executed in case you have created a new project. As we are using an exsisting project in this tutorial, you can skip this step as the mta file is already added
-
+<a name="launchpad"></a>
 16. There are *two* different options to run your created application. You can either run your application locally on your machine(a) or deploy it to SAP Launchpad Service(b):
 
 	a) If you want to **run your application locally**, open the *mta.yaml* and remove the launchpad artifacts: *BusinessPartnerValidation-launchpad*, *BusinessPartnerValidation-app-content*, *comsapbpBusinessPartners*
