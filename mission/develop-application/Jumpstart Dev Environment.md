@@ -4,7 +4,7 @@
 
 With this guide you will set up Node, create a new GitHub Repository and prepare Visual Studio code for development on your local machine. 
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 ### Set up Node
 
@@ -14,39 +14,44 @@ With this guide you will set up Node, create a new GitHub Repository and prepare
 
 ### Choose GitHub Repository
 
-1.	Navigate to your *Repository page*
-2.	Click on *Repository*, then click the *“+”* in the top right menu and choose *New Repository*
-3.	Add the Repository name: 'BpValidationMockS4'
-4.	Finish the creation with a click on *Create Repository*
+1. Go to 'https://github.com/'
+2. Click on "+" and choose *New Repository* in the dropdown
+3. Choose a name e.g. "BpValidationS4" and click on checkbox to initialize the repository with README
+4. Finish the creation with a click on *Create Repository*
+
 
 ### Prepare your local development environment
 
 1.	Open Visual Studio Code	
-2.	Click on *Terminal* and choose *New Terminal* in the dropdown menu	
+2.	Click on *Terminal* and choose *New Terminal* in the dropdown menu
+	
    ![New Terminal](././images/develop-application-1a.png)
-3.	To set the SAP npm registry write following command into the terminal: 
-```
-npm set @sap:registry=https://npm.sap.com
-```
-4. Install SQLite3 support using npm
 
-```
-npm install --save sqlite3
-```
-
-5.	Clone your created repository with executing the command: 
-
-```
-git clone <Repository>
-```
-6.	Install cds with the command: 
+3. Run command 
 
 ```
 npm i -g @sap/cds-dk
 ```
-7.	Change the directory to the directory right above the repository. 
 
-8.	Initialize CDS 
+4.	Clone the repository you created ealier with executing the command: 
+
+```
+git clone <Repository-link>
+```
+
+> Hint: In case of any authorization issue  use the command: ``` git clone --single-branch --branch "main" "https://access_token@github.com/repo.gt/" ```
+
+5.	Install cds with the command: 
+
+```
+npm i -g @sap/cds-dk
+```
+6.	Change the directory to the directory right above the repository. 
+```
+cd repo
+```
+
+7.	Initialize CDS 
 ```
 cds init BpValidationMockS4
 ```

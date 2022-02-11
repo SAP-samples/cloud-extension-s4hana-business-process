@@ -3,7 +3,7 @@
 ## Introduction
 You will now develop a CAP application in a nutshell using Visual Studio Code. In a later step you will then replace your code in GitHub with the reference application code.
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 
 ### Develop application against Mock API
@@ -12,6 +12,8 @@ You will now develop a CAP application in a nutshell using Visual Studio Code. I
 2. Click on *File* and choose *Add Folder to Workspace* in the dropdown menu
 
       ![Add folder to Workspace](./images/develop-app-1.png)
+      
+3. Add the folder you have cloned in the previous part of the tutorial
    
 3. Open a *terminal* and change to the right directory by executing the command 
 ```
@@ -54,18 +56,22 @@ Hint: make sure the EDMX file is in your folder or provide the path to the EDMX 
 
 10.	Save the file
 
-11.	Open the terminal again, and execute 
+11.	Open the terminal again, and execute
+```npm install --save sqlite3```
+
+12. Use cds watch to start a cds server
+
 ```
 cds watch
 ```
 ![CDS watch](./images/develop-app-5.png)
 
-12.	Click link to open the port in the browser (or copy it into the browser's address bar)
+13.	Click link to open the port in the browser (or copy it into the browser's address bar)
 
 ![Open Link](./images/develop-app-6.png)
 
 
-13.	In the *browser* click on A_BusinessPartnerAddress to view the address
+14.	In the *browser* click on A_BusinessPartnerAddress to view the address
 
 ![View address](./images/develop-app-7.png)
 
@@ -73,9 +79,7 @@ cds watch
  
 1.	Go back to *Visual Studio Code* and open the terminal (go to the workplace, right click and select Open Integrated Terminal)
 
-2.	Replace your code with reference application code 
-
-Clone the code from our reference application GitHub https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
+2.	To replace your code with reference application code clone the code from our reference application GitHub https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
 
 ```
 git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
@@ -83,13 +87,12 @@ git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process
 
 Then copy everything in the directory created (cloud-extension-s4hana-business-process) over to your directory (BpValidationMockS4), replacing the original content.
 
-3.	Update your GitHub repository  
-
-In a next step update your GitHub repository with the reference application that you have copied over. 
+3.	In a next step update your GitHub repository with the reference application that you have copied over. 
 
 ``` 
 git add .
 git commit -m '<comments>'
 git push
 ```
+
 

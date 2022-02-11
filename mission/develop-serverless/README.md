@@ -2,7 +2,7 @@
 
 This serverless function is used to generate a qrcode for the updated Business Partner address and it uploads the same to the S/4HANA on premise system along with the business partner details.
 
-The implementation showcases the following features of the SAP Cloud Platform Serverless Runtime:
+The implementation showcases the following features of the SAP BTP, Serverless Runtime:
 
   - AMQP trigger for invoking the serverless function
   - OData Provisioning for registering the S/4HANA OData Services
@@ -10,11 +10,11 @@ The implementation showcases the following features of the SAP Cloud Platform Se
 
 ## Requirements
 
-* A working instance of Enterprise Messaging.
+* A working instance of SAP Event Mesh.
 * A working instance of a Destination Service.
 * A queue has been set up for receiving messages sent by the cf application
 * Subscription for Extension Center
-* Subscription for Enterprise Messaging App
+* Subscription for Event Mesh Cockpit
 * Subscription for Business Application Studio
 * Entitlement to create a new Serverless instance (*Extension Factory, serverless runtime*).
 
@@ -24,7 +24,7 @@ The implementation showcases the following features of the SAP Cloud Platform Se
 
 ![Business Application Studio](./images/serverless11.png)
 
-Hint: you should have enabled "SAP Cloud Platform Serverless Runtime Development" while creating a dev space in the Business Application Studio in one of the earlier steps. 
+Hint: you should have enabled "SAP BTP Serverless Runtime Development" while creating a dev space in the Business Application Studio in one of the earlier steps. 
 
 2. Open a Terminal and Login
 
@@ -46,7 +46,7 @@ cd  serverlessQRCodeGenerator
 cf create-service xfs-runtime default extension -c '{"extensions": true, "odp": true}'
 ```
 
-5. Create the required keys for the Serverless Runtime, the destination service and Enterprise Messaging
+5. Create the required keys for the Serverless Runtime, the destination service and Event Mesh
 
 
 - Create the Serverless Runtime service key
@@ -62,10 +62,10 @@ cf create-service-key <DESTINATION_SERVICE_INSTANCE_NAME> <DESTINATION_SERVICE_K
 ```
 e.g. cf create-service-key BusinessPartnerValidation-dest destkey
 
-- Create the Enterprise Messaging service key
+- Create the Event Mesh service key
 
 ```bash
-cf create-service-key <ENTERPRISE_MESSAGING_SERVICE_INSTANCE_NAME> <ENTERPRISE_MESSAGING_SERVICE_KEY_NAME>
+cf create-service-key <EVENT_MESH_SERVICE_INSTANCE_NAME> <EVENT_MESH_SERVICE_KEY_NAME>
 ```
 e.g cf create-service-key BusinessPartnerValidation-ems emskey
 
@@ -74,7 +74,7 @@ e.g cf create-service-key BusinessPartnerValidation-ems emskey
 6. Login to the Serverless Runtime instance
 
 ```bash
-xfsrt-cli login -k <serverless_instance_key_name> -n <service_instance_name>
+xfsrt-cli login -b <serverless_instance_key_name> -s <service_instance_name>
 ```
 
 or alternatively log in and then select from the options
@@ -87,10 +87,10 @@ xfsrt-cli login
 
 Alternatively you can just use *cf login* and you will then be asked for additional information interactively.
 
-7. Register Enterprise Messaging Service instance
+7. Register Event Mesh Service instance
 
 ```bash
-xfsrt-cli faas service register -b <Enterprise_Messaging_service_key_name> -s <Enterprise_Message_instance_name>
+xfsrt-cli faas service register -b <Event_Mesh_service_key_name> -s <Event_Mesh_instance_name>
 ```
 e.g.  xfsrt-cli faas service register -b emskey -s BusinessPartnerValidation-ems
 
@@ -137,36 +137,36 @@ faas-sdk init-values -y values.yaml
 
 ## Set Up Messaging Queue required for Serverless
 
-1. Create Queue in Enterprise Messaging for Serverless
+1. Create Queue in Event Mesh for Serverless
 
-- Go to SAP Cloud Platform Cockpit
+- Go to SAP BTP Cockpit
 - Click on Subscription
-- Click on "Go to Application" for Enterprise Messaging
+- Click on "Go to Application" for Event Mesh
 
-![Enterprise Messaging](./images/serverless15-1.png)
+![Event Mesh](./images/serverless15-1.png)
 
 - Login using email and password
 
-![Enterprise Messaging](./images/serverless15-2.png)
+![Event Mesh](./images/serverless15-2.png)
 
 - Click on your message client
 
-![Enterprise Messaging](./images/serverless15-3.png)
+![Event Mesh](./images/serverless15-3.png)
 
 - Click on Queues.
 - Click on Create Queue
 
-![Enterprise Messaging](./images/serverless15-4.png)
+![Event Mesh](./images/serverless15-4.png)
 
 - Provide a name for the queue (recommended: serverlessQueue)
 - Click on Create
 
-![Enterprise Messaging](./images/serverless15-5.png)
+![Event Mesh](./images/serverless15-5.png)
 
 - Click on the  arrow icon (under Actions)
 - Click on Queue subscriptions
 
-![Enterprise Messaging](./images/serverless15-6.png)
+![Event Mesh](./images/serverless15-6.png)
 
 - Provide a topic name
 
@@ -179,11 +179,11 @@ refapps/bpems/abc/SalesService/d41d/BusinessPartnerVerified
 - Click on *Add*
 - Click on *Close*
 
-![Enterprise Messaging](./images/serverless15-7.png)
+![Event Mesh](./images/serverless15-7.png)
 
 ## Configuration in Extension Center
 
-1. Login to Extension Center by going to *Subscriptions* in your Cloud Platform Cockpit and clicking on *Go to Application* in the Extension Center tile (Roles)
+1. Login to Extension Center by going to *Subscriptions* in your BTP Cockpit and clicking on *Go to Application* in the Extension Center tile (Roles)
 
  ![Extension Center](./images/serverless5.png)
 
@@ -207,9 +207,9 @@ Now we will register the API_BUSINESS_PARTNER  and API_CV_ATTACHMENT_SRV service
 
  ![Copy URL](./images/serverless8.png)
 
-## Destinations in Cloud Platform Cockpit
+## Destinations in BTP Cockpit
 
-1. Go to the SAP Cloud Platform Cockpit 
+1. Go to the SAP BTP Cockpit 
 2. Go to Destinations
 3. Click on *New Destination*
 
@@ -244,7 +244,7 @@ In case you are wondering where to get this data from - use the command *cf serv
 
 - Open values.yaml file
 
-- Update *type*, *instance id* and *key name* from the details of registered Enterprise Messaging Service under em-srv and destination service under destination-srv. Execute the below commands to get the details. The first command will provide you the list of services. Then, in a next step, you get the service-key for these services.
+- Update *type*, *instance id* and *key name* from the details of registered Event Mesh Service under em-srv and destination service under destination-srv. Execute the below commands to get the details. The first command will provide you the list of services. Then, in a next step, you get the service-key for these services.
 
   ```bash
   xfsrt-cli faas service list
@@ -254,7 +254,7 @@ In case you are wondering where to get this data from - use the command *cf serv
 
 - Fill the values for the fields attachmentSrvApi, businessPartnerSrvApi and businessObjectTypeName
 
-- Update the Enterprise messaging queue name under config-values-section -> amqp-service-config -> amqp -> incoming -> inp1 -> sourceAddress appended with "queue:<your queue name>"
+- Update the Event mesh queue name under config-values-section -> amqp-service-config -> amqp -> incoming -> inp1 -> sourceAddress appended with "queue:<your queue name>"
 
 ![Update values](./images/serverless17.png)
 

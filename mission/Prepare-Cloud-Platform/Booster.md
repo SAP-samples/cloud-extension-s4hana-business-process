@@ -1,12 +1,12 @@
-# Prepare and configure your SAP Cloud Platform environment with the help of boosters
+# Prepare and configure your SAP Business Technology Platform environment with the help of boosters
 
 ## Introduction
 
-You will now prepare your SAP Cloud Platform Account, configure your entitlements and configure your account for our extension scenario.
+You will now prepare your SAP Business Technology Platform, configure your entitlements and configure your account for our extension scenario.
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
-### Prepare your SAP Cloud Platform Account
+### Prepare your SAP Business Technology Platform Account
 
 1. Navigate to *Boosters* 
 2. Search for 'Prepare an Account for Developing Extension Applications'
@@ -26,6 +26,7 @@ You will now prepare your SAP Cloud Platform Account, configure your entitlement
    
 5. On the next screen you can set up your Subaccount: 
 
+ - In the section Entitlements look for *Cloud Foundry Runtime* Service and increase the required quota to 3 
  - Enter Subaccount name - eg: "Simplelogic"
  - You can edit the smaller org name, space name (optional)
 6. Click on *Next* to finish
@@ -45,27 +46,20 @@ You will now prepare your SAP Cloud Platform Account, configure your entitlement
 ![Review Account](./images/booster6.png)
 
 10. Now click on your Subaccounts Name to open 
-11. Navigate to Security -> Role collections and search for Select 'Extension_ App_ developer‘ and click on the name to open
 
-![Edit Role collection](./images/booster7.png)
+12. Navigate to *Entitlements* and click on *Configure Entitlements* 
 
-12. Click on *Edit*, then '+'. Select on 'ODPAPIAccess' from the dropdown and click on *Add*
-13. Click on *Edit*, then '+'. Select on 'ODPManage' from the dropdown and click on *Add*
+ ![Configure Entitlements](./images/booster7.png)
 
-   ![Edit Role collection](./images/booster9.png)
-   
-   
-14. Click on save
+13. Then choose *Add Service Plans*
 
-![Save Role collection](./images/booster10.png)
-   
-15. Navigate back to your Subaccount -> Entitlements
+![Add Service Plans](./images/booster8.png)
 
-16. Click on *Configure Entitlements* then choose *Add Service Plans*
+14. Search for "HANA" in the pop-up window and select *SAP HANA Cloud*
 
-17. Search for "HANA" in the pop-up window and select *SAP HANA Service*
+15. Click on the checkbox below "Available Plans" for HAN
 
-18. Choose '64STANDARD' in the Available Plans section on the right
+16. Click on *Add 1 Service Plan* and save
 
-19. Click on *Add 1 Service Plan* and save
+![Add Service Plan](./images/booster9.png)
 

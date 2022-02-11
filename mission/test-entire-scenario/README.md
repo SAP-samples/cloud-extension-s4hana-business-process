@@ -3,13 +3,13 @@
 
 - In the command line interface run the command *cf apps*
 
-- Find the URL for the app BusinessPartnerValidation-ui - this is the launch URL for the Business Partner Validation application.
+- Find the URL for the app BusinessPartnerValidation-ui - this is the launch URL for the Business Partner Validation application
 
-- Launch the URL in a browser.
+- Launch the URL in a browser
 
 - Click on Business Partner Validation tile
 
-- The list of BusinessPartners along with their verification status gets displayed.
+- The list of BusinessPartners along with their verification status gets displayed
 
  ![app](./images/endtoend2.png)
 
@@ -27,7 +27,7 @@
 
  ![backend](./images/endtoend5.png)
  
-- Provide first name, last name for the business partner
+- Provide first name and last name for the business partner
  
  ![backend](./images/endtoend6.png)
   
@@ -39,16 +39,16 @@
    
  ![backend](./images/endtoend8.png)
 
-5. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartners has come on the UI
+5. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartner has appeared as a new entry in the UI
 
  ![app](./images/endtoend9.png)
 
-6. Go to the details page for the new BusinessPartner.
+6. Go to the details page for the new BusinessPartner
 7. Click on Edit and set the Status to *Verified*
 
  ![backend](./images/endtoend10.png)
 
-8. (Optional) You can configure Enterprise Messaging in a way so that you can see the created Event. For that you could create an additional queue that subscribes to the topic as well.
+8. (Optional) You can configure Event Mesh in a way so that you can see the created Event. For that you could create an additional queue that subscribes to the topic as well
 
  ![backend](./images/endtoend11.png)
 

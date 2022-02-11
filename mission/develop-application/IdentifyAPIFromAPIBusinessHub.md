@@ -4,7 +4,7 @@
 ## Introduction
 You will look up the required API on API Business Hub and download its specification as an EDMX file. 
 
-**Persona:** SCP Developer
+**Persona:** BTP Developer
 
 
 ### Find and download API
@@ -16,15 +16,10 @@ You will look up the required API on API Business Hub and download its specifica
 
  ![API Business Hub](././images/APIBusinessHub1.png)
  
-5. Click on Details Tab
-6. Click on Download API Specification
-7. Select EDMX in the Pop Up
+5. Scroll down to *API Resources* and click on *API Specification*
+6. Choose EDMX and click on the icon to download
 
  ![API Business Hub](././images/APIBusinessHub2.png)
  
-8. Log On to Download the EDMX file
 
- ![Logon Required](././images/APIBusinessHub3.png)
-
-9. Download the EDMX file and copy it to a suitable directory (e.g. BpValidationMockS4 directory).
 

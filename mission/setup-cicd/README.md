@@ -1,181 +1,115 @@
 # Setup CI/CD Pipeline
 
-We will now setup our CI/CD pipeline.
+This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline that automatically tests, builds, and deploys your code changes to speed up your development and delivery cycles.
 
-1. Open GitHub repository and fork the repository
+The steps below will guide your through settting up your pipeline.
 
-- Go to the GitHub repository and fork the repository
+1. Enable SAP Continuous Integration and Delivery (optional Step - if you have executed the Booster you should be good)
+- Go to your subaccount in SAP BTP
+- Got to the Service Marketplace
+- Type Continuous into the Search Box
+- Choose Create
 
-2. Go to the Business Application Studio 
+ ![choose create](./images/cicd1-1.png)
 
-- Go to the SAP Cloud Platform Cockpit
-- Go to *Subscriptions*
-- Start the Business Application Studio
+2. Assign Role Collection
 
-3. Open a Terminal
+- In your SAP BTP subaccount, choose Security -> Trust Configuration
+- Choose the name of your identity provider
+- Enter your email address
+- Choose Show Assignments
+- Choose Assign Role Collection
 
-- Log in
+ ![assign role_collection](./images/cicd1-2.png)
 
-4. Clone the forked GitHub repository
+- From the dropdown list, choose CICD Administrator
 
-Execute the command from the projects folder
+3. Fork the GitHub repository
 
-```bash
-git clone <your GitHub repository>
-```  
+- Go to the GitHub repository for this mission 
+- Fork the GitHub repository
 
-5. Execute the command *cds add pipeline*
 
-6. Open config.yml file and edit with the snippets provided below 
+4. Configure pipeline
 
-You can find the config.yml file on the left in the Explorer window of the Business Application Studio. Open the directory .pipeline and you will find the file there.
-
-- Go to the *general* section. 
-- Copy the below over to the general section
-
-```bash
-  unsafeMode: false
-  projectName: 'cloud-extension-s4hana-business-process'
-  productiveBranch: 'main'
-```  
-  
-- Go to the *steps* section
-- Copy and add the below over to the steps section
-
-```bash
-  artifactPrepareVersion:
-    buildTool: 'mta'
-  npmExecute::
-    dockerImage: 'ppiper/node-browsers:v2'
-  cloudFoundryDeploy:
-    dockerImage: 'ppiper/cf-cli'
-    mtaDeployParameters: '-f --version-rule ALL'
-  mtaBuild:
-    mtaBuildTool: "cloudMbt"
-```
-
-- Go to the *stages* section
-- Copy the below over and add it to the section
-
-```bash
-  npmAudit:
-    auditedAdvisories:
-    # high
-      - 550   
-      - 593
-      - 1184
-      - 755
-      - 1065 
-      - 1164 
-      - 1316 
-      - 1324 
-      - 1325 
-    # moderate
-      - 535
-      - 1300 
-```
-
-- Go to the *cftargets* section, uncomment the section and update appropriately
-
-The data can be found in the Cloud Platform Cockpit in the *Overview* part of your subaccount. Note that *org* is the org name, not the org id.
-
-7. Push the pipeline code to GitHub.
-
-- git add .
-- git commit –m “adding pipeline config”
-- git push
-
-Hint: you might have to configure your Git before.
-
-8. Configure pipeline
-
-- Click on subscription
+- Click on *Service Marketplace* or *Instances and Subscriptions*
+- Find *Continuous Integration & Delivery* (you might use the search functionality)
 - Click on “Go to application”
 
  ![configure pipeline](./images/cicd2.png)
+ 
+ 
+ 5. In the *Jobs* tab of the application click on the "+" to add a new job for sap-cloud-sdk pipeline
+ 6. Under *General Information* add the following data:
+ - Job Name: "customLogic"
+ - Repository: Select *add repository*
+ 
+  ![add job](./images/ci-cd-1.png)
 
-9. Add credentials
+ 6.1 In the pop up add following data:
+ - Name: "customLogicRepo"
+ - Clone Url: provide URL of your repo
+ - Credentials: Select *create credentials*
+ 
+  ![add repositorys](./images/ci-cd-2.png)
+ 
+ 6.2 In the pop up add following data:
+ - Name: "github"
+ - Username: add your GitHub username/ id
+ - Password: enter your GitHub access token 
+ 
+   ![create credentials](./images/ci-cd-3.png)
+ 
+  Click on *create* to finish
+  6.3 Back on the "Add repository" tab click on *add* button
+  6.4 Now your back at the *General Information* tab of the application. Here fill out the missing fields like followed:
+  - Branch: master
+  - Pipeline: SAP Cloud Application Programming Model
+  
+ ![add job](./images/ci-cd-4.png)
+  
+  6.5 Scroll down to *Stages* - *Release* and switch the toggle on
+  - Switch on the toggle to deploy to cloud foundry
+  - Now add credentials to your cf account
+ 
+  ![deploy to cf](./images/ci-cd-5.png)
+   
+  6.6 Click on *create* to finish and create job
+  
+  6.7 Switch to the *Repository tab* and click on your created repo
+  - On the top right, click on the 3 dots and choose *webhook* data from the dropdown
+  - Copy the data from the pop up
+  
+![webhook](./images/ci-cd-6.png)
 
-- Click on credentials tab
-- Click on ‘+’
+7. Add Webhook in GitHub
 
- ![add credentials](./images/cicd3.png)
- 
-- Provide Name “global”
-- Provide username
-- Provide password
-- Click on create
+- In your project in GitHub go to the Settings tab.
+- From the navigation pane, choose Webhooks.
+- Choose Add webhook.
 
- ![add credentials](./images/cicd4.png)
- 
-- Click on ‘+’
-- Provide name ‘github’
-- Provide username
-- Provide password
-- Click on create
+ ![add_webhook](./images/cicd6-3.png)
 
- ![add credentials](./images/cicd5.png)
- 
- 10. Add jobs
- 
-- Click on jobs tab
-- Click on ’+’
-- Enter job name ‘CustomLogic’
-- Enter your GitHub repo url
-- Select the repository credential from the dropdown. Pick *github*
-- Provide branch as main
-- Pipeline type – sap-cloud-sdk
-- Set logs to –’20’ 
-- Click on ‘create’
-
- ![add credentials](./images/screenshot_cicd6.png)
- 
-11. Configure Webhooks
-
-- Click on the URL provided
- 
- ![add credentials](./images/screenshot_cicd7.png)
- 
-- Click on ‘Add webhook’ 
- 
- ![add credentials](./images/cicd8.png)
- 
-12. Configure Webhooks
+8. Configure Webhooks
 
 The data required below can be found in the CI/CD popup.
 
 - Enter payload url
 - Select content type as application/json
 - Enter the secret
+
+The details to be entered as available in the pop up in CI/CD.
+
 - Click on ‘Add webhook’
 
-The details to be entered as available in the pop up in CI application.
-
- ![add credentials](./images/cicd9.png)
-
-13. Add credential to pipeline
-
-- Open pipeline_config.yml file in github
-- Edit credentialId and adjust to the one created.
-- Click on Commit change
-
- ![add credentials](./images/cicd10.png)
+ ![add credentials](./images/cicd6-4.png)
  
- 14. Test the pipeline (optional)
+9. Test the pipeline (optional)
  
- - Go to Business Application Studio
- - Make a minor change to for example the Readme.MD like e.g. adding an empty
- - Go to the terminal and execute the commands below
- 
- ```bash
-git add .
-git commit -m "minor change"
-git push
-```
  - Goto the CI/CD app 
  - Check on the right hand side that the build has been triggered
  
-  ![add credentials](./images/screenshot_cicd11.png)
+  ![test_pipeline](./images/cicd6-5.png)
  
 
  
