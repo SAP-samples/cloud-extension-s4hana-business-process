@@ -89,8 +89,9 @@ You will now prepare your SAP Business Technology Platform Account, configure yo
 5.	Do the same for the following services:
        - '*Extension Factory Serverless runtime*' -> Select Available Service Plans -> 'default'
        - '*SAP HANA Schemas & HDI container*' ->Select Available Plans -> "hdi-shared"
-       - '*SAP HANA service*' -> Select Available Service Plans -> "64STANDARD"
-       - '*Cloud Foundry Runtime*' -> Select Available Service Plans -> "MEMORY"
+       - '*SAP HANA Cloud*' -> Select Available Service Plans -> "hana"
+       - '*Application Runtime*' -> Select Available Service Plans -> "MEMORY"
+
 6.	Click on Add 4 Service Plans and save
 
 ### Configure your account
