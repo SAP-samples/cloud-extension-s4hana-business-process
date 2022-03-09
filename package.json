@@ -4,7 +4,6 @@
     "description": "A simple CAP project.",
     "license": "ISC",
     "dependencies": {
-        "@sap/audit-logging": "^5.0.0",
         "@sap/cds": "5.8.0",
         "@sap/hana-client": "^2.4.182",
         "@sap/xb-msg-amqp-v100": "^0.9.39",
