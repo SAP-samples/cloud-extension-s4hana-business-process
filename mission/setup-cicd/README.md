@@ -39,14 +39,14 @@ The steps below will guide your through settting up your pipeline.
  ![configure pipeline](./images/cicd2.png)
  
  
- 5. In the *Jobs* tab of the application click on the "+" to add a new job for sap-cloud-sdk pipeline
+ 5. In the *Jobs* tab of the application click on the "+" to add a new job for SAP Cloud SDK pipeline
  6. Under *General Information* add the following data:
  - Job Name: "customLogic"
  - Repository: Select *add repository*
  
   ![add job](./images/ci-cd-1.png)
 
- 6.1 In the pop up add following data:
+ 6.1 In the pop-up add following data:
  - Name: "customLogicRepo"
  - Clone Url: provide URL of your repo
  - Credentials: Select *create credentials*
@@ -98,7 +98,7 @@ The data required below can be found in the CI/CD popup.
 - Select content type as application/json
 - Enter the secret
 
-The details to be entered as available in the pop up in CI/CD.
+The details to be entered as available in the pop-up in CI/CD.
 
 - Click on ‘Add webhook’
 

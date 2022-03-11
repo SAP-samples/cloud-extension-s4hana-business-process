@@ -1,4 +1,4 @@
-# Build and deploy CAP application
+# Build and Deploy CAP Application
 
 We will now build and deploy the CAP application.
 

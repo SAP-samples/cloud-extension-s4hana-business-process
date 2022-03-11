@@ -1,19 +1,15 @@
-## Test Entire Business Scenario End to End
+## Test Entire Business Scenario end-to-end
 1. Start your Business Partner Validation Application
 
-- In the command line interface run the command *cf apps*
-
-- Find the URL for the app BusinessPartnerValidation-ui - this is the launch URL for the Business Partner Validation application
-
-- Launch the URL in a browser
-
+- Go to *Instances and Subscriptions*
+- Find *Launchpad Service* and click to open the application
+- In the Website Manager find your created Website and click on tile to open
 - Click on Business Partner Validation tile
-
 - The list of BusinessPartners along with their verification status gets displayed
 
  ![app](./images/endtoend2.png)
 
-2. Login to your SAP S/4HANA On Prem System
+2. Login to your SAP S/4HANA On-prem System
 
  ![backend](./images/endtoend3.png)
 
@@ -52,7 +48,7 @@
 
  ![backend](./images/endtoend11.png)
 
-9. Go to your S/4HANA On Prem System 
+9. Go to your SAP S/4HANA on-premise System 
 10. Go to transaction *bp*
 
  ![backend](./images/endtoend4.png)
@@ -64,13 +60,3 @@
 12. Go to the Status tab. You can see that the central Block lock has been removed.
 
  ![backend](./images/endtoend13.png)
-
-13. The serverless application has also uploaded a QR code for the address details of the BP to the S/4HANA system. You can view this by clicking on the icon in the top left corner. You will have to give permission for downloading the image.
-
- ![backend](./images/endtoend14.png)
- 
- ![backend](./images/endtoend15.png)
-
-14. (Optional) Go to the Extension Center and check on the logs for your Serverless Function 
-
- ![backend](./images/endtoend16.png)

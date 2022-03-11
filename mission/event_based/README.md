@@ -1,13 +1,13 @@
-# Configure event based communication between S/4 and SAP Event Mesh
+# Configure Event Based Communication Between SAP S/4HANA and SAP Event Mesh
 ## Introduction
 
-In this how to guide, you will establish a connection between your S/4HANA on Premise System and Event Mesh. This connection is needed to transport events from the SAP S/4HANA system to Event Mesh. 
+In this how to guide, you will establish a connection between your SAP S/4HANA on-Premise System and Event Mesh. This connection is needed to transport events from the SAP S/4HANA system to Event Mesh. 
 
 Additional documentation on configuring trust and creating the RFC destination can be found in the official guide:
  
 https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/12559a8c26f34e0bbe8c6d82b7501424.html
 
-**Persona:** S/4HANA Developer
+**Persona:** SAP S/4HANA Developer
 
 ### Configure Endpoint
 
@@ -19,7 +19,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
  
 5. Provide a service key name e.g. EMServiceKey. Click on create.
 
- ![create key](./images/EventBased2.png)
+ ![Create key](./images/EventBased2.png)
  
 6.  Click on your created Service Key to open the detail view
   
@@ -29,7 +29,7 @@ https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/1255
  
  ### Configure Channel
  
- 1. Open your S/4 HANA system and navigate to the transaction */IWXBE/CONFIG*
+ 1. Open your SAP S/4HANA system and navigate to the transaction */IWXBE/CONFIG*
  2. Click on *via Service Key*
  
  ![Configure Channel](./images/EventBased4.png)

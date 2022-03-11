@@ -3,15 +3,13 @@
 
 Now it is time to test your basic scenario. As a result of the following steps you will be able start up your application, create an event in your S/4HANA On Premise system and see the Business Partner you have created appear in your application.
 
-**Persona:** SAP Cloud Platform Developer
+**Persona:** SAP BTP Developer
 
-### Deploy and Start Application
+### Start Application in SAP Launchpad Service 
 
-1. Go to SAP Business Application Studio 
-2. Open a new terminal
-3. Run *cf apps*
-4. Find the URL for the app BusinessPartnerValidation-ui. This is the launch URL for the Business Partner Validation application.
-5. Copy the URL into a browser and launch your extension app.
+1. Go to *Instances and Subscriptions*
+2. Find *Launchpad Service* and click to open the application
+3. In the Website Manager find your created Website and click on tile to open
 
 ### Test the Application
 

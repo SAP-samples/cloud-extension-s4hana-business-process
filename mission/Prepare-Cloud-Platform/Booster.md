@@ -1,4 +1,4 @@
-# Prepare and configure your SAP Business Technology Platform environment with the help of boosters
+# Prepare and Configure Your SAP Business Technology Platform Environment with the Help of Boosters
 
 ## Introduction
 
@@ -6,7 +6,7 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 
 **Persona:** BTP Developer
 
-### Prepare your SAP Business Technology Platform Account
+### Prepare Your SAP Business Technology Platform Account
 
 1. Navigate to *Boosters* 
 2. Search for 'Prepare an Account for Developing Extension Applications'
@@ -27,7 +27,7 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 5. On the next screen you can set up your Subaccount: 
 
  - In the section Entitlements look for *Cloud Foundry Runtime* Service and increase the required quota to 3 
- - Enter Subaccount name - eg: "Simplelogic"
+ - Enter Subaccount name - eg: "Simple logic"
  - You can edit the smaller org name, space name (optional)
 6. Click on *Next* to finish
 
@@ -55,7 +55,7 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 
 ![Add Service Plans](./images/booster8.png)
 
-14. Search for "HANA" in the pop-up window and select *SAP HANA Cloud*
+14. Search for "SAP HANA" in the pop-up window and select *SAP HANA Cloud*
 
 15. Click on the checkbox below "Available Plans" for HAN
 

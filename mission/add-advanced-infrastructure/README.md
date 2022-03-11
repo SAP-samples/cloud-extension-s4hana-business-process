@@ -1,8 +1,8 @@
-## Enable IWBEP component in the S/4HANA system
+## Enable IWBEP Component in the SAP S/4HANA System
 
-First we are going to enable the IWBEP component in the S/4HANA On premise system.
+First we are going to enable the IWBEP component in the SAP S/4HANA on-premise system.
 
-1. Login to the S/4HANA System
+1. Log in to the SAP S/4HANA System
 2. Go to transaction *sicf*
 
  ![sicf](./images/add0.png)
