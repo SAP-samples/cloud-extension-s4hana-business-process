@@ -9,7 +9,6 @@
         "@sap/xb-msg-amqp-v100": "^0.9.39",
         "@sap/xsenv": "^3.1.1",
         "@sap/xssec": "^3.2.2",
-        "cf-nodejs-logging-support": "^6.5.0",
         "express": "^4",
         "grunt": "^1.1.0",
         "passport": "^0.4.1",
@@ -30,6 +29,10 @@
         "chai-http": "^4.3.0"
     },
     "cds": {
+	"features": {
+            "fetch_csrf": true,
+            "kibana_formatter": true
+        },
         "hana": {
             "deploy-format": "hdbtable"
         },
@@ -40,7 +43,9 @@
                     "kind": "enterprise-messaging-shared",
                     "queue": {
                         "name": "refapps/bpems/abc/BusinessPartnerValidation-srv/1234"
-                    }
+                    },
+		   "publishPrefix": "$namespace/",
+                   "subscribePrefix": "$namespace/"
                 }
             },
             "[production]": {
@@ -53,7 +58,7 @@
                 }
             },
             "API_BUSINESS_PARTNER": {
-                "kind": "odata",
+                "kind": "odata-v2",
                 "model": "srv/external/API_BUSINESS_PARTNER",
                 "[production]": {
                     "credentials": {
