@@ -1,15 +1,15 @@
-# Configure systems in Cloud Connector 
+# Configure Systems in Cloud Connector 
 
 ## Introduction
 
-In this section you will configure the Cloud Connector for connecting the on premise backend system to the SAP Business Technology Platform. 
+In this section, you will configure the Cloud Connector for connecting the on-premise back end system to the SAP Business Technology Platform. 
 
 **Persona:** BTP Admin
 
 
-### Configure Systems in Cloud Connector for access with technical user
+### Configure Systems in Cloud Connector for Access with Technical User
 
-1.	Open your Cloud Connector administration UI for the S/4HANA on premise system.
+1.	Open your Cloud Connector administration UI for the SAP S/4HANA on-premise system.
 
     Go to https://localhost:8443/   
     
@@ -36,7 +36,7 @@ In this section you will configure the Cloud Connector for connecting the on pre
     You can look up the required data in the SAP BTP Cockpit.
     
 4.	Navigate to *Cloud to On-Premise* 
-5.	To add a new system mapping click on the *'+'* on the right site of the screen
+5.	To add a new system-mapping click on the *'+'* on the right site of the screen
 
  ![System Mapping](./images/cloud-connector-2.png)
  
@@ -85,13 +85,13 @@ In this section you will configure the Cloud Connector for connecting the on pre
 1.	Open your *SAP BTP Account* and navigate to your *Subaccount*
 2.	Choose *Connectivity* in the menu on the left then choose *Cloud Connectors* to check the host details
 
-![Check host detail](./images/cloud-connector-11.png)
+![Check host detail.](./images/cloud-connector-11.png)
 
 3.	Go back to Connectivity in the menu on the left then choose *Destinations -> New Destination*
 
 4.	Enter the following information to the Destination Configuration:
     - *Name:* bupa
-    - *Url:* insert url of the on Prem system (`http://<virtual host>:<virtual port>/sap/opu/odata/sap/API_BUSINESS_PARTNER`)
+    - *Url:* insert url of the on-premise system (`http://<virtual host>:<virtual port>/sap/opu/odata/sap/API_BUSINESS_PARTNER`)
     - *Proxy Type*: OnPremise
     - Change *Proxy Type* to 'OnPremise'
     - Select *Authentication:* 'Basic Authentication'
@@ -103,8 +103,8 @@ In this section you will configure the Cloud Connector for connecting the on pre
 
 6. Repeat the step to create a new Destination: 
     - *Name:* odataprov
-    - *Url:* insert url of the on Prem system (`http://<virtual host>:<virtual port>/sap/iwbep?sap-client=100`)
-    - *Proxy Type*: OnPremise
+    - *Url:* insert url of the on-premise system (`http://<virtual host>:<virtual port>/sap/iwbep?sap-client=100`)
+    - *Proxy Type*: On-premise
     - Change *Proxy Type* to 'OnPremise'
     - Select *Authentication:* 'Basic Authentication'
     - Add location Id (In case of multiple CC)

@@ -1,14 +1,14 @@
-# Prepare SAP S/4HANA System by activating the suitable OData service and creating a technical user in SAP S/4HANA system 
+# Prepare SAP S/4HANA System by Activating the Suitable OData Service and Creating a Technical User in SAP S/4HANA System 
 
 ## Introduction
 
-We are going to activate our Business Partner OData service and create a technical user in our SAP S/4HANA backend system.
+We are going to activate our Business Partner OData service and create a technical user in our SAP S/4HANA back-end system.
 
-**Persona:** S/4HANA Admin
+**Persona:** SAP S/4HANA Admin
 
-### Activate OData service in S/4HANA on premise backend system
+### Activate OData Service in SAP S/4HANA on-premise Backend System
 
-1.	Open your S/4HANA on premise system
+1.	Open your SAP S/4HANA on-premise system
 2.	Navigate to transaction code: '/IWFND/MAINT_SERVICE'
 
    ![Navigate transaction](./images/configure-oData-Service-1.png)
@@ -22,7 +22,7 @@ We are going to activate our Business Partner OData service and create a technic
 
    ![Select Service](./images/configure-odata-Service-3.png)
    
-6.	On the next screen specify *Package Assignment* e.g. $TMP by clicking on *Local Object*
+6.	On the next screen, specify *Package Assignment* e.g. $TMP by clicking on *Local Object*
 7.	Check checkbox for "Enable OAuth for Service“ and click on *Continue*
 
    
@@ -77,7 +77,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
 
       ![Status](./images/configure-oData-Service-15.png)
 20.	Now click on *Status*, then generate with clicking the icon on the top and *save* the profile in the pop-up
-21.	Go back and Switch to the User tab, select your technical user and click on User Comparison and click on full comparisons in the pop up
+21.	Go back and Switch to the User tab, select your technical user and click on User Comparison and click on full comparisons in the pop-up
 
 22.	Go to transaction /pfcg to open Role Maintenance. 
       > HINT: You can find a detailed explanation of the next steps in this [tutorial](https://pages.github.tools.sap/CPES/CPAppDevelopment-dev/S4HANA_event_setup_2020/)
@@ -89,7 +89,7 @@ Now we are going to create a user in our SAP S/4HANA backend and assign the requ
 
    ![Generate Icon](./images/configure-oData-Service-16.png)
    
-26.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop up   
+26.	Go back and Switch to the *User* tab, select your technical user and click on *User Comparison* and click on full comparisons in the pop-up   
 27.	Log off from the admin user system by entering the transaction '/nEX'
 28.	Log on to the GUI using your newly created Technical User
 

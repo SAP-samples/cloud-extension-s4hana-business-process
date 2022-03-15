@@ -85,7 +85,6 @@ You will now prepare your SAP Cloud Platform Account, configure your entitlement
 4.	Select *Available Service Plans* -> 'default'
 
 5.	Do the same for the following services:
-       - '*Extension Factory Serverless runtime*' -> Select Available Service Plans -> 'default'
        - '*SAP HANA Schemas & HDI container*' ->Select Available Plans -> "hdi-shared"
        - '*SAP HANA service*' -> Select Available Service Plans -> "64STANDARD"
        - '*Application Runtime*' -> Select Available Service Plans -> "MEMORY"
@@ -111,41 +110,17 @@ In this scenario differed applications are needed. To use these services, you fi
 
 ### Set up roles
 
-1.	Navigate to your *Subaccount -> Security*
+1.	Navigate to your *Subaccount -> Security -> Trust Configuration* and choose SAP ID Service
 
-2.	Choose *Role Collections* 
-
- ![Subscribe CICID](./images/Prepare-Cloud-Platform-19.png)
-  
-3.	Create a *new Role Collection*:
-        Name:'Serverless_RoleCollection'
-        Description: ''
-     
- ![Role Collection](./images/Prepare-Cloud-Platform-20.png)
-     
-4.	Click on the name of your new role collection and choose *Add Role*
-       - *Application Identifier:* select 'xfsrt-application'	
-       - *Role Template:* 'Functionsmanage'	
-       - *Role:* 'FunctionsManage'
-     
- ![Create Role Collection](./images/Prepare-Cloud-Platform-21.png)
-     
- 
-5.	Click on *Save*
-
-6. Similarly add ODPManage, ODPAPIAccess roles to Serverless_RoleCollection
-
-7.	Navigate Back to your *Subaccount* -> *Trust Configuration* and choose *SAP ID Service*
-
-8.	Insert your E-Mail in the according field and click on *Show Assignments*
+2.	Insert your E-Mail in the according field and click on *Show Assignments*
 
  ![Assign Role Collection](./images/Prepare-Cloud-Platform-27.png) 
  
-9.	Click on *Assign Role Collection* then select  'Business_Application_Studio_Developer',
+3.	Click on *Assign Role Collection* then select  'Business_Application_Studio_Developer',
 
  ![Show Assignments](./images/Prepare-Cloud-Platform-26.png) 
  
-10.	Repeat Step 8 for the following role collections: 'Serverless_RoleCollection' 
+4.	Repeat Step 3 for the following role collections: 
 'CICD Service Administrator' and 'EnterpriseMessagingAdmininistrator'
 
 

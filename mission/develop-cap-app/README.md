@@ -8,13 +8,13 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
 **Persona:** BTP Developer
 
-### Create a new application in SAP Business Application Studio
+### Create a New Application in SAP Business Application Studio
 
 1.	Make sure you have opened your *SAP BTP Account* and navigate to your *Subaccount* 
    
 2.	Open the menu *Services* and navigate to *Instances and Subscriptions*
    
-3.	Choose "SAP Business Application Studio" unter the *Subscriptions* tab and click on the icon to open the application
+3.	Choose "SAP Business Application Studio" under the *Subscriptions* tab and click on the icon to open the application
      
      ![Open SAP Business Application Studio](./images/dev-cap-app-1.png)
  
@@ -22,13 +22,13 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
      ![Create Dev Space](./images/dev-cap-app-3.png)
  
-5.	On the next screen you will create the new Dev Sapce. For this enter a Dev space name e.g 'BusinessProcess', select the type *SAP Cloud Business Application*. Mark    *Serverless Runtime Development Tools* under additional tools. 
+5.	On the next screen, you will create the new Dev Space. For this enter a Dev space name e.g 'BusinessProcess', select the type *SAP Cloud Business Application*.
     Don´t forget to click on the button *Create Dev Space*
 
       ![Configure Dev Space](./images/dev-cap-app-4.png)
       
  
-6.	Your Dev Space is now being created. As soon as the Dev Space is running you can click on your Dev Spaces name to  access
+6.	Your Dev Space is now being created. As soon as the Dev Space is running, you can click on your Dev Spaces name to access
 
 7.	Choose *Terminal -> New Terminal* in the menu on the top of your screen.
 
@@ -45,14 +45,14 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    git clone <YourPersonalGitHub>
    ``` 
  
-10.	Click on *File* in the menu on the top and choose *Open Workspace* in the drop down.
+10.	Click on *File* in the menu on the top and choose *Open Workspace* in the drop-down.
 
     ![Open Workspace](./images/dev-cap-app-7.png)
  
 11.	Open the project by selecting projects -> cloud-extension-s4hana-business-process and click on *Open*
 
  
-12.   For the next steps you need the terminal again. Go to *Terminal* -> *New Terminal*
+12.   For the next steps, you need the terminal again. Go to *Terminal* -> *New Terminal*
      
    i. First you need to login. You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section:
  
@@ -63,7 +63,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
     
          
 
-   ii. Then you will get the guid of your HANA Cloud. Please note that, in case that you do not have a HANA Cloud in your SAP BTP environment yet, you will have to create one. You can find a tutorial for creating a HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
+   ii. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can find a tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
    
 	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}'
 	  cf service <HANA-cloud> --guid
@@ -71,7 +71,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    
             
    
-   iii. In a next step, using the guid of your HANA  service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
+   iii. In a next step, using the guid of your HANA service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
    
      
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
@@ -112,7 +112,7 @@ Set the Memory as 256MB. Don´t forget to save the file.
 
 
 
-### Test your application
+### Test Your Application
 
 1. Go to the terminal and enter 
       ```

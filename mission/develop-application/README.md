@@ -1,4 +1,4 @@
-# Develop application in a nutshell with mock S/4 HANA Service
+# Develop Application in a nutshell with mock SAP S/4HANA Service
 
 ## Introduction
 You will now develop a CAP application in a nutshell using Visual Studio Code. In a later step you will then replace your code in GitHub with the reference application code.

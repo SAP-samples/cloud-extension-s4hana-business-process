@@ -1,11 +1,11 @@
-# Add SAP Application Logging Service to your application
+# Add SAP Application Logging Service to Your Application
 
 To store and visualize application log data while using the app, SAP Application Logging Service is used.
 
 ## Requirements
 Make sure you have included the entitlement for application logging service in your SAP BTP subaccount.
 
-## Enable Monitoring and prepare Kibana Dashboard
+## Enable Monitoring and Prepare Kibana Dashboard
 
 1. Go back to your SAP BTP subaccount and navigate via cockpit to your *cf space*
      ![Navigate to space](./images/app-log-1.png)

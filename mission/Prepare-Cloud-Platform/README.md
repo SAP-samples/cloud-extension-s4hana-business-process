@@ -87,7 +87,6 @@ You will now prepare your SAP Business Technology Platform Account, configure yo
    ![Add Service Plans](./images/Prepare-Cloud-Platform-15.png)
 
 5.	Do the same for the following services:
-       - '*Extension Factory Serverless runtime*' -> Select Available Service Plans -> 'default'
        - '*SAP HANA Schemas & HDI container*' ->Select Available Plans -> "hdi-shared"
        - '*SAP HANA Cloud*' -> Select Available Service Plans -> "hana"
        - '*Application Runtime*' -> Select Available Service Plans -> "MEMORY"
@@ -114,48 +113,17 @@ In this scenario differed applications are needed. To use these services, you fi
 
 ### Set up roles
 
-1.	Navigate to your *Subaccount -> Security*
+1.	Navigate to your *Subaccount -> Security -> Trust Configuration* and choose SAP ID Service
 
-2.	Choose *Role Collections* 
-
- ![Subscribe CICID](./images/Prepare-Cloud-Platform-19.png)
-  
-3.	Click on *+*:
-
-        Name:'Serverless_RoleCollection'
-        Description: ''
-        Click on create
-     
- ![Role Collection](./images/Prepare-Cloud-Platform-20.png)
-     
-4.	Click on the name of your new role collection and choose *Edit*
-
- ![Role Collection](./images/prepare_account_rc_edit.png)
- 
-5. Click on *+* and click on the value help for role
- 
- ![Role Collection](./images/prepare_account_rs_add.png)      
-       
-6. Select *FunctionsManage* as the role. Click on the checkbox and click on *Add*
-
-  ![Role Collection](./images/prepare_account_rc_xfsrt.png)
-
-7. Repeat steps 5,6 for *ODPManage* role
- 
-8.	Click on *Save*
-![Role Collection](./images/prepare_account_rs_save.png)
-
-9.	Navigate Back to your *Subaccount* -> *Trust Configuration* and choose *SAP ID Service*
-
-10.	Insert your E-Mail in the according field and click on *Show Assignments*
+2.	Insert your E-Mail in the according field and click on *Show Assignments*
 
  ![Assign Role Collection](./images/Prepare-Cloud-Platform-27.png) 
  
-11.	Click on *Assign Role Collection* then select  'Business_Application_Studio_Developer',
+3.	Click on *Assign Role Collection* then select  'Business_Application_Studio_Developer',
 
  ![Show Assignments](./images/Prepare-Cloud-Platform-26.png) 
  
-12.	Repeat Step 8 for the following role collections: 'Serverless_RoleCollection' 
+4.	Repeat Step 3 for the following role collections: 
 'CICD Service Administrator' and 'EnterpriseMessagingAdmininistrator'
 
 
