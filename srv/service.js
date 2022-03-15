@@ -94,8 +94,8 @@ module.exports = async (srv) => {
       }
 
       log.info("<<<<payload address", payload)
-      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:resultJoin.addressId}));
-      
+      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:resultJoin.addressId}))
+                      .catch(err => log.error(err));
       log.info(`address update to S/4 Backend system`, res);
     }
 
@@ -104,7 +104,8 @@ module.exports = async (srv) => {
       "businessPartnerIsBlocked": (resultJoin.verificationStatus_code == "V")?false:true
     }
 
-     let res =  await bupaSrv.run(UPDATE(BusinessPartner).set(payload).where({businessPartnerId:resultJoin.businessPartnerId}));
+     let res =  await bupaSrv.run(UPDATE(BusinessPartner).set(payload).where({businessPartnerId:resultJoin.businessPartnerId}))
+                  .catch(err => log.error(err));
     log.info(`Search Term update in S/4 Backend`,res);
     
   }
