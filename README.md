@@ -8,7 +8,6 @@ This application showcases:
 - Building applications on SAP Business Technology Platform (BTP) using [SAP Cloud Application Programming Model(CAP)](https://cap.cloud.sap/docs/)
 - Consuming events from SAP S/4HANA on premise using [SAP Event Mesh](https://help.sap.com/viewer/bf82e6b26456494cbdd197057c09979f/Cloud/en-US/df532e8735eb4322b00bfc7e42f84e8d.html)
 - Consuming REST APIs from SAP S/4HANA on premise using SAP Business Technology Platform Connectivity Service
-- Building and deploying a function in [SAP BTP, Serverless runtime service](https://help.sap.com/viewer/bf7b2ff68518427c85b30ac3184ad215/Cloud/en-US/7b8cc2b0e8d141d6aa37c7dff4d70b82.html)
 
 ## Business Scenario
 
@@ -28,9 +27,9 @@ John who is an employee of Business Partner Validation Firm iCredible, which is 
 
 ### Solution Diagram
 
-![solution diagram](./documentation/images/solutionDiagram.jpg)
+![solution diagram](./documentation/images/solution-diagram-latest.png)
 
-The Business Partner Validation application is developed using the SAP Cloud Application programming Model (CAP) and runs on the SAP BTP,  Cloud Foundry runtime. It consumes platform services like SAP Event Mesh, SAP HANA and Connectivity. The events occuring in S/4 HANA on premise are inserted into the Event Mesh queue. The application running in Cloud Foundry is notified on events, consumes them from the queue and inserts the event data into the HANA database. The Business Partner Validation Application uses S/4 HANA REST API's to read additional Business Partner Data from the S/4 HANA system. in a next step, the Business Partner Validation App uses an event-driven approach as well by firing events that get consumed by Serverless Application which posts the relevant business partner data to S/4 HANA on premise system using OData provisioning.
+The Business Partner Validation application is developed using the SAP Cloud Application programming Model (CAP) and runs on the SAP BTP,  Cloud Foundry runtime. It consumes platform services like SAP Event Mesh, SAP HANA and Connectivity. The events occuring in S/4 HANA on premise are inserted into the Event Mesh queue. The application running in Cloud Foundry is notified on events, consumes them from the queue and inserts the event data into the HANA database. The Business Partner Validation Application uses S/4 HANA REST API's to read additional Business Partner Data from the S/4 HANA system.
 
 ## Requirements
 * SAP S/4HANA on premise system.
@@ -58,7 +57,6 @@ The application requires below set of SAP Business Technology Platform Entitleme
 | SAP HANA Schemas & HDI Containers | hdi-shared |          1          |
 | SAP HANA Cloud                    | hana       |          1          |
 | Cloud Foundry runtime             |            |          1          |
-| Serverless Runtime                | default    |          1          |
 
 
 ## Configuration
@@ -98,10 +96,7 @@ You can use [SAP BTP - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c4
 	Navigate to mta_archives folder and run the below command from CLI
 
    `cf deploy BusinessPartnerValidation_1.0.0.mtar`
-
-### Step 5: [Build and deploy the serverless application](./serverlessQRCodeGenerator/README.md)
-
-### Step 6: [Configure event based communication between S/4HANA and Event Mesh](https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/fbb2a5980cb54110a96d381e136e0dd8.html)
+### Step 5: [Configure event based communication between S/4HANA and Event Mesh](https://help.sap.com/viewer/810dfd34f2cc4f39aa8d946b5204fd9c/1809.000/en-US/fbb2a5980cb54110a96d381e136e0dd8.html)
 
 
 ## Demo script
