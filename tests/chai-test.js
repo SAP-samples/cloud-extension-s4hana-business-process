@@ -134,7 +134,7 @@ describe("Business Partner Validation", () => {
 		it("+ Activate the draft", (done) => {
 			chai.request(app)
 			.post("/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate")
-			.send({ "SideEffectsQualifier": "" })
+			.send({})
 			.auth("test:test")
 			.end((error, response) => {
 				try {

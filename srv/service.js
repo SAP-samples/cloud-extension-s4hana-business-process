@@ -1,23 +1,19 @@
+const cds = require('@sap/cds');
 
 
-module.exports = async srv => {
+module.exports = async (srv) => {
   const {BusinessPartnerAddress, Notifications, Addresses, BusinessPartner} = srv.entities;
   const bupaSrv = await cds.connect.to("API_BUSINESS_PARTNER");
   const messaging = await cds.connect.to('messaging')
-  const namespace = messaging.options.credentials && messaging.options.credentials.namespace
-
   const {postcodeValidator} = require('postcode-validator');
-  const log = require('cf-nodejs-logging-support');
+  const log = cds.log("sales-service");
 
-  const app = cds.app;
-  app.use(log.logNetwork);
-  
   srv.on("READ", BusinessPartnerAddress, req => bupaSrv.run(req.query))
   srv.on("READ", BusinessPartner, req => bupaSrv.run(req.query))
 
-  messaging.on(["refapps/bpems/abc/S4H/BO/BusinessPartner/Created", "refapps/bpems/abc/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1"], async msg => {
+  messaging.on(["S4H/BO/BusinessPartner/Created", "ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Created/v1"], async msg => {
     
-    log.info(`<< Create event caught ${JSON.stringify(msg.data)}`);
+    log.info("<< Create event caught", msg.data);
     let BUSINESSPARTNER = "";
     if(msg.headers && msg.headers.specversion == "1.0"){
        //> Fix for 2020 on-premise
@@ -29,8 +25,6 @@ module.exports = async srv => {
       
     // ID has prefix 000 needs to be removed to read address
     log.info(BUSINESSPARTNER);
-    //let bupasrvtx = await bupaSrv.tx(msg)
-    //let cdstx = await cds.tx(msg)
     const bpEntity = await bupaSrv.run(SELECT.one(BusinessPartner).where({businessPartnerId: BUSINESSPARTNER}));
     if(!bpEntity){
       log.info(`BP doesn't exist in the given destination`);
@@ -47,7 +41,7 @@ module.exports = async srv => {
     }
   });
 
-  messaging.on(["refapps/bpems/abc/S4H/BO/BusinessPartner/Changed", "refapps/bpems/abc/ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Changed/v1"], async msg => {
+  messaging.on(["S4H/BO/BusinessPartner/Changed", "ce/sap/s4/beh/businesspartner/v1/BusinessPartner/Changed/v1"], async msg => {
     log.info(`<< Change event caught: ${JSON.stringify(msg.data)}`);
     let BUSINESSPARTNER=""
     if(msg.headers && msg.headers.specversion == "1.0"){
@@ -60,13 +54,14 @@ module.exports = async srv => {
     const bpIsAlive = await cds.run(SELECT.one(Notifications, (n) => n.verificationStatus_code).where({businessPartnerId: BUSINESSPARTNER}));
     if(bpIsAlive && bpIsAlive.verificationStatus_code == "V"){
       const bpMarkVerified= await cds.run(UPDATE(Notifications).where({businessPartnerId: BUSINESSPARTNER}).set({verificationStatus_code:"C"}));
+      log.info("<< BP marked verified >> ", bpMarkVerified);
     }    
-    log.info("<< BP marked verified >> ")
+    
   });
 
-  srv.after("UPDATE", "Notifications", (data, req) => {
+  srv.after("UPDATE", "Notifications", (data) => {
     if(data.verificationStatus_code === "V" || data.verificationStatus_code === "INV")
-    emitEvent(data, req);
+    emitEvent(data);
   });
 
   srv.before("SAVE", "Notifications", req => {
@@ -88,31 +83,31 @@ module.exports = async srv => {
     return req.info({numericSeverity:1, target: 'postalCode'});  
   });
 
-  async function emitEvent(result, req){
+  async function emitEvent(result){
     const resultJoin =  await cds.run(SELECT.one("my.businessPartnerValidation.Notifications as N").leftJoin("my.businessPartnerValidation.Addresses as A").on("N.businessPartnerId = A.businessPartnerId").where({"N.ID": result.ID}));
     const statusValues={"N":"NEW", "P":"PROCESS", "INV":"INVALID", "V":"VERIFIED"}
-    // Format JSON as per serverless requires
-    const payload = {
-      "businessPartner": resultJoin.businessPartnerId,
-      "businessPartnerName": resultJoin.businessPartnerName,
-      "verificationStatus": statusValues[resultJoin.verificationStatus_code],
-      "addressId":  resultJoin.addressId,
-      "streetName":  resultJoin.streetName,
-      "postalCode":  resultJoin.postalCode,
-      "country":  resultJoin.country,
-      "addressModified":  resultJoin.isModified
+
+    if(resultJoin.isModified){
+      let payload = {
+        streetName: resultJoin.streetName,
+        postalCode: resultJoin.postalCode
+      }
+
+      log.info("<<<<payload address", payload)
+      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:resultJoin.addressId}))
+                      .catch(err => log.error(err));
+      log.info(`address update to S/4 Backend system`, res);
     }
-    log.info(`<< emit formatted >>>>> ${JSON.stringify(payload)}`);
-    try{
-     let msg = await messaging.emit(`${namespace}/SalesService/d41d/BusinessPartnerVerified`, payload);
-      log.info(`Message emitted to Queue ${msg}`);
+
+    let payload = {
+      "searchTerm1": statusValues[resultJoin.verificationStatus_code],
+      "businessPartnerIsBlocked": (resultJoin.verificationStatus_code == "V")?false:true
     }
-    catch(e){
-      log.info("Error in emit message: ");
-      log.error(e);
-    }
+
+     let res =  await bupaSrv.run(UPDATE(BusinessPartner).set(payload).where({businessPartnerId:resultJoin.businessPartnerId}))
+                  .catch(err => log.error(err));
+    log.info(`Search Term update in S/4 Backend`,res);
     
   }
-
   
-}
+};
