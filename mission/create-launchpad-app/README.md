@@ -38,7 +38,7 @@ In this section, the application will be connected to Central Fiori Launchpad
 	 <img src="././images/integrate_launchpad_6.png" width="80%"> 
 	  
 13.   Add title 'BP Validation'
-14.   Assign items on the ri.ght section of your screen. Search for your app and click on the '+' icon to assign the apps like described in step 10
+14.   Assign items on the right section of your screen. Search for your app and click on the '+' icon to assign the apps like described in step 10
 15.   Click on *Save*
 16. Go Back to the *Site Directory* and click on button to *Create Site*
 17. Enter the site name as 'BP Validation' and click on *Create*
