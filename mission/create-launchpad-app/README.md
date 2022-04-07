@@ -13,7 +13,7 @@ In this section, the application will be connected to Central Fiori Launchpad
 3.  Now are on the home page of Launchpad Service. In the menu on the left side click on the icon for *Provider Manager*
 4.  Click on the refresh icon to fetch the updated content
 
-    <img src="https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-launchpad-app/images/integrate_launchpad_1.png" width="80%"> 
+    <img src="https://raw.githubusercontent.com/SAP-samples/cloud-extension-s4hana-business-process/mission/mission/create-launchpad-app/images/integrate_launchpad_1.png" width="80%"> 
     
 5.  Click on *Content Manager* in the menu on the left and open tab *Content Explorer*
 6.  Select the tile "HTML5 Apps" with your respective subdomain name
