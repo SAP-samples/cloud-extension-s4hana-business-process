@@ -101,72 +101,65 @@ You can use [SAP BTP - Boosters](https://help.sap.com/viewer/DRAFT/65de2977205c4
 
 ## Demo script
 
-1. In the command line interface run the command `cf apps`
-   
-2. Find the URL for the app ` BusinessPartnerValidation-ui` - this is the launch URL for the Business Partner Validation application.
+1. Go to Launchpad and access the 'Business Partner Validation' application
 
-3. Launch the URL in a browser.
 
-4. Click on Business Partner Validation tile
+2. Click on Business Partner Validation tile
 
 ![fiori tile](./documentation/images/fioriLaunchpad.JPG)
 
-5. The list of BusinessPartners along with their verification status gets displayed. 
+3. The list of BusinessPartners along with their verification status gets displayed. 
 
 ![BP list](./documentation/images/BPListView.JPG)
 
-6. Login to the S/4HANA on-premise system
+4. Login to the S/4HANA on-premise system
 
 ![S/4HANA login](./documentation/images/GuiLogin.JPG)
 
-7. Enter transaction code 'bp'
+5. Enter transaction code 'bp'
 
 ![bp transaction](./documentation/images/BPtransaction.JPG)
 
-8. Click on Person
+6. Click on Person
 
 ![person](./documentation/images/person.png)
 
-9. Provide first name, last name for the business partner
+7. Provide first name, last name for the business partner
 ![name](./documentation/images/name.png)
 
-10. Provide the address
+8. Provide the address
 ![address](./documentation/images/bpaddress.png)
 
-11. Move to the status tab and check mark the 'Central Block' lock. Save the BP. This will create a new Business Partner 
+9. Move to the status tab and check mark the 'Central Block' lock. Save the BP. This will create a new Business Partner 
 
 ![lock](./documentation/images/lock.png)
 
-12. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartners has come on the UI
+10. Now go back to the BusinessPartnerValidation application to see if the new BusinessPartners has come on the UI
 
 ![new bp](./documentation/images/bpNew.png)
 
-13. Go to the details page for the new BusinessPartner. Click on edit.
+11. Go to the details page for the new BusinessPartner. Click on edit.
 
 ![edit bp](./documentation/images/editBP.png)
 
-14. Change the Verification Status to VERIFIED. You can also edit the street name, postal code also if needed. Save the data. 
+12. Change the Verification Status to VERIFIED. You can also edit the street name, postal code also if needed. Save the data. 
 
 ![edit values](./documentation/images/editValue.png)
 
-15. Open S/4HANA system, bp transaction. Search for the newly created bp
+13. Open S/4HANA system, bp transaction. Search for the newly created bp
 
 ![search bp](./documentation/images/searchBP.png)
 
-16. Double click on the BP
+14. Double click on the BP
 
 ![click bp](./documentation/images/clickBP.png)
 
-17. You can see that the central Block lock has been removed 
+15. You can see that the central Block lock has been removed 
 
 ![release lock](./documentation/images/releasedLock.png)
 
-18. The serverless application has also uploaded a QR code for the address details of the BP to the S/4HANA system. 
-You can view this by clicking on the icon in the top left corner. You will have to give permission for downloading the image. 
 
-![attachment List](./documentation/images/attachmentList.png)
-
-19. You can also notice that in the BusinessPartner Validation UI, the status is now set as COMPLETED.
+16. You can also notice that in the BusinessPartner Validation UI, the status is now set as COMPLETED.
 
 ## Known Issues
 
