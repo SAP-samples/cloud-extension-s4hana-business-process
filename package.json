@@ -11,6 +11,7 @@
         "@sap/xssec": "^3.2.2",
         "express": "^4",
         "grunt": "^1.1.0",
+        "npm": "^8.7.0",
         "passport": "^0.4.1",
         "postcode-validator": "^3.1.1"
     },
@@ -23,13 +24,13 @@
     },
     "devDependencies": {
         "axios": "^0.21.1",
-        "jest": "*",
-        "mocha": "^9.2.1",
         "chai": "^4.3.4",
-        "chai-http": "^4.3.0"
+        "chai-http": "^4.3.0",
+        "jest": "*",
+        "mocha": "^9.2.1"
     },
     "cds": {
-	"features": {
+        "features": {
             "fetch_csrf": true,
             "kibana_formatter": true
         },
@@ -44,8 +45,8 @@
                     "queue": {
                         "name": "refapps/bpems/abc/BusinessPartnerValidation-srv/1234"
                     },
-		   "publishPrefix": "$namespace/",
-                   "subscribePrefix": "$namespace/"
+                    "publishPrefix": "$namespace/",
+                    "subscribePrefix": "$namespace/"
                 }
             },
             "[production]": {
