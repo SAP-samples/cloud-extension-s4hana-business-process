@@ -67,13 +67,13 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
    
 	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
 	  cf service <HANA-cloud> --guid
-'  
+
    
             
    
    iii. In a next step, using the guid of your HANA service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
    
-    cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}
+    cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
     cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
