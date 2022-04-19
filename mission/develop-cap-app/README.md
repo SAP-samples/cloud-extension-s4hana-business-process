@@ -102,7 +102,7 @@ Set the Memory as 256MB. Don´t forget to save the file.
        ```
        cds add mta
        ```
-> Hint: This step only needs to be executed in case you have created a new project. As we are using an exsisting project in this tutorial, you can skip this step as the mta file is already added
+> Hint: This step only needs to be executed in case you have created a new project. As we are using an existing project in this tutorial, you can skip this step as the mta file is already added
 <a name="launchpad"></a>
 16. There are *two* different options to run your created application. You can either deploy your application to SAP Launchpad Service(a) or run it locally on your machine(b)
 
@@ -125,7 +125,7 @@ Set the Memory as 256MB. Don´t forget to save the file.
       ```
        mbt build -p=cf
        cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
-       ```
+       
 2. Start your app with the command
       ```
       cf apps
