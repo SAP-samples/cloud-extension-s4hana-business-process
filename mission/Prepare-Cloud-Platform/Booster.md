@@ -57,7 +57,7 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 
 14. Search for "SAP HANA" in the pop-up window and select *SAP HANA Cloud*
 
-15. Click on the checkbox below "Available Plans" for HAN
+15. Click on the checkbox below "Available Plans" for HANA
 
 16. Click on *Add 1 Service Plan* and save
 
