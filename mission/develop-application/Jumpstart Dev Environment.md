@@ -27,13 +27,8 @@ With this guide you will set up Node, create a new GitHub Repository and prepare
 	
    ![New Terminal](././images/develop-application-1a.png)
 
-3. Run command 
 
-```
-npm i -g @sap/cds-dk
-```
-
-4.	Clone the repository you created ealier with executing the command: 
+3.	Clone the repository you created ealier with executing the command: 
 
 ```
 git clone <Repository-link>
@@ -41,17 +36,17 @@ git clone <Repository-link>
 
 > Hint: In case of any authorization issue  use the command: ``` git clone --single-branch --branch "main" "https://access_token@github.com/repo.gt/" ```
 
-5.	Install cds with the command: 
+4.	Install cds with the command: 
 
 ```
 npm i -g @sap/cds-dk
 ```
-6.	Change the directory to the directory right above the repository. 
+5.	Change the directory to the directory right above the repository. 
 ```
 cd repo
 ```
 
-7.	Initialize CDS 
+6.	Initialize CDS 
 ```
 cds init BpValidationMockS4
 ```
