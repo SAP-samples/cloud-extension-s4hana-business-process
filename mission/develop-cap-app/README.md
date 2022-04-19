@@ -63,17 +63,17 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
     
          
 
-   ii. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can find a tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
+   ii. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
    
-	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":""}}'
+	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
 	  cf service <HANA-cloud> --guid
-	  cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'  
+'  
    
             
    
    iii. In a next step, using the guid of your HANA service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
    
-     
+    cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
     cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
