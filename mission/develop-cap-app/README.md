@@ -22,7 +22,7 @@ In this how to guide, you will create a new CAP application in SAP Business Appl
 
      ![Create Dev Space](./images/dev-cap-app-3.png)
  
-5.	On the next screen, you will create the new Dev Space. For this enter a Dev space name e.g 'BusinessProcess', select the type *SAP Cloud Business Application*.
+5.	On the next screen, you will create the new Dev Space. For this enter a Dev space name e.g 'BusinessProcess', select the type *Full Stack Cloud Application*.
     Don´t forget to click on the button *Create Dev Space*
 
       ![Configure Dev Space](./images/dev-cap-app-4.png)
