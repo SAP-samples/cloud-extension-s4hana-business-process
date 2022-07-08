@@ -98,38 +98,14 @@ Set the Memory as 256MB. Don´t forget to save the file.
        cf p -f gen/srv --random-route
        ```
  
-15. Optional:
+15. The MTA deployment is described in the MTA Deployment Descriptor, a file called mta.yaml. As the first step, you let the CAP server generate an initial mta.yaml file.
        ```
        cds add mta
        ```
 > Hint: This step only needs to be executed in case you have created a new project. As we are using an existing project in this tutorial, you can skip this step as the mta file is already added
 <a name="launchpad"></a>
-16. There are *two* different options to run your created application. You can either deploy your application to SAP Launchpad Service(a) or run it locally on your machine(b)
-
-	a) In case you want to **deploy the application to the SAP Launchpad Service**, open the *mta.yaml* and remove the *BusinessPartnerValidation-ui* section in the code
-	
-	b) If you want to **run your application locally**, open the *mta.yaml* and remove the launchpad artifacts: *BusinessPartnerValidation-launchpad*, *BusinessPartnerValidation-app-content*, *comsapbpBusinessPartners*
+16. Next you will deploy your application to SAP Launchpad Service.
 
 
-### Test Your Application
-
-#### Test Application: option a) Deploy the application to the SAP Launchpad Service
-1. Go back to your SAP BTP Account
-2. Go to *Instances and Subscriptions*
-3. Find *Launchpad Service* and click to open the application
-4. In the Website Manager find your created Website and click on tile to open
 
 
-#### Test Application: option b) Run Application locally
-1. Go to the terminal and enter 
-      ```
-       mbt build -p=cf
-       cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
-       
-2. Start your app with the command
-      ```
-      cf apps
-      ```
-3. Open the URL of your deployed UI application
-
-> Hint: In futher steps of tutorial it is assumed the application is deployed on SAP Lauchpad Service like described in option a). 
