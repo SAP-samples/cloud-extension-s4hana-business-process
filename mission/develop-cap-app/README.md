@@ -104,7 +104,7 @@ Set the Memory as 256MB. Don´t forget to save the file.
        ```
 > Hint: This step only needs to be executed in case you have created a new project. As we are using an existing project in this tutorial, you can skip this step as the mta file is already added
 <a name="launchpad"></a>
-16. Next you will deploy your application to SAP Launchpad Service.
+
 
 
 
