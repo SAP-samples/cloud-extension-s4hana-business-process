@@ -14,15 +14,13 @@ The steps below will guide your through settting up your pipeline.
 
 2. Assign Role Collection
 
-- In your SAP BTP subaccount, choose Security -> Trust Configuration
-- Choose the name of your identity provider
-- Enter your email address
-- Choose Show Assignments
-- Choose Assign Role Collection
+- In your SAP BTP subaccount, choose Security -> Users
+- Choose the name of your identity provider and navigate into it.
+- Click on the three dots and choose *Assign Role Collection*
 
- ![assign role_collection](./images/cicd1-2.png)
+ ![choose create](./images/cicd1-2.png)
 
-- From the dropdown list, choose CICD Administrator
+- Search for CICD Administrator and add the role to your user
 
 3. Fork the GitHub repository
 
