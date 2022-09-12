@@ -60,6 +60,7 @@ The steps below will guide your through settting up your pipeline.
  
   Click on *create* to finish
   6.3 Back on the "Add repository" tab click on *add* button
+  
   6.4 Now your back at the *General Information* tab of the application. Here fill out the missing fields like followed:
   - Branch: master
   - Pipeline: SAP Cloud Application Programming Model
