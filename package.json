@@ -12,9 +12,9 @@
         "@sap/xsenv": "^3.1.1",
         "@sap/xssec": "^3.2.2",
         "express": "^4",
-        "grunt": "^1.1.0",
+        "grunt": "^1.5.3",
         "npm": "^8.11.0",
-        "passport": "^0.4.1",
+        "passport": "^0.6.0",
         "postcode-validator": "^3.1.1"
     },
     "engines": {
