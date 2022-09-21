@@ -50,8 +50,17 @@ The steps below will guide your through settting up your pipeline.
  - Credentials: Select *create credentials*
  
   ![add repositorys](./images/ci-cd-2.png)
- 
+  
  6.2 In the pop up add following data:
+ - Name: "cf"
+ - Username: add your global user name
+ - Password: enter global password
+ 
+   ![create credentials](./images/ci-cd-2.1.png)
+ 
+  Click on *create* to finish
+ 
+ 6.3 In the pop up add following data:
  - Name: "github"
  - Username: add your GitHub username/ id
  - Password: enter your GitHub access token 
@@ -59,23 +68,23 @@ The steps below will guide your through settting up your pipeline.
    ![create credentials](./images/ci-cd-3.png)
  
   Click on *create* to finish
-  6.3 Back on the "Add repository" tab click on *add* button
+  6.4 Back on the "Add repository" tab click on *add* button
   
-  6.4 Now your back at the *General Information* tab of the application. Here fill out the missing fields like followed:
+  6.5 Now your back at the *General Information* tab of the application. Here fill out the missing fields like followed:
   - Branch: master
   - Pipeline: SAP Cloud Application Programming Model
   
  ![add job](./images/ci-cd-4.png)
   
-  6.5 Scroll down to *Stages* - *Release* and switch the toggle on
+  6.6 Scroll down to *Stages* - *Release* and switch the toggle on
   - Switch on the toggle to deploy to cloud foundry
   - Now add credentials to your cf account
  
   ![deploy to cf](./images/ci-cd-5.png)
    
-  6.6 Click on *create* to finish and create job
+  6.7 Click on *create* to finish and create job
   
-  6.7 Switch to the *Repository tab* and click on your created repo
+  6.8 Switch to the *Repository tab* and click on your created repo
   - On the top right, click on the 3 dots and choose *webhook* data from the dropdown
   - Copy the data from the pop up
   
