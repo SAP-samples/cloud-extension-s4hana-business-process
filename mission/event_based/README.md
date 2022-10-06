@@ -1,7 +1,7 @@
 # Configure Event Based Communication Between SAP S/4HANA and SAP Event Mesh
 ## Introduction
 
-In this how to guide, you will establish a connection between your SAP S/4HANA on-Premise System and Event Mesh. This connection is needed to transport events from the SAP S/4HANA system to Event Mesh. 
+In this chapter you will establish a connection between your SAP S/4HANA on-Premise System and Event Mesh. This connection is needed to transport events from the SAP S/4HANA system to Event Mesh. 
 
 Additional documentation on configuring trust and creating the RFC destination can be found in the official guide:
  
