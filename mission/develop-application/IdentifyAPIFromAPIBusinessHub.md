@@ -2,7 +2,11 @@
 # Lookup API in API Business Hub
 
 ## Introduction
-You will look up the required API on API Business Hub and download its specification as an EDMX file. 
+For a start we will use a mock server to mimic the backend. This allows us to start developing our application without a fully configured and connected backend in place. Later on in this mission we will configure and use your SAP S/4HANA backend. 
+
+In order for this mock server to be able to expose the required Business Partner API we need to provide the API specification. This specification can be found in the SAP API Business Hub.
+
+So, as a preparation step, we will first Download the API Specification from API Business Hub.
 
 **Persona:** BTP Developer
 
