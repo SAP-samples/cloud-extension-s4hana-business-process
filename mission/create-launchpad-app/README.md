@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this section, the application will be connected to Central Fiori Launchpad
+In this section, the application will be connected to Central Fiori Launchpad to display the application from the launchpad
 
 **Persona:** BTP Developer
 
