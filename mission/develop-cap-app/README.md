@@ -4,7 +4,7 @@
 
 ## Introduction
 
-In this how to guide, you will create a new CAP application in SAP Business Application Studio and test your application.
+Now we will setup the SAP Business Application Studio and use it to develop our SAP Cloud Application Programming Model (CAP) application:
 
 **Persona:** BTP Developer
 
