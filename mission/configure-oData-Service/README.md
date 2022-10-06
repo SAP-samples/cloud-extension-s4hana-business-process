@@ -2,7 +2,14 @@
 
 ## Introduction
 
-We are going to activate our Business Partner OData service and create a technical user in our SAP S/4HANA back-end system.
+We will now switch over to the SAP S/4HANA on premise backend system and enable the OData service we are going to use. Using in this case means that we will replace the mock service in our application with it later on.
+
+Follow these three steps for configuring the OData service in the S/4HANA on premise system: 
+
+1. Activate OData Service in SAP S/4HANA on premise backend system
+2. Create a technical user which can access the OData service in the S/4HANA on premise system.
+3. Test your OData Service
+
 
 **Persona:** SAP S/4HANA Admin
 
