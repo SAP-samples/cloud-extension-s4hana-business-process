@@ -40,9 +40,9 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
    cd projects
    ``` 
  
-9.	 Then clone the project from your personal GitHub and enter username and token to execute the command: 
+9.	 Then clone the project from GitHub: 
    ``` 
-   git clone <YourPersonalGitHub>
+   git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
    ``` 
  
 10.	Click on *File* in the menu on the top and choose *Open Workspace* in the drop-down.
@@ -56,23 +56,25 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
      
    i. First you need to login. You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section:
  
-    
+    ``` 
     cf api <api endpoint>
     cf login -u <user id> -p <password>
     cf target -o org -s space
-    
+    ``` 
          
 
    ii. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
    
+    ``` 
 	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
 	  cf service <HANA-cloud> --guid
-
+    ``` 
    
             
    
    iii. In a next step, using the guid of your HANA service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
-   
+
+    ```    
     cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'
     cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
     cf cs destination lite BusinessPartnerValidation-dest
@@ -80,7 +82,7 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
     cf cs connectivity lite BusinessPartnerValidation-cs
     cf cs application-logs lite BusinessPartnerValidation-logs
     cds build --production
-               
+    ```          
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
 

@@ -1,27 +1,40 @@
-# Develop Application in a nutshell with mock SAP S/4HANA Service
+# Develop Demo Application  with mock SAP S/4HANA Service
 
 ## Introduction
-You will now develop a CAP application in a nutshell using Visual Studio Code. In a later step you will then replace your code in GitHub with the reference application code.
-
+You will now develop a CAP application using Visual Studio Code. 
 **Persona:** BTP Developer
 
+### Set up Node
+
+1.	Open link: 'https://nodejs.org/en/'
+2.	Choose and download the recommended version for most users
+3.	Follow the instructions to install node
+
+### Prepare your local development environment
+
+1.	Open Visual Studio Code	
+2.	Click on *Terminal* and choose *New Terminal* in the dropdown menu
+	
+   ![New Terminal](././images/develop-application-1a.png)
+
+3.	Install cds with the command: 
+
+```
+npm i -g @sap/cds-dk
+```
+
+4.	Initialize CDS 
+```
+cds init BpValidationMockS4
+```
 
 ### Develop application against Mock API
 
-1. Open Visual Studio Code
-2. Click on *File* and choose *Add Folder to Workspace* in the dropdown menu
+1. In VS Code choose *File* and choose *Add Folder to Workspace* in the dropdown menu
 
       ![Add folder to Workspace](./images/develop-app-1.png)
-      
-3. Add the folder you have cloned in the previous part of the tutorial
-   
-3. Open a *terminal* and change to the right directory by executing the command 
-```
-cd BpValidationMockS4
 
-```
-
-4. Execute the command 
+2. Execute the command 
 ```
 cds import API_BUSINESS_PARTNER.edmx
 ```
@@ -30,19 +43,19 @@ Hint: make sure the EDMX file is in your folder or provide the path to the EDMX 
 
 ![Import Business Partners](./images/develop-app-2.png)
 
-5. Navigate to the *srv/external* folder in the explorer and click right to open the dropdown and choose *New Folder*
+3. Navigate to the *srv/external* folder in the explorer and click right to open the dropdown and choose *New Folder*
 
 ![Create new Folder](./images/develop-app-3.png)
 
-6. Name your created folder 'data'
+4. Name your created folder 'data'
 
-7. Now click right on your created data folder and choose *New File* in the dropdown
+5. Now click right on your created data folder and choose *New File* in the dropdown
 
 ![Create new File](./images/develop-app-4.png)
 
-8. Name your created file 'API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv'
+6. Name your created file 'API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv'
 
-9. Now open the file and copy the text on the right into the file:
+7. Now open the file and copy the text on the right into the file:
 
  ```
  BusinessPartner,AddressID,StreetName,CityName,Country,postalCode 
@@ -53,46 +66,27 @@ Hint: make sure the EDMX file is in your folder or provide the path to the EDMX 
 
 ```
 
+8.	Save the file
 
-10.	Save the file
-
-11.	Open the terminal again, and execute
+9.	Open the terminal again, and execute
 ```npm install --save sqlite3```
 
-12. Use cds watch to start a cds server
+10. Use cds watch to start a cds server
 
 ```
 cds watch
 ```
 ![CDS watch](./images/develop-app-5.png)
 
-13.	Click link to open the port in the browser (or copy it into the browser's address bar)
+11.	Click link to open the port in the browser (or copy it into the browser's address bar)
 
 ![Open Link](./images/develop-app-6.png)
 
-
-14.	In the *browser* click on A_BusinessPartnerAddress to view the address
+12.	In the *browser* click on A_BusinessPartnerAddress to view the address
 
 ![View address](./images/develop-app-7.png)
 
-### Switch to Reference Coding for Mock API app
  
-1.	Go back to *Visual Studio Code* and open the terminal (go to the workplace, right click and select Open Integrated Terminal)
 
-2.	To replace your code with reference application code clone the code from our reference application GitHub https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
-
-```
-git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
-```
-
-Then copy everything in the directory created (cloud-extension-s4hana-business-process) over to your directory (BpValidationMockS4), replacing the original content.
-
-3.	In a next step update your GitHub repository with the reference application that you have copied over. 
-
-``` 
-git add .
-git commit -m '<comments>'
-git push
-```
 
 
