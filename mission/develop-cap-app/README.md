@@ -1,5 +1,6 @@
 
 
+
 # Develop SAP Cloud Application Programming Model Application
 
 ## Introduction
@@ -40,7 +41,7 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
    cd projects
    ``` 
  
-9.	 Then clone the project from GitHub: 
+9.	 Then clone the project from your personal GitHub and enter username and token to execute the command: 
    ``` 
    git clone https://github.com/SAP-samples/cloud-extension-s4hana-business-process.git
    ``` 
@@ -49,63 +50,155 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
 
     ![Open Workspace](./images/dev-cap-app-7.png)
  
-11.	Open the project by selecting projects -> cloud-extension-s4hana-business-process and click on *Open*
-
+11.	 Open the project by selecting projects -> cloud-extension-s4hana-business-process and click on *Open*
  
-12.   For the next steps, you need the terminal again. Go to *Terminal* -> *New Terminal*
+12. For the next steps, you need the terminal again. Go to *Terminal* -> *New Terminal*
      
-   i. First you need to login. You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section:
+13. First you need to [login](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/7a37d66c2e7d401db4980db0cd74aa6b.html):
+> You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section
  
-    ``` 
+  ``` 
     cf api <api endpoint>
     cf login -u <user id> -p <password>
     cf target -o org -s space
-    ``` 
+  ```
          
 
-   ii. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
-   
-    ``` 
-	  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
-	  cf service <HANA-cloud> --guid
-    ``` 
-   
-            
-   
-   iii. In a next step, using the guid of your HANA service, you will create a number of services. You will do this executing the Cloud Foundry Create Service command(cs).
+14. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/viewer/db19c7071e5f4101837e23f06e576495/2020_03_QRC/en-US/921f3e46247947779d69b8c85c9b9985.html).
 
-    ```    
-    cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'
-    cf cs enterprise-messaging default BusinessPartnerValidation-ems -c em.json
-    cf cs destination lite BusinessPartnerValidation-dest
-    cf cs xsuaa application BusinessPartnerValidation-xsuaa -c xs-security.json
-    cf cs connectivity lite BusinessPartnerValidation-cs
-    cf cs application-logs lite BusinessPartnerValidation-logs
-    cds build --production
-    ```          
+ ```
+  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
+  cf service <HANA-cloud> --guid
+ ```
+ 
+15. In a next step, using the guid of your HANA service, you will create an hana instance
+
+  ```  
+  cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'
+  ``` 
+  
+16. Use "cds build" to build tasks on your project folders to prepare them for deployment.
+
+  ```
+  cds build --production
+  ``` 
+  
+17. Install cf CLI plugin to create services specified from a services manifest.yml file 
+
+  ```	
+  cf install-plugin Create-Service-Push
+  ``` 
+  
+18.  Go to gen/srv
+    
+    
+20.  Now you will use manifest file to build services in your application. Modify manifest.yml as below:
+
+ ```
+---
+applications:
+# -----------------------------------------------------------------------------------
+# Backend Service
+# -----------------------------------------------------------------------------------
+- name: BusinessPartnerValidation-srv
+  random-route: true  # for development only
+  path: gen/srv
+  memory: 256M
+  buildpack: nodejs_buildpack
+  services:
+  - BusinessPartnerValidation-db
+  - BusinessPartnerValidation-xsuaa
+  - BusinessPartnerValidation-ems
+  - BusinessPartnerValidation-dest
+  - BusinessPartnerValidation-cs
+
+# -----------------------------------------------------------------------------------
+# HANA Database Content Deployer App
+# -----------------------------------------------------------------------------------
+- name: BusinessPartnerValidation-db-deployer
+  path: gen/db
+  no-route: true
+  health-check-type: process
+  memory: 256M
+  instances: 1
+  buildpack: nodejs_buildpack
+  services:
+  - BusinessPartnerValidation-db
+
+```
+
+21. Also, modify services-manifest.yml as below:
+
+```
+---
+create-services:
+# ------------------------------------------------------------
+  - name:   BusinessPartnerValidation-db
+    broker: hana  # 'hanatrial' on trial landscapes
+    plan: "hdi-shared"
+# ------------------------------------------------------------
+  - name:   BusinessPartnerValidation-xsuaa
+    broker: xsuaa
+    plan: application
+    parameters: "./xs-security.json"
+# ------------------------------------------------------------
+  - name:   BusinessPartnerValidation-ems
+    broker: enterprise-messaging
+    plan: default
+    parameters: "./em.json"
+# ------------------------------------------------------------
+  - name:   BusinessPartnerValidation-dest
+    broker: destination
+    plan: lite
+# ------------------------------------------------------------
+  - name:   BusinessPartnerValidation-cs
+    broker: connectivity
+    plan: lite
+```
+
+ 22. Now use the installed plugin to create services
+ 
+```
+  cf create-service-push
+```
+
+ 23. Use terminal to create service key
+ 
+ ```
+  cf create-service-key BusinessPartnerValidation-ems emkey
+```   
+               
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
+24. Go back to project directory using command
 
-13.	 Open the manifest.yml file and gen/srv folder and add your service names / replace existing ones with your services: ems, dest, xsuaa, db, cs and logs. 
-Set the Memory as 256MB. Don´t forget to save the file.
-
-> Hint: to make sure that the services names match, execute the CF command *CF services* which lists the services you have created including their names.
-
- ![Edit manifest](./images/dev-cap-app-12.png)
+```
+  cd ..
+```
  
-14.	Go back to the terminal and run following commands:
+25.	Run following commands:
 
-       ```
-       cf p -f gen/db
-       cf p -f gen/srv --random-route
-       ```
+   ```
+    cf p -f gen/db
+    cf p -f gen/srv --random-route
+   ```
  
-15. The MTA deployment is described in the MTA Deployment Descriptor, a file called mta.yaml. As the first step, you let the CAP server generate an initial mta.yaml file.
-       ```
-       cds add mta
-       ```
+26. The MTA deployment is described in the MTA Deployment Descriptor, a file called mta.yaml. As the first step, you let the CAP server generate an initial mta.yaml file.
+
+     ```
+     cds add mta
+     ```
 > Hint: This step only needs to be executed in case you have created a new project. As we are using an existing project in this tutorial, you can skip this step as the mta file is already added
 <a name="launchpad"></a>
+	
+	
+### Test Your Application
+
+Deploy the application to the SAP Launchpad Service
+1. Go back to your SAP BTP Account
+2. Go to *Instances and Subscriptions*
+3. Find *Launchpad Service* and click to open the application
+4. In the Website Manager find your created Website and click on tile to open
 
 
 
