@@ -6,7 +6,7 @@ You will now develop a CAP application using Visual Studio Code.
 
 ### Set up Node
 
-1.	Open link: 'https://nodejs.org/en/'
+1.	Open link to [download node](https://nodejs.org/en/)
 2.	Choose and download the recommended version for most users
 3.	Follow the instructions to install node
 
