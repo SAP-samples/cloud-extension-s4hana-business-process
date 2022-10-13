@@ -13,7 +13,7 @@ So, as a preparation step, we will first Download the API Specification from API
 
 ### Find and download API
 
-1. Open http://api.sap.com
+1. Open [SAP API Business Hub](http://api.sap.com)
 2. Enter Business Partner in the Search Tab. 
 3. Click on the Search Button
 4. Click on Business Partner (A2X)
