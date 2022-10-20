@@ -9,6 +9,7 @@ You will now develop a CAP application using Visual Studio Code.
 1.	Open link to [download node](https://nodejs.org/en/)
 2.	Choose and download the recommended version for most users
 3.	Follow the instructions to install node
+> Hint: If you are using a Mac its recommened to install node via Homebrew using command 'brew install node' 
 
 ### Prepare your local development environment
 
