@@ -58,34 +58,18 @@ cds import API_BUSINESS_PARTNER.edmx
 
 7. Now open the file and copy the example address data into the empty file:
 
- ```
- BusinessPartner,AddressID,StreetName,CityName,Country,postalCode 
+``` 
+BusinessPartner,AddressID,StreetName,CityName,Country,postalCode 
 
 "17100001","124462","Dietmar-Hopp-Allee 162","Walldorf","DE","12345" 
 
 "17100005","124465","whitefield 162","Bangalore","IN","560066“
 
-```
+``` 
 
 8. **Save** the file
 
-9. Open the terminal again, and execute
-```npm install --save sqlite3```
 
-10. Use cds watch to start a cds server
-
-```
-cds watch
-```
-![CDS watch](./images/develop-app-5.png)
-
-11. Choose link to open the port in the browser (or copy it into the browser's address bar)
-
-![Open Link](./images/develop-app-6.png)
-
-12. In the browser, choose **A_BusinessPartnerAddress** to view the address data from application
-
-![View address](./images/develop-app-7.png)
 
  
 
