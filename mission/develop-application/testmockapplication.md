@@ -16,14 +16,12 @@ npm install
 CDS watch
  ```
  
-2.	Either click on the http://localhost:4004 link or copy the URL to your browser and execute it.
+ ![CDS watch](./images/develop-app-5.png)
+ 
+2. Choose link to open the port in the browser (or copy it into the browser's address bar)
 
-3. Click on the WebApp that is displayed almost on top of the list:
+![Open Link](./images/develop-app-6.png)
 
-/BusinessPartners/webapp/index.html
+3. In the browser, choose **A_BusinessPartnerAddress** to view the address data from application
 
-   ![CDS Services](././images/CDSServices.png)
-
-4. You will now see the WebApp started up and can play around with it.
-
-   ![App](././images/App.png)
+![View address](./images/develop-app-7.png)
