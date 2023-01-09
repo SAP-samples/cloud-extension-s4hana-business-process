@@ -22,7 +22,9 @@
     },
     "scripts": {
         "start": "npx cds run",
-        "test": "mocha tests/chai-test.js --timeout 15000 --exit"
+        "test": "npm install sqlite3 --save-dev && npm run test:unit",
+        "test:unit": "jest tests/unit/BPValidation.test.js",
+        "test:legacy": "mocha tests/chai-test.js --timeout 15000 --exit"
     },
     "devDependencies": {
         "axios": "^0.21.1",
