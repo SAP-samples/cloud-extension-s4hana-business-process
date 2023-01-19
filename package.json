@@ -35,7 +35,6 @@
     },
     "cds": {
         "features": {
-            "fetch_csrf": true,
             "kibana_formatter": true
         },
         "hana": {
@@ -65,6 +64,8 @@
             "API_BUSINESS_PARTNER": {
                 "kind": "odata-v2",
                 "model": "srv/external/API_BUSINESS_PARTNER",
+                "csrf": true,
+                "csrfInBatch": true,
                 "[production]": {
                     "credentials": {
                         "destination": "bupa",
