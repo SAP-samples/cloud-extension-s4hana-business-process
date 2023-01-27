@@ -26,5 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
-    - run: npm install sqlite3 --save-dev
-    - run: npm test
+    - run: npm install sqlite3
+    - run: npm run-script test:unit
+    - run: npm run-script test:integration
