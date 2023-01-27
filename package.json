@@ -4,10 +4,10 @@
     "description": "A simple CAP project.",
     "license": "ISC",
     "dependencies": {
-        "@sap/cds": "6.0.4",
-        "@sap/hana-client": "^2.4.182",
         "@sap-cloud-sdk/http-client": "^2.6.0",
         "@sap-cloud-sdk/util": "^2.6.0",
+        "@sap/cds": "6.0.4",
+        "@sap/hana-client": "^2.4.182",
         "@sap/xb-msg-amqp-v100": "^0.9.39",
         "@sap/xsenv": "^3.1.1",
         "@sap/xssec": "^3.2.15",
@@ -22,8 +22,9 @@
     },
     "scripts": {
         "start": "npx cds run",
-        "test": "npm install sqlite3 --save-dev && npm run test:integration",
+        "test": "npm install sqlite3 && npm run test:integration",
         "test:integration": "jest tests/integration/BPValidation.test.js",
+        "test:unit": "jest tests/unit/service.test.js",
         "test:legacy": "mocha tests/chai-test.js --timeout 15000 --exit"
     },
     "devDependencies": {
