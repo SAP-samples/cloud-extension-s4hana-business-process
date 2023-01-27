@@ -1,13 +1,12 @@
 const cds = require('@sap/cds');
 const { expect } = require('chai');
-const {GET, POST, PATCH, DELETE} = cds.test('serve', '--in-memory', '--with-mocks').in(__dirname + '/../../').verbose(false)
+const {GET, POST, PATCH, DELETE} = cds.test('serve', '--in-memory', '--with-mocks').in(__dirname + '/../../')//.verbose(true)
 
 const basicAuth = {
     "headers": {
         "Authorization": `Basic ${Buffer.from("admin:admin").toString('base64')}`
     }
 }
-
 describe("Sanity Test", ()=> {
 
     describe('GET /sales/Notifications', () => {
@@ -64,7 +63,7 @@ describe("Business Partner Validation", () => {
 
         it("+ Patch the chanages", async () => {
             const response = await PATCH(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)`, 
-                            {"verificationStatus_code": "P"}, basicAuth)
+                            {"verificationStatus_code": "V"}, basicAuth)
             expect(response.status).to.eql(200)
         })
 
@@ -75,7 +74,7 @@ describe("Business Partner Validation", () => {
         })
 
         it("+ Activate the draft", async () => {
-            const response = await POST(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate`,
+            const response = await POST(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftIsCreatedByMe,DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
                             {}, basicAuth)
             expect(response.status).to.eql(201)
         })
@@ -83,7 +82,7 @@ describe("Business Partner Validation", () => {
         it("+ Test the verfication status", async () => {
             const response = await GET(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`, basicAuth)
             expect(response.status).to.eql(200)
-            expect(response.data).to.deep.contains({"verificationStatus_code": "P"})
+            expect(response.data).to.deep.contains({"verificationStatus_code": "C"})
         })
 
         it("- Delete the Notification", async () => {
