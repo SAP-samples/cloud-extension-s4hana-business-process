@@ -78,18 +78,24 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
 
   ```
   cds build --production
-  ``` 
+  ```
   
-17. Install cf CLI plugin to create services specified from a services manifest.yml file 
+17. Create manifest.yaml and services-manifest.yaml file
+
+   ```
+   cds add cf-manifest
+   ```
+  
+18. Install cf CLI plugin to create services specified from a services manifest.yml file 
 
   ```	
   cf install-plugin Create-Service-Push
   ``` 
   
-18.  Go to gen/srv
+20.  Go to gen/srv
     
     
-20.  Now you will use manifest file to build services in your application. Modify manifest.yml as below:
+21.  Now you will use manifest file to build services in your application. Modify manifest.yml as below:
 
  ```
 ---
@@ -124,7 +130,7 @@ applications:
 
 ```
 
-21. Also, modify services-manifest.yml as below:
+22. Also, modify services-manifest.yml as below:
 
 ```
 ---
@@ -153,13 +159,13 @@ create-services:
     plan: lite
 ```
 
- 22. Now use the installed plugin to create services
+ 23. Now use the installed plugin to create services
  
 ```
   cf create-service-push
 ```
 
- 23. Use terminal to create service key
+ 24. Use terminal to create service key
  
  ```
   cf create-service-key BusinessPartnerValidation-ems emkey
@@ -167,18 +173,11 @@ create-services:
                
 > HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
 
-24. Go back to project directory using command
+25. Go back to project directory using command
 
 ```
   cd ..
 ```
- 
-25.	Run following commands:
-
-   ```
-    cf p -f gen/db
-    cf p -f gen/srv --random-route
-   ```
  
 26. The MTA deployment is described in the MTA Deployment Descriptor, a file called mta.yaml. As the first step, you let the CAP server generate an initial mta.yaml file.
 
