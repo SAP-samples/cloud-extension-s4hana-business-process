@@ -51,51 +51,55 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
  
 12. For the next steps, you need the terminal again. Go to *Terminal* -> *New Terminal*
      
-13. First you need to [login](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/7a37d66c2e7d401db4980db0cd74aa6b.html):
-> You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section
+13. First you need to [login] into your subaccount(https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/7a37d66c2e7d401db4980db0cd74aa6b.html):
+> Hint: You can find the API Endpoint of your Subaccount in the BTP Cockpit-Overview section
+ // Bild
  
   ``` 
-    cf api <api endpoint>
-    cf login -u <user id> -p <password>
-    cf target -o org -s space
+    cf api <API-ENDPOINT>
+    cf login -u <USER-ID> -p <PASSWORD>
+    cf target -o <ORG> -s <SPACE>
   ```
          
 
-14. Then you will get the guid of your SAP HANA Cloud. Please note that, in case that you do not have a SAP HANA Cloud in your SAP BTP environment yet, you will have to create one. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/docs/HANA_CLOUD/db19c7071e5f4101837e23f06e576495/03982b3b93664f089b084713285e3c81.html?locale=en-US&state=DRAFT&version=2020_04_QRC).
+14. In a next step you will create SAP HANA Cloud instance. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/docs/HANA_CLOUD/db19c7071e5f4101837e23f06e576495/03982b3b93664f089b084713285e3c81.html?locale=en-US&state=DRAFT&version=2020_04_QRC).
 
  ```
-  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<password>"}}'
-  cf service <HANA-cloud> --guid
+  cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<PASSWORD>"}}'
  ```
- 
-15. In a next step, using the guid of your HANA service, you will create an hana instance
+ > Hint: Make sure you save this password for later
+ > Hint: The creation of HANA Cloud will take some time use command "cf services" to monitor the current creation status
+
+15. After your SAP HANA Cloud instance is created you can use the following command to get the globally unique identifier (GUID)
+  ``` 
+   cf service <HANA-INSTANCE-NAME> --guid
+  ``` 
+
+16. In a next step, using the guid of your HANA instance you will create a service called BusinessPartnerValidation-db
 
   ```  
-  cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<guid of HANA cloud>"}'
+  cf create-service hana hdi-shared BusinessPartnerValidation-db -c '{"database_id" :"<HANA-CLOUD-GUID>"}'
   ``` 
   
-16. Use "cds build" to build tasks on your project folders to prepare them for deployment.
+17. Use ["cds build"](https://cap.cloud.sap/docs/guides/deployment/custom-builds) to build tasks on your project folders to prepare them for deployment.
 
   ```
   cds build --production
   ```
   
-17. Create manifest.yaml and services-manifest.yaml file
+18. Create manifest.yaml and services-manifest.yaml file
 
    ```
    cds add cf-manifest
    ```
   
-18. Install cf CLI plugin to create services specified from a services manifest.yml file 
+19. Install a [cf CLI plugin](https://github.com/dawu415/CF-CLI-Create-Service-Push-Plugin) which creates services specified from a services manifest.yml file 
 
   ```	
   cf install-plugin Create-Service-Push
-  ``` 
-  
-20.  Go to gen/srv
+  ```   
     
-    
-21.  Now you will use manifest file to build services in your application. Modify manifest.yml as below:
+20.  Now you will use manifest file to build services in your application. You want to create 5 different services for Business Partner Validation. To build the services modify manifest.yml as below:
 
  ```
 ---
@@ -159,39 +163,25 @@ create-services:
     plan: lite
 ```
 
- 23. Now use the installed plugin to create services
+ 21. Now use the installed plugin to create services: DB, XSUAA, Event Mesh, Destination and Connectivity
  
 ```
   cf create-service-push
 ```
 
- 24. Use terminal to create service key
+ 22. Use terminal to create service key
  
  ```
   cf create-service-key BusinessPartnerValidation-ems emkey
 ```   
-               
-> HINT: there is an additional way of deployment - either execute the steps before or the two below to achieve the same result: Run *mbt build -p=cf* followed by cf *deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar*
-
-25. Go back to project directory using command
-
+ 23. 
 ```
-  cd ..
+ mbt build -p=cf 
 ```
+
+ 24. Navigate to mta_archives folder and run the below command from CLI
  
-26. The MTA deployment is described in the MTA Deployment Descriptor, a file called mta.yaml. As the first step, you let the CAP server generate an initial mta.yaml file.
-
-     ```
-     cds add mta
-     ```
-> Hint: This step only needs to be executed in case you have created a new project. As we are using an existing project in this tutorial, you can skip this step as the mta file is already added
-<a name="launchpad"></a>
-	
-	
-### Test Your Application
-
-Deploy the application to the SAP Launchpad Service
-1. Go back to your SAP BTP Account
-2. Go to *Instances and Subscriptions*
-3. Find *Launchpad Service* and click to open the application
-4. In the Website Manager find your created Website and click on tile to open
+  ```
+  deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
+  ``` 
+               
