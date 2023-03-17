@@ -5,10 +5,10 @@ Now it is time to test your basic scenario. As a result of the following steps y
 
 **Persona:** SAP BTP Developer
 
-### Start Application in SAP Launchpad Service 
+### Start Application in SAP Build Work Zone, standard edition
 
 1. Go to *Instances and Subscriptions*
-2. Find *Launchpad Service* and click to open the application
+2. Find *SAP Build Work Zone, standard edition* and click to open the application
 3. In the Website Manager find your created Website and click on tile to open
 
 ### Test the Application

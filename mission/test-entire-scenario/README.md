@@ -2,7 +2,7 @@
 1. Start your Business Partner Validation Application
 
 - Go to *Instances and Subscriptions*
-- Find *Launchpad Service* and click to open the application
+- Find *SAP Build Work Zone, standard edition* and click to open the application
 - In the Website Manager find your created Website and click on tile to open
 - Click on Business Partner Validation tile
 - The list of BusinessPartners along with their verification status gets displayed
