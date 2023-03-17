@@ -12,8 +12,10 @@ Now we run a unit test to ensure that all the components of a system are working
 
 3. Open the terminal and run the following test script
 
-'''
+
+```
 npm run test:integration
-'''
+
+```
 
 ![Integration Test](./images/integration-test-1.png)
