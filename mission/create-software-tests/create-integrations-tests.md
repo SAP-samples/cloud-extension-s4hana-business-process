@@ -16,4 +16,4 @@ Now we run a unit test to ensure that all the components of a system are working
 npm run test:integration
 '''
 
-![Integration Test](./images/integration-test-1)
+![Integration Test](./images/integration-test-1.png)
