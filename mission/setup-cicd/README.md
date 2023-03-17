@@ -14,9 +14,9 @@ The steps below will guide your through setting up your pipeline.
 
 3. Open Continuous Integration & Delivery application
 
-- Click on **Service Marketplace** or **Instances and Subscriptions**
+- Choose **Services** &rarr; **Instances and Subscriptions**
 - Find **Continuous Integration & Delivery** 
-- Click on “Go to application”
+- Click on name to open the application
 
  ![configure pipeline](./images/cicd2.png)
  
