@@ -14,9 +14,11 @@ Now we run a unit test to ensure individual units of the code are working as exp
 
 3. Open the terminal and run the following test script
 
-'''
+
+```
 npm run test:unit
-'''
+
+```
 
 ![Unit Tests](./images/unit-test-1.png)
 
