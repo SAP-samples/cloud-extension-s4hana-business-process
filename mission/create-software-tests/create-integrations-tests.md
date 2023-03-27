@@ -16,7 +16,7 @@ Now we run a unit test to ensure that all the components of a system are working
 
 3. After the service is launched, you can access and test all the service APIs in your application. First it executes a sanity check. A sanity check is a basic level of testing that ensures that the fundamental features of the software application are working as expected before proceeding with more extensive testing.
 
-4. , it is tested if the application can access the APIs for returning notifications as well as for Business Partners
+4. Frist, it is tested if the application can access the APIs for returning notifications as well as for Business Partners
 
 ![Integration Test](./images/integration-test-3.png)
 
