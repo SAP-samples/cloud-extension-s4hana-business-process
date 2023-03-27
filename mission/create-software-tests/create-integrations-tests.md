@@ -6,6 +6,7 @@ Now we run a unit test to ensure that all the components of a system are working
 
 **Persona:** BTP Developer
 
+
 ### Understand the Test Case
 
 1. First you need to write the integration Test. In this exercise there is already a pre prepared integration test created in [GitHub](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/main/tests/integration/BPValidation.test.js). In case you have not cloned the repository in an earlier step, copy the files to your created repository.
@@ -37,3 +38,4 @@ npm run test:integration
 ```
 
 ![Integration Test](./images/integration-test-1.png)
+

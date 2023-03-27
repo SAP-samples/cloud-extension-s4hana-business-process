@@ -29,7 +29,6 @@ Now we run a unit test to ensure that individual units of the code are working a
 
 2. Open the terminal and run the following test script
 
-
 ```
 npm run test:unit
 
