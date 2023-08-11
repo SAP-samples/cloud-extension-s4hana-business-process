@@ -61,7 +61,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 ## Configuration
 
 
-### Step 1: [Identify API in API Business Hub](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/IdentifyAPIFromAPIBusinessHub.md)
+### Step 1: [Identify API in Business Accelerator Hub](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/IdentifyAPIFromAPIBusinessHub.md)
 
 ### Step 2: [Prepare the local development environment](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/Jumpstart%20Dev%20Environment.md)
 ### Step 3: [Use Visual Studio to create a nutshell application using an SAP S/4HANA mock service ](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/README.md)
