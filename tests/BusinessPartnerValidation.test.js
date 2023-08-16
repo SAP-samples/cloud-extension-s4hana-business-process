@@ -11,7 +11,7 @@ describe('BusinessPartnerValidation: Odata Protocol level testing', () => {
 
     it('Service $metadata document', async () => {
         const response = await request
-            .get('/sales/$metadata')
+            .get('/odata/v4/sales/$metadata')
             .expect('Content-Type', /^application\/xml/)
             .expect(200)
     });

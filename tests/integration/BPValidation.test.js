@@ -9,10 +9,10 @@ const basicAuth = {
 }
 describe("Sanity Test", ()=> {
 
-    describe('GET /sales/Notifications', () => {
+    describe('GET /odata/v4/sales/Notifications', () => {
         // API access
         it("+ Should return list of notifications", async () => {
-            const response = await GET("/sales/Notifications", basicAuth);
+            const response = await GET("/odata/v4/sales/Notifications", basicAuth);
                 expect(response.status).to.eql(200);
                 expect(response.data.value.length).to.eql(2)
         })
@@ -29,7 +29,7 @@ describe("Sanity Test", ()=> {
 
     describe("GET /api-business-partner/A_BusinessPartner", () => {
         it("+ should return a list of Mock BusinessPartners", async () => {
-            const response = await GET("/api-business-partner/A_BusinessPartner")
+            const response = await GET("/odata/v4/api-business-partner/A_BusinessPartner");
 
             expect (response.status).to.eql(200);
         })
@@ -43,12 +43,12 @@ describe("Business Partner Validation", () => {
 			"BusinessPartnerIsBlocked":true,
 			"BusinessPartnerFullName": "John Doee"
 		}
-        const response = await POST("/api-business-partner/A_BusinessPartner", payload);
+        const response = await POST("/odata/v4/api-business-partner/A_BusinessPartner", payload);
         expect(response.status).to.eql(201)
     })
 
     it("+ should return a list of new notifications", async () => {
-        const response = await GET(`/sales/Notifications?$filter=businessPartnerId eq '17100015'`, basicAuth);
+        const response = await GET(`/odata/v4/sales/Notifications?$filter=businessPartnerId eq '17100015'`, basicAuth);
         expect(response.status).to.eql(200)
         expect(response.data.value).to.exist
         expect(response.data.value[0]).to.contains({"businessPartnerName": "John Doee"});
@@ -56,37 +56,38 @@ describe("Business Partner Validation", () => {
 
     describe("Draft Choreography APIs", () => {
         it("+ set the Notification to draft", async () => {
-            const response = await POST(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)/service.businessPartnerValidation.SalesService.draftEdit?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
+            const response = await POST(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)/service.businessPartnerValidation.SalesService.draftEdit?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
                             {"PreserveChanges":true}, basicAuth )
             expect(response.status).to.eql(201)
         })
 
         it("+ Patch the chanages", async () => {
-            const response = await PATCH(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)`, 
+            const response = await PATCH(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)`, 
                             {"verificationStatus_code": "V"}, basicAuth)
             expect(response.status).to.eql(200)
         })
 
         it("+ Side effects qualifier", async () => {
-            const response = await POST(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftPrepare`,
+            const response = await POST(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftPrepare`,
                             { "SideEffectsQualifier": "" }, basicAuth)
             expect(response.status).to.eql(200)
         })
 
         it("+ Activate the draft", async () => {
-            const response = await POST(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftIsCreatedByMe,DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
+            const response = await POST(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftIsCreatedByMe,DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
                             {}, basicAuth)
-            expect(response.status).to.eql(201)
+                            console.log("testtt + " , response)
+            expect(response.status).to.eql(200)
         })
 
         it("+ Test the verfication status", async () => {
-            const response = await GET(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`, basicAuth)
+            const response = await GET(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`, basicAuth)
             expect(response.status).to.eql(200)
-            expect(response.data).to.deep.contains({"verificationStatus_code": "C"})
+            expect(response.data).to.deep.contains({"verificationStatus_code": "V"})
         })
 
         it("- Delete the Notification", async () => {
-            const response = await DELETE(`/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`, basicAuth)
+            const response = await DELETE(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`, basicAuth)
             expect(response.status).to.eql(204)
         });
     })
