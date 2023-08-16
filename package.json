@@ -68,7 +68,7 @@
                 "csrfInBatch": true,
                 "[production]": {
                     "credentials": {
-                        "destination": "bupa-mock",
+                        "destination": "bupa",
                         "requestTimeout": 18000000
                     }
                 }
