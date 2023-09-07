@@ -174,7 +174,8 @@ create-services:
  ```
   cf create-service-key BusinessPartnerValidation-ems emkey
 ```   
- 23. 
+ 23. Generate the MTAR file. Alternatively, you can also right-click on mta.yaml file in the Explorer view and select Build MTA Project to build the project.
+
 ```
  mbt build -p=cf 
 ```
