@@ -60,22 +60,56 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 
 ## Configuration
 
+### DEVELOP DEMO APP (OPTIONAL)
 
-### Step 1: [Identify API in Business Accelerator Hub](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/IdentifyAPIFromAPIBusinessHub.md)
+1. [Identify API in Business Accelerator Hub](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/IdentifyAPIFromAPIBusinessHub.md)
 
-### Step 2: [Prepare the local development environment](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/Jumpstart%20Dev%20Environment.md)
-### Step 3: [Use Visual Studio to create a nutshell application using an SAP S/4HANA mock service ](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/README.md)
-### Step 4: [Test your application against the SAP S/4HANA Mock Service](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/testmockapplication.md)
+2. [Develop Demo Application with Mock SAP S/4HANA Service](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/README.md)
 
-### Step 5: [Configure OData Service in S/4HANA System](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/configure-oData-Service/README.md)
-### Step 6: [Configure BTP Environment](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/Booster.md)
-### Step 7: [Configure Event Based Communication between S/4HANA and Event Mesh](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/event_based/README.md)
-### Step 8: [Configure Business Application Studio and develop Cloud Application Programming Model application](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-cap-app/README.md)
-### Step 9: [Connect S/4HANA system using Cloud Connector](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/cloud-connector/README.md)
-### Step 10: [Test scenario](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/testbasicscenario/README.md)
+3. [Test your application against the SAP S/4HANA Mock Service](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-application/testmockapplication.md)
+
+### OPTION 1 - DEVELOP APPLICATION WITH SAP S/4HANA
+
+1. [Configure OData Service in S/4HANA System](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/configure-oData-Service/README.md)
+
+2. [Configure BTP Environment](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/Booster.md)
+
+3. [Configure Business Application Studio and develop Cloud Application Programming Model application](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-cap-app/README.md)
+
+4. [Configure Event Based Communication between S/4HANA and Event Mesh](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/event_based/README.md)
+
+5. [Connect S/4HANA system using Cloud Connector](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/cloud-connector/README.md)
+
+6. [Integrate the Application to SAP Build Work Zone, standard edition](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-launchpad-app/README.md)
+
+7. [Test scenario](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/testbasicscenario/README.md)
 
 
+### OPTION 2 - DEVELOP APPLICATION WITH MOCK SERVER
 
+1. [Configure BTP Environment](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/Prepare-Cloud-Platform/Booster.md)
+
+2. [Configure Business Application Studio and develop Cloud Application Programming Model application](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/develop-cap-app/README.md)
+
+3. [Set Up Mock Server](https://github.com/SAP-samples/btp-bas-risk-management/blob/main/documentation/develop/set-up-mock-server/README.md)
+
+4. [Integrate the Application to SAP Build Work Zone, standard edition](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-launchpad-app/README.md)
+
+5. [Test basic scenario End to End](https://github.com/SAP-samples/btp-s4hana-kyma-business-process-extension/blob/main/documentation/deploy/test-scenario/README.md)
+
+### DEVELOP ADVANCED APPLICATION (OPTIONAL)
+
+1. [Add Additional Infrastructure](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/add-advanced-infrastructure/README.md)
+
+2. [Run a Unit Test](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-software-tests/create-unit-tests.md)
+
+3. [Run an Integration Test](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-software-tests/create-integrations-tests.md)
+
+4. [Setup CI/CD Pipeline](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/setup-cicd/README.md)
+
+5. [Add SAP Application Logging Service to Your Application](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/add-Application-Logging/ReadMe.md)
+
+6. [Test Entire Business Scenario end-to-end](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/test-entire-scenario/README.md)
 
 ## Known Issues
 
