@@ -95,7 +95,7 @@ The application requires below set of SAP Cloud Platform Entitlements/Quota
 
 4. [Integrate the Application to SAP Build Work Zone, standard edition](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/create-launchpad-app/README.md)
 
-5. [Test basic scenario End to End](https://github.com/SAP-samples/btp-s4hana-kyma-business-process-extension/blob/main/documentation/deploy/test-scenario/README.md)
+5. [Test basic scenario End to End](https://github.com/SAP-samples/cloud-extension-s4hana-business-process/blob/mission/mission/testmockscenario/README.md)
 
 ### DEVELOP ADVANCED APPLICATION (OPTIONAL)
 
