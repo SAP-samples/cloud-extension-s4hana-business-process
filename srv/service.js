@@ -69,12 +69,16 @@ const cds = require('@sap/cds');
         req.data.isModified = true;
       });
     
-      srv.after("PATCH", "Addresses", (data, req) => {
-        const isValidPinCode = postcodeValidator(data.postalCode, data.country);
-        if(!isValidPinCode){
-          return req.error({code: '400', message: "invalid postal code", numericSeverity:2, target: 'postalCode'});
-        } 
-        return req.info({numericSeverity:1, target: 'postalCode'});  
+      srv.after("PATCH", "Addresses", async (data, req) => {
+        srv.LOG.info("Received address in PATCH", data);
+        let isValidPinCode = true;
+        if(data && data.postalCode){
+          isValidPinCode = await this.validatePostcode(data, this.LOG);
+        }
+        
+        if(!isValidPinCode) {
+          return req.error({ code: '400', message: "invalid postal code", numericSeverity: 2, target: 'postalCode' });
+        }
       });
       
       await super.init()
@@ -87,6 +91,18 @@ const cds = require('@sap/cds');
       }
       else {
          return (+(msg.data.KEY[0].BUSINESSPARTNER)).toString();
+      }
+    }
+
+    async validatePostcode(data, LOG){
+      const {Addresses} = this.entities;
+      const {postcodeValidator} = require('postcode-validator');
+      let isValidPinCode;
+      if(data.postalCode){
+        const address = await cds.run(SELECT.one(Addresses).where({ ID: data.ID }));
+        isValidPinCode = postcodeValidator(data.postalCode, address.country);
+        LOG.info("isValidPinCode ",isValidPinCode);
+        return isValidPinCode;
       }
     }
 
