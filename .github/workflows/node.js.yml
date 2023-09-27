@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install 
+    - run: npm install @sap/cds
     - run: npm install @cap-js/sqlite
     - run: npm run-script test:unit
     - run: npm run-script test:integration
