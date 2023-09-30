@@ -7,6 +7,9 @@ Another set of tests that can be executed are UI tests, where the interface is a
 **Persona:** BTP Developer
 
 ### Prequisites:
+1. Nodejs environment
+2. UI5 application
+3. Chrome browser 
 
 ### An introduction to the Webdriverio (WDIO) framework
 
@@ -41,22 +44,132 @@ NOTE : For this mission we are making use of wdi5^1.5.0 and thus will be using w
 Now lets understand the testing configuration and the structure of tests in brief.
 
 1. As mentioned above, [wdio.conf.js](../../app/BusinessPartners/wdio.conf.js) file has all details about the environment, namely:
-    - [the browser configuration](./images/ui-test-2.png)
-    - services/frameworks used   
-    - path of the spec files
-    - 
+    - the browser configuration : Capabilities
+    - services/frameworks used : Services and Framework
+        **note here the usage of the ui5 service, meaning wdi5**
+    - path of the test files : Specs
+    - the url of app to be tested : BaseUrl
 
-### Run UI Tests in Your Application
+2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include the fiori page configurations which are required for making use of the testing library
+![config](./images/ui-test-2.png)
 
-1. Go back to your IDE
+3. In order to test the working of the application entirely, we begin by creating our testing data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server ![mockserver](../../tests/ui/services/bpApi.js). 
 
-2. Open the terminal and run the following test script
+4. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
+[fioriFunctions](./images/ui-test-3.png).
+As shown in the image, the tests are written in the form of **When** and **Then** statements which will execute an respectiveley execute and Action and Assertion (like mentioned aboved). 
+
+5. Finally we end with deleting the test data from both the application and mock server.
 
 
+### Run UI Tests in Your Terminal
+
+NOTE: Ensure you the chrome browser installed on your system and you have the repository cloned as well.
+
+1. First we need to fetch the mockserver submodule. Open your terminal, navigate to the root folder and run :
 ```
-npm run wdi5
+    git submodule init
+    git submodule update
+```
+    Ensure the mock-srv folder is not empty and has this structure.
+![mockfolder](./images/ui-test-5.png)
 
+2. Now open the package.json file in the root folder and **change the destination** to **from bupa to bupa-s4-test**.
+![mockDestination](./images/ui-test-6.png)
+
+3. Now you need to deploy both the application and mock server. For this you need to make use of the mta_withMock.yaml file which has the **mock-srv** module defined to deploy the mock server. So first change the current file **mta.yaml to mta_withoutMock.yaml** and change **mta_withMock.yaml to mta.yaml**. You file structure should now look like:
+![mtaFileName](./images/ui-test-4.png).
+
+4. Open the newly changed mta.yaml file and change **instance** to **subaccount** in the **module BusinessPartnerValidation-launchpad** and **resource BusinessPartnerValidation-dest**.
+![mtaDest](./images/ui-test-10.png)
+This is to ensure your deployed application does not have a guid in the url.
+
+5. Now open your terminal login to any subaccount and space of your choice :
+```
+    cf api <API-ENDPOINT>
+    cf login -u <USER-ID> -p <PASSWORD>
+    cf target -o <ORG> -s <SPACE>
 ```
 
+6. Deploy your application as :
+```
+   mbt build -p=cf
+   cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
+```
 
-!!! headless also
+6. In the root folder, create a **.env** file. In this file you need to define the urls needed as evironment variables. For this you will need both the org and space name. In your terminal execute:
+```
+    cf target
+```
+This will print the the necessary details as the following:
+![cf](./images/ui-test-11.png)
+
+Make note of the api endpoint, org and space name. 
+
+***NOTE :***
+    **For the variables definition below ensure the following:**
+    **- to replace any '_'(underscore) in the org or space name with a '-'(hyphen)**
+    **- all upper case alphabets in the org and space name must be mentioned as lower case**
+    **- only include the portion of the endpoint after 'cf'**
+
+***For example if your org name is ABC_Org-name, space name is SPACE_NAME and endpoint is https://api.cf.end.point.com you must mention them as abc-org-name, space-name and end.point.com***
+
+Environment variables need to be defined in the below form in the .env file.
+```
+    variableName=value
+```
+
+In this manner define the following:
+- mockUrl : https://{orgName}-{spaceName}-mock-srv.cfapps.{endPoint}/odata/v4/
+- mockApi : api-business-partner/A_BusinessPartner
+
+**For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., mention if your org name is ABC_Org-name, include it as org-name only**.
+- appAuth : https://{orgName}.authentication.{endPoint}/login
+- appUrl : https://{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html
+
+This is what your .env file should look like:
+![envFile](./images/ui-test-12.png)
+
+7. Now in your terminal run this command to navigate to the folder from where we need to trigger the tests:
+```
+    cd app/BusinessPartners
+```
+You will need to find out the current version browser of your chrome browser. For this open your chrome browser and navigate to about 'Google Chrome' from settings and check the version.
+![browser](./images/ui-test-13.png)
+For example according to this image, the browser version is 117.
+
+Open the package.json file in app/BusinessPartners and modify the chromedriver dependency version to the value of your chrome browser. In this case it should be "chromedriver" : "117".
+
+After this install the dependenices as :
+```
+    npm i
+```
+
+8. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (use ctrl+C) the following portions under **Capabilities** as shown below.
+![nonHeadless](./images/ui-test-14.png)
+
+9. Next in your terminal run:
+```
+    npm run wdi5
+```
+You should see a browser pop up and it behaving in an automated manner. 
+
+
+You should also see logs being printed on your terminal.
+
+
+Once the excution is done, you should be able to see a report of the tests.
+
+
+10. To execute the tests in a headless manner, we first need to mention your subaccount's username and password in your .env file. Add them in the following manner:
+- wdi5_username={username}
+- wdi5_password={password}
+ It should look like the following:
+ ![envUser](./images/ui-test-15.png)
+
+ 11. Now go back to the wdio.conf.js file and uncomment the portion commented above. Tests can be executed in the same manner again. Note that headless mode means the test execution will not be visible i.e., a browser window will not pop up. 
+ ```
+    npm run wdi5
+ ```
+ You can keep tracks of the tests through the logs and finally the test report generated the same as above.
+

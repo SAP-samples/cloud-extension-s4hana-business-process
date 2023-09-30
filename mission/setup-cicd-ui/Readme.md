@@ -1,36 +1,27 @@
-# Setup CI/CD Pipeline
+# Run UI tests using the CICD pipeline
+
+NOTE : Make sure your folder is connected to a Github repository. If not yet, fork this mission's repository and clone it on VSCode.
 
 This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline that automatically performs ui tests on your deployed application.
 
-First we need to deploy our mock server separately. This is because currently BTP CI/CD does not support the usage of submodules. Thus it cannot be deployed in the same mta.yaml as the validation app. The below steps showcase how to deploy the mock server alone:
+### Changes to application files
 
-1. Run mbt build in the mock-srv folder
-2. Execute cf deploy mta_arachives 
-3. Next run sh create-destination.sh to create a destination for the newly deployed mock server
-4. Make note of the deployed url of the mock server
+1. Firstly we need to make changes to the some files. This is documented in the [UI-tests](../create-software-tests/create-ui-tests.md) chapter. Please follow steps 2-4 under the **Run UI tests in Your Terminal** section. Ignore this step if done already.
 
-Now in the same space the mock server is deployed in, we would need to deploy the validation app as well. Follow the below steps to achieve this:
-
-1. In the mta.yaml file change instance to subaccount. This will prevent the deployed application from having a guid in the URL, thus making it easy for us to predict and we will see why this is needed in a while.
-2. Push these changes to your repository
+2. Additionally open the app/BusinessPartners/package.json file and change the version of the chromderiver dependency to 114. Now push these changes to your repository. 
 
 
-The steps below will guide your through setting up your pipeline.
+### Setup your pipeline
 
 1. [Optional:] Make sure you have [enabled the SAP Continuous Integration and Delivery service](https://developers.sap.com/tutorials/btp-app-ci-cd-btp.html#8bee3e93-2873-4eaf-8b07-8ae0d4aba08b) in your BTP account (In case you have used the Booster to set up the account you already have the entitlement)
 
-2. Make sure that by this moment that you have connected your project to a GitHub repository.
-
--  Go to the GitHub repository for this mission 
--  Fork the GitHub repository
-
-3. Open Continuous Integration & Delivery application
+2. Open Continuous Integration & Delivery application
 
 - Choose **Services** &rarr; **Instances and Subscriptions**
 - Find **Continuous Integration & Delivery** 
 - Click on name to open the application
 
- ![configure pipeline](./images/cicd2.png)
+ ![configure pipeline](../setup-cicd/images/cicd2.png)
  
  4. Now you are on the home page of Continuous Integration & Delivery, where you can configure jobs, repositories and credentials. 
 
@@ -41,7 +32,7 @@ The steps below will guide your through setting up your pipeline.
  - Username: add your GitHub username/ id
  - Password: enter your GitHub access token 
  
-   ![create credentials](./images/ci-cd-3.png)
+   ![create credentials](../setup-cicd/images/ci-cd-3.png)
 
  5.2 Choose **create** to finish.
 
@@ -52,17 +43,20 @@ The steps below will guide your through setting up your pipeline.
  - Username: add your global user name
  - Password: enter global password
  
-   ![create credentials](./images/ci-cd-2.png)
+   ![create credentials](../setup-cicd/images/ci-cd-2.png)
  
  6.2 Choose **create** to finish.
 
-7. Navigate to **Jobs** tab in SAP Continuous Integration and Delivery and choose  **+** to create a new job.
+ 7. Add a third credential for  getting authenticated into your application while running the tests. For this once again choose the **+** icon. In the pop up add mention the credential name as "wdi5-password" and from the drop down select **Secret Text** and add your subaccount password as the Secret.
+ ![secretText](./images/ci-cd-1.png).Then choose **Create**.
+
+8. Navigate to **Jobs** tab in SAP Continuous Integration and Delivery and choose  **+** to create a new job.
 
 7.1 In _General Information_ add a _Job Name, e.g.,  CustomLogic
 
 7.2 Choose **add repository** to add your repository you have created in step 2.
  
-  ![add job](./images/ci-cd-1.png)
+  ![add job](../setup-cicd/images/ci-cd-1.png)
 
 8. In the pop-up you can configure the connection to your repository:
  - Name: "customLogicRepo"
@@ -86,21 +80,26 @@ The steps below will guide your through setting up your pipeline.
 
   ![build](./images/ci-cd-6.png)
 
-11. Scroll down to **Acceptance** and switch on the toggle to allow the executing of the ui tests. 
+11. Scroll down to **Acceptance** and switch on the toggle to allow the executing of the ui tests. Under the **Deploy to Cloud Foundry** section mention your subaccount's details and choose the name of the credential created above for cf deployment.
 
-  ![unit tests](./images/ci-cd-7.png)
+  ![ui tests](./images/ci-cd-2.png)
 
-12. Under Webdriverio Test
+**NOTE : if you are using a subaccount used for any previous deployments of the application mentioned in this mission, it is advised to undeploy existing deployment, if any, using the command :**
+```
+  cf undpeloy BusinessPartnerValidation --delete-service-keys --delete-services
+```
 
-    Add wdi5 as your npm script
-    For base URL : string it as the following !!! steps to string together URL !!!
+12. Next switch the toggle of the WebdriverIO tests section and mention the script as **wdi5**. For the Base URL, go to chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal** and string together your URL as mentioned in **Step 6** for appUrl. Make sure to append this URL with #Shell-home. Your configuration should look like this:
+![wdioTest](./images/ci-cd-3.png)
 
-13. Go to Additional Credentials and click create. Give it the name wdi5_password and add the credential created above.
+**NOTE: The org, space and endpoint names used for stringing together the url of the application should be the same as that mentioned under the **Deploy to Cloud Foundry section** mentioned above.**
 
-14. Next go to Additional Variables and add the following names with the corresponding variables:
-        mockUrl : 
-        appAuth : 
-        wdi5_username : 
+
+13. Next go to **Additional Variables** and click the **+** icon and add environment variables as mentioned in the chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal**, **Setp 6**. Additionally also create the **wdi5_username** variable as mentioned in **Step 10**. Your variables list should look like:
+![vars](./images/ci-cd-4.png)
+
+14. Finally add **Additional Credentials** by clicking the **+** icon and mention the name as **wdi5_password** and choose the Secret Text credential created above called wdi5-password. This should result in :
+![pass](./images/ci-cd-5.png)
 
 15. Finish the job creation by choosing **Create**
 
@@ -108,14 +107,20 @@ The steps below will guide your through setting up your pipeline.
 
 21. Choose the name of your created job and choose **Run**
 
-  ![test](./images/ci-cd-13.png)
+  ![test](../setup-cicd/images/ci-cd-13.png)
 
 22. Verify that a new tile appears in the Builds view. This tile should be marked as running.
 
-  ![test](./images/ci-cd-14.png)
+  ![test](../setup-cicd/images/ci-cd-14.png)
 
 23. Wait until the job has finished and verify that the build tile is marked as successful.
 
-  ![test](./images/ci-cd-15.png)
+  ![test](../setup-cicd/images/ci-cd-15.png)
 
-Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destination from the cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
+24. You can go to the Acceptance Stage and view the same logs you did when running the tests locally on your terminal.
+
+  ![test](./images/ci-cd-6.png)
+
+25. Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destinations **ui5** and **bupa-s4-test** from the **Destinations** section of the BTP Cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
+
+  ![test](./images/ci-cd-7.png)
