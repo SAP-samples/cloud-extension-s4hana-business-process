@@ -74,7 +74,7 @@ NOTE: Ensure you have the chrome browser installed on your system and you have t
         git submodule update
     ```
 
-    Ensure the mock-srv folder is not empty and has this structure.
+Ensure the mock-srv folder is not empty and has this structure.
 ![mockfolder](./images/ui-test-4.png)
 
 2. Now open the package.json file in the root folder and **change the destination** to **from bupa to bupa-s4-test**.
