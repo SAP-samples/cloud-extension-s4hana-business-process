@@ -54,10 +54,11 @@ Now lets understand the testing configuration and the structure of tests in brie
 2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include the fiori page configurations which are required for making use of the testing library
 ![config](./images/ui-test-2.png)
 
-3. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server ![mockserver](../../tests/ui/services/bpApi.js). 
+3. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server [mockserver](../../tests/ui/services/bpApi.js). 
 
 4. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
 ![fioriFunctions](./images/ui-test-3.png)
+
 As shown in the image, the tests are written in the form of **When** and **Then** statements which will respectiveley execute the Actions and Assertions(like mentioned aboved). 
 
 5. Finally we end with deleting the test data from both the application and mock server.
@@ -74,7 +75,7 @@ NOTE: Ensure you have the chrome browser installed on your system and you have t
     ```
 
     Ensure the mock-srv folder is not empty and has this structure.
-    ![mockfolder](./images/ui-test-4.png)
+![mockfolder](./images/ui-test-4.png)
 
 2. Now open the package.json file in the root folder and **change the destination** to **from bupa to bupa-s4-test**.
 ![mockDestination](./images/ui-test-5.png)
@@ -83,6 +84,7 @@ NOTE: Ensure you have the chrome browser installed on your system and you have t
 ![mtaFileName](./images/ui-test-6.png).
 
 4. Open the newly changed mta.yaml file and change **instance** to **subaccount** in the **module BusinessPartnerValidation-launchpad** and **resource BusinessPartnerValidation-dest**.
+
 ![mtaDest](./images/ui-test-10.png)
 This is to ensure your deployed application does not have a guid in the url.
 
@@ -108,13 +110,13 @@ This is to ensure your deployed application does not have a guid in the url.
 
     Make note of the api endpoint, org and space name. 
 
-    ***NOTE :***
-        **For the variables definition below ensure the following:**
-        **- to replace any '_'(underscore) in the org or space name with a '-'(hyphen)**
-        **- all upper case alphabets in the org and space name must be mentioned as lower case**
-        **- only include the portion of the endpoint after 'cf'**
+***NOTE :***
+    **For the variables definition below ensure the following:**
+    **- to replace any '_'(underscore) in the org or space name with a '-'(hyphen)**
+    **- all upper case alphabets in the org and space name must be mentioned as lower case**
+    **- for the endpoints, only include the portion after 'cf'**
 
-    ***For example if your org name is ABC_Org-name, space name is SPACE_NAME and endpoint is https://api.cf.end.point.com you must mention them as abc-org-name, space-name and end.point.com***
+***For example if your org name is ABC_Org-name, space name is SPACE_NAME and endpoint is https://api.cf.end.point.com you must mention them as abc-org-name, space-name and end.point.com***
 
     Environment variables need to be defined in the below form in the .env file.
     ```
@@ -125,7 +127,7 @@ This is to ensure your deployed application does not have a guid in the url.
     - mockUrl : https://{orgName}-{spaceName}-mock-srv.cfapps.{endPoint}/odata/v4/
     - mockApi : api-business-partner/A_BusinessPartner
 
-    **For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., mention if your org name is ABC_Org-name, include it as org-name only**.
+    **For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., if your org name is ABC_Org-name, include it as org-name only**.
     - appAuth : https://{orgName}.authentication.{endPoint}/login
     - appUrl : https://{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html
 
