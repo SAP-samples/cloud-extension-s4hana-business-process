@@ -47,17 +47,17 @@ Now lets understand the testing configuration and the structure of tests in brie
 1. As mentioned above, [wdio.conf.js](../../app/BusinessPartners/wdio.conf.js) file has all details about the environment, namely:
     - the browser configuration in **Capabilities**
     - services/frameworks used in **Services** and **Framework**
-    **note here the usage of the ui5 service, meaning wdi5**
+    (note here the usage of the ui5 service, meaning wdi5)
     - path of the test files in **Specs**
     - the url of app to be tested in **BaseUrl**
 
 2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include the fiori page configurations which are required for making use of the testing library
 ![config](./images/ui-test-2.png)
 
-3. In order to test the working of the application entirely, we begin by creating our testing data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server ![mockserver](../../tests/ui/services/bpApi.js). 
+3. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server ![mockserver](../../tests/ui/services/bpApi.js). 
 
 4. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
-[fioriFunctions](./images/ui-test-3.png).
+![fioriFunctions](./images/ui-test-3.png).
 As shown in the image, the tests are written in the form of **When** and **Then** statements which will execute an respectiveley execute and Action and Assertion (like mentioned aboved). 
 
 5. Finally we end with deleting the test data from both the application and mock server.
