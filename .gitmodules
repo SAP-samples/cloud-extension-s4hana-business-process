@@ -1,0 +1,8 @@
+# [submodule "mock-srv"]
+# 	path = ./mock-srv
+# 	url = https://github.tools.sap/I584814/cloud-extension-s4hana-business-process
+# 	branch = mock
+[submodule "mock-srv"]
+	path = mock-srv
+	url = ./
+	branch = mock

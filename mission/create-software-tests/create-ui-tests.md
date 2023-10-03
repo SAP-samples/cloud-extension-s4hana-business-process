@@ -50,9 +50,12 @@ Now lets understand the testing configuration and the structure of tests in brie
     (note here the usage of the ui5 service, meaning wdi5)
     - path of the test files in **Specs**
     - the url of app to be tested in **BaseUrl**
+    - the 
 
-2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include the fiori page configurations which are required for making use of the testing library
-![config](./images/ui-test-2.png)
+2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include:
+    - the fiori page configurations which are required for making use of the testing library
+    ![config](./images/ui-test-2.png)
+    - the test suites, 
 
 3. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server [mockserver](../../tests/ui/services/bpApi.js). 
 
@@ -73,7 +76,6 @@ NOTE: Ensure you have the chrome browser installed on your system and you have t
         git submodule init
         git submodule update
     ```
-
 Ensure the mock-srv folder is not empty and has this structure.
 ![mockfolder](./images/ui-test-4.png)
 
@@ -86,6 +88,7 @@ Ensure the mock-srv folder is not empty and has this structure.
 4. Open the newly changed mta.yaml file and change **instance** to **subaccount** in the **module BusinessPartnerValidation-launchpad** and **resource BusinessPartnerValidation-dest**.
 
 ![mtaDest](./images/ui-test-10.png)
+
 This is to ensure your deployed application does not have a guid in the url.
 
 5. Now open your terminal login to any subaccount and space of your choice :
@@ -111,10 +114,10 @@ This is to ensure your deployed application does not have a guid in the url.
     Make note of the api endpoint, org and space name. 
 
 ***NOTE :***
-    **For the variables definition below ensure the following:**
-    **- to replace any '_'(underscore) in the org or space name with a '-'(hyphen)**
-    **- all upper case alphabets in the org and space name must be mentioned as lower case**
-    **- for the endpoints, only include the portion after 'cf'**
+**For the variables definition below ensure the following:**
+**- to replace any '_'(underscore) in the org or space name with a '-'(hyphen)**
+**- all upper case alphabets in the org and space name must be mentioned as lower case**
+**- for the endpoints, only include the portion after 'cf'**
 
 ***For example if your org name is ABC_Org-name, space name is SPACE_NAME and endpoint is https://api.cf.end.point.com you must mention them as abc-org-name, space-name and end.point.com***
 
@@ -123,40 +126,46 @@ This is to ensure your deployed application does not have a guid in the url.
         variableName=value
     ```
 
-    In this manner define the following:
+In this manner define the following:
     - mockUrl : https://{orgName}-{spaceName}-mock-srv.cfapps.{endPoint}/odata/v4/
     - mockApi : api-business-partner/A_BusinessPartner
 
-    **For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., if your org name is ABC_Org-name, include it as org-name only**.
+ **For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., if your org name is ABC_Org-name, include it as org-name only**.
     - appAuth : https://{orgName}.authentication.{endPoint}/login
     - appUrl : https://{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html
 
-    This is what your .env file should look like:
-    ![envFile](./images/ui-test-12.png)
+This is what your .env file should look like:
+![envFile](./images/ui-test-12.png)
 
 7. Now in your terminal run this command to navigate to the folder from where we need to trigger the tests:
-```
-    cd app/BusinessPartners
-```
-You will need to find out the current version browser of your chrome browser. For this open your chrome browser and navigate to about 'Google Chrome' from settings and check the version.
+    ```
+        cd app/BusinessPartners
+    ```
+    Next, you will need to find out the current version browser of your chrome browser. For this open your chrome browser and search for :
+        ```
+            chrome://settings/help
+        ```
+    Here you will find the exact version.
+
 ![browser](./images/ui-test-13.png)
 For example according to this image, the browser version is 117.
 
-Open the package.json file in app/BusinessPartners and modify the chromedriver dependency version to the value of your chrome browser. In this case it should be "chromedriver" : "117".
+    Open the package.json file in app/BusinessPartners and modify the chromedriver dependency version to the value of your chrome browser. In this case it should be "chromedriver" : "117".
 
-After this install the dependenices as :
-```
-    npm i
-```
+    After this install the dependenices as :
+    ```
+        npm i
+    ```
 
-8. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (use ctrl+C) the following portions under **Capabilities** as shown below.
+8. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (using ctrl+C) the following portions under **Capabilities** as shown below.
 ![nonHeadless](./images/ui-test-14.png)
 
 9. Next in your terminal run:
 ```
     npm run wdi5
 ```
-You should see a browser pop up and it behaving in an automated manner. 
+You should see a browser pop up and behave in an automated manner. 
+![browserPopUp](./images/ui-test-16.png)
 
 
 You should also see logs being printed on your terminal.
