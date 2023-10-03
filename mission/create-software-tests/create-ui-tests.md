@@ -45,11 +45,11 @@ With wdi5, users can test both traditional UI5 and fiori applications. For the p
 Now lets understand the testing configuration and the structure of tests in brief.
 
 1. As mentioned above, [wdio.conf.js](../../app/BusinessPartners/wdio.conf.js) file has all details about the environment, namely:
-    - the browser configuration : Capabilities
-    - services/frameworks used : Services and Framework
-        **note here the usage of the ui5 service, meaning wdi5**
-    - path of the test files : Specs
-    - the url of app to be tested : BaseUrl
+    - the browser configuration in **Capabilities**
+    - services/frameworks used in **Services** and **Framework**
+    **note here the usage of the ui5 service, meaning wdi5**
+    - path of the test files in **Specs**
+    - the url of app to be tested in **BaseUrl**
 
 2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include the fiori page configurations which are required for making use of the testing library
 ![config](./images/ui-test-2.png)
