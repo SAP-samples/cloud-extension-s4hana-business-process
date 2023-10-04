@@ -191,4 +191,7 @@ Once the excution is done, you should be able to see a report of the tests.
  ```
  You can keep tracks of the tests through the logs and finally the test report generated the same as above.
 
+11. Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destinations **ui5** and **bupa** from the **Destinations** section of the BTP Cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
+![test](../setup-cicd-ui/images/ci-cd-7.png)
+
 
