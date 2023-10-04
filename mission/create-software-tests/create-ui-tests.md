@@ -40,7 +40,7 @@ With wdi5, users can test both traditional UI5 and fiori applications. For the p
 
 The library has a set of 'Actions' and 'Assertions' defined for different Fiori templates using which the browser can be controlled. This minimizes the need to explicitly define the controls and views of a page making the test scripts more UI5 friendly.
 
-    **NOTE : For this mission wdi5^1.5.0 will beused and thus wdio^7 will also be used**
+    NOTE : For this mission wdi5^1.5.0 will beused and thus wdio^7 will also be used**
 
 <br>
 
@@ -221,7 +221,7 @@ For example according to this image, the browser version is 117.
 
     If you do not have SSO enabled in your browser, leave the **wdi5:authentication** portion uncommented.
 
-8. To run the tests you need to pass the url of the application with the command. The template of the url is mentioned below. In your terminal run:
+8. To run the tests you need to pass the url of the application with the command. The way the url needs to be defined is mentioned below. In your terminal run:
     ```
         npm run wdi5 -- --baseUrl:https//{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell-home
     ```
