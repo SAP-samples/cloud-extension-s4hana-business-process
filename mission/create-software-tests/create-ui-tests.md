@@ -20,14 +20,9 @@ The framework is designed to automate not only web applications but mobile and n
     - **Compatibility with other frameworks and services** : Allows for seamless integration thus satisfying varied project requirements
     - **Protocol support** : Compatible with both the Webdriver and Devtools protocols which are supported by most modern browsers
     
-The WDIO test runner **'@wdio/cli'**, allows users to configure their testing environment in a straight-forward manner with the help of just a few commands. If you would like to try writing your own tests, [this would be the place to start](https://v7.webdriver.io/docs/gettingstarted/). This setup would do the following:
+The WDIO test runner **'@wdio/cli'**, allows users to configure their testing environment in a straight-forward manner with the help of just a few commands. This setup would do the following:
 - Creates a **wdio.conf.js** file which holds all of the necessary environment configuration details
-- Adds certain dependencies to your **package.json** file and installs them as well. A few of the main dependencies used for this mission are listed below:
-    - @wdio/mocha-framework : an adapter package allowing us to make use of the mocha framework
-    - @wdio/spec-reporter : generates reports in spec style
-    - wdio-chromedriver-service : to run tests on the chrome browser
-    - chromedriver : to create browser sessions
-    - wdio-ui5-service : allows the usage of wdi5, the ui5 plugin for Webdriver.IO
+- Adds certain dependencies to your **package.json** file and installs them as well
 - Adds a script to the package.json file to excute the scripts
 
 ### The wdi5 service
@@ -39,32 +34,45 @@ With wdi5, users can test both traditional UI5 and fiori applications. For the p
 
 **NOTE : For this mission we are making use of wdi5^1.5.0 and thus will be using wdio^7**
 
+### Environment Configuration
+
+As mentioned above, the wdio.conf.js file inside app/BusinessPartners holds all the configuration details in the config object. In the package.json, in the same folder, has the corresponding dependencies which supports the configurations mentioned. . This was set up using the WDIO test runner's @wdio/cli. 
+
+For this mission, we stick to the set up described below:
+
+| Configuration in the wdio.conf.js file        | Corresponding packags.json dependency         | 
+| -------------                                 |:-------------:                                | -----:|
+| Chrome mentioned in **Capabilities**          | chromedriver                                  | Executes the tests on the chrome browser, the **chromedriver** dependency is needed to create the browser sessions |
+| Mocha  mentioned in **Framework**             | @wdio/mocha-framework                         | Allows us to write tests using this framework, the dependency acts like an adapter package  |
+| Spec  mentioned in **Reporters**              | @wdio/spec-reporter                           | To generate reports in spec style |
+| Chromedriver mentioned in **Services**        | wdio-chromedriver-service                     | Enables communications with the chrome browser drivers |
+| UI5 mentioned in **Services**                 | wdio-ui5-service                              | Allows the usage of wdi5 |
+
+Other details mentioned in the configuration file includes : the path of the test files, browser timeouts, hooks to be executed etc.
+
+If you would like to try writing your own tests, [this would be the place to start](https://v7.webdriver.io/docs/gettingstarted/). You can follow the steps mentioned here to set up your testing environment. 
 
 ### Understand the Test Cases
 
-Now lets understand the testing configuration and the structure of tests in brief.
+Now lets understand the structure of the tests in brief.
 
-1. As mentioned above, [wdio.conf.js](../../app/BusinessPartners/wdio.conf.js) file has all details about the environment, namely:
-    - the browser configuration in **Capabilities**
-    - services/frameworks used in **Services** and **Framework**
-    (note here the usage of the ui5 service, meaning wdi5)
-    - path of the test files in **Specs**
-    - the url of app to be tested in **BaseUrl**
-    - the 
-
-2. In the [list.spec.js](../../tests/ui/specs/list.spec.js) file, we include:
-    - the fiori page configurations which are required for making use of the testing library
+1. In the test.spec.js file insider tests/ui/specs, we include:
+    - the fiori page configurations which are required for making use of the testing library (The details required for this can be found in the manifest.json file inside app/BusinessPartners)
     ![config](./images/ui-test-2.png)
-    - the test suites, 
+    - the test suites, which are essentially the family of tests to be executed
+    
+2. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server. These calls can be found in the tests/ui/services/bpApi.js file. 
 
-3. In order to test the working of the application entirely, we begin by creating our test data. In this case this means creating mock business partners. Since this is only a testing environment, we will not be using actual S4 systems but rather a 'mock-server', which is essentially a CAP application that will enable us to create entities and emit events. This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file. The test data is created using axios calls to this mock server [mockserver](../../tests/ui/services/bpApi.js). 
-
-4. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
+3. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
 ![fioriFunctions](./images/ui-test-3.png)
 
 As shown in the image, the tests are written in the form of **When** and **Then** statements which will respectiveley execute the Actions and Assertions(like mentioned aboved). 
+For instance, in the above example we display all rows of a table using the Search button of the Filter Bar. This is our Action.
+Following this, we check if a particular entry/row is visible in this table. This is our Assertion.
 
-5. Finally we end with deleting the test data from both the application and mock server.
+For each When/Then statement the corresponding fiori page is required. The appropriate functions to be used with each template can be found in the [Test Library](https://sapui5.hana.ondemand.com/#/api/sap.fe.test) under the **List Report** and **Object** pages. Each has its own set of actions and assertions which may require certain parameters to identify controls/views. These parameters can be found by inspecting your webpage.
+
+4. Finally we end with deleting the test data from both the application and mock server.
 
 
 ### Run UI Tests in Your Terminal
@@ -79,19 +87,10 @@ NOTE: Ensure you have the chrome browser installed on your system and you have t
 Ensure the mock-srv folder is not empty and has this structure.
 ![mockfolder](./images/ui-test-4.png)
 
-2. Now open the package.json file in the root folder and **change the destination** to **from bupa to bupa-s4-test**.
-![mockDestination](./images/ui-test-5.png)
-
-3. Now you need to deploy both the application and mock server. For this you need to make use of the mta_withMock.yaml file which has the **mock-srv** module defined to deploy the mock server. So first change the name of the current file **mta.yaml to mta_withoutMock.yaml** and change **mta_withMock.yaml to mta.yaml**. You file structure should now look like:
+2. Now you need to deploy both the application and mock server. For this you need to make use of the mta_Test.yaml file which has the **mock-srv** module defined to deploy the mock server. So first change the name of the current file **mta.yaml to mta_Prod.yaml** and change **mta_Test.yaml to mta.yaml**. You file structure should now look like:
 ![mtaFileName](./images/ui-test-6.png).
 
-4. Open the newly changed mta.yaml file and change **instance** to **subaccount** in the **module BusinessPartnerValidation-launchpad** and **resource BusinessPartnerValidation-dest**.
-
-![mtaDest](./images/ui-test-10.png)
-
-This is to ensure your deployed application does not have a guid in the url.
-
-5. Now open your terminal login to any subaccount and space of your choice :
+4. Now open your terminal login to any subaccount and space of your choice :
     ```
         cf api <API-ENDPOINT>
         cf login -u <USER-ID> -p <PASSWORD>
@@ -100,11 +99,11 @@ This is to ensure your deployed application does not have a guid in the url.
 
 6. Deploy your application as :
     ```
-    mbt build -p=cf
+    mbt build 
     cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
     ```
 
-6. In the root folder, create a **.env** file. In this file you need to define the urls needed as evironment variables. For this you will need both the org and space name. In your terminal execute:
+6. In the root folder, create a **.env** file. In this file you need to define some of the urls needed as evironment variables. For this you will need both the org and space name. In your terminal execute:
     ```
         cf target
     ```
@@ -127,12 +126,18 @@ This is to ensure your deployed application does not have a guid in the url.
     ```
 
 In this manner define the following:
-    - mockUrl : https://{orgName}-{spaceName}-mock-srv.cfapps.{endPoint}/odata/v4/
-    - mockApi : api-business-partner/A_BusinessPartner
+    - mockUrl : https://{orgName}-{spaceName}-mock-srv.cfapps.{endPoint}/odata/v4/api-business-partner/A_BusinessPartner
 
- **For the below two urls for the org name, **do not include** the portion before the '_'(underscore).  i.e., if your org name is ABC_Org-name, include it as org-name only**.
+**For the below url for the org name, **do not include** the portion before the '_'(underscore).  i.e., if your org name is ABC_Org-name, include it as org-name only**.
     - appAuth : https://{orgName}.authentication.{endPoint}/login
-    - appUrl : https://{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html
+
+You would also need to mention your subaccount's username and password in your .env file if:
+- you do not have SSO enabled in your browser
+- you are running your tests in headless mode ie., no browser window would pop up
+
+Add them in the following manner:
+- wdi5_username={username}
+- wdi5_password={password}
 
 This is what your .env file should look like:
 ![envFile](./images/ui-test-12.png)
@@ -141,7 +146,7 @@ This is what your .env file should look like:
     ```
         cd app/BusinessPartners
     ```
-    Next, you will need to find out the current version browser of your chrome browser. For this open your chrome browser and search for :
+    Next, you will need to find out the current version of your chrome browser. For this open your chrome browser and search for :
         ```
             chrome://settings/help
         ```
@@ -160,29 +165,30 @@ For example according to this image, the browser version is 117.
 8. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (using ctrl+C) the following portions under **Capabilities** as shown below.
 ![nonHeadless](./images/ui-test-14.png)
 
-9. Next in your terminal run:
+If you do not have SSO enabled in your browser, leave the wdi5:authentication portion uncommented.
+
+9. To run the tests you need to pass the url of the application with the command. The template of the url is mentioned beloew. In your terminal run:
 ```
-    npm run wdi5
+    npm run wdi5 -- --baseUrl:https//{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell=home
 ```
 You should see a browser pop up and behave in an automated manner. 
 ![browserPopUp](./images/ui-test-16.png)
 
 
 You should also see logs being printed on your terminal.
+![logs](./images/ui-test-17.png)
 
 
 Once the excution is done, you should be able to see a report of the tests.
+![report](./images/ui-test-18.png)
 
 
-10. To execute the tests in a headless manner, we first need to mention your subaccount's username and password in your .env file. Add them in the following manner:
-- wdi5_username={username}
-- wdi5_password={password}
- It should look like the following:
- ![envUser](./images/ui-test-15.png)
+10. To execute the tests in a headless manner, ensure you have mentioned your subaccount credentials in the .env file (explained in step 6)
 
- 11. Now go back to the wdio.conf.js file and uncomment the portion commented above. Tests can be executed in the same manner again. Note that headless mode means the test execution will not be visible i.e., a browser window will not pop up. 
+11. Now go back to the wdio.conf.js file and uncomment the portion commented above. Tests can be executed in the same manner again. Note that headless mode means the test execution will not be visible i.e., a browser window will not pop up. 
  ```
     npm run wdi5
  ```
  You can keep tracks of the tests through the logs and finally the test report generated the same as above.
+
 
