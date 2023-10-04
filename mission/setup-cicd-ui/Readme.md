@@ -68,24 +68,24 @@ This section describes how to configure and run a predefined continuous integrat
 
  Choose **Create**.
  
-  ![add repositories](./images/ci-cd-4.png)
+  ![add repositories](../setup-cicd/images/ci-cd-4.png)
 
 
 9. Back in the **General Information** section you can further configure your Job
   - Branch: select your github branch, in this example 'main'
   - Pipeline: select SAP Cloud Application Programming Model
 
-  ![general information](./images/ci-cd-5.png)
+  ![general information](../setup-cicd/images/ci-cd-5.png)
 
 10. Scroll down to **Stages** --> **Build** and select the build tools:
 - Build Tool: mta
 - Build Tool Version: Select the latest version
 
-  ![build](./images/ci-cd-6.png)
+  ![build](../setup-cicd/images/ci-cd-6.png)
 
 11. Scroll down to **Acceptance** and switch on the toggle to allow the executing of the ui tests. Under the **Deploy to Cloud Foundry** section mention your subaccount's details and choose the name of the credential created above for cf deployment.
 
-  ![ui tests](./images/ci-cd-2.png)
+  ![ui tests](../setup-cicd/images/ci-cd-2.png)
 
 **NOTE : if you are using a subaccount used for any previous deployments of the application mentioned in this mission, it is advised to undeploy existing deployment, if any, using the command :**
 ```
