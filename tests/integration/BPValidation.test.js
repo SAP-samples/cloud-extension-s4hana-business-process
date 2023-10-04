@@ -17,7 +17,6 @@ describe("Sanity Test", () => {
 
 		it("Should return list of Business Partners", async () => {
       const response = await GET("/odata/v4/sales/BusinessPartner");
-			console.log(response.data)
       expect(response.status).to.eql(200);
     });
 
@@ -97,19 +96,19 @@ describe("Draft Choreography APIs", () => {
 		expect(response.status).to.eql(200);
 	});
 
-	// it("Activate the draft notification", async () => {
-	// 	const response = await POST(
-	// 		`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftIsCreatedByMe,DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
-	// 		{}
-	// 	);
-	// 	expect(response.status).to.eql(200);
-	// });
+	it("Activate the draft notification", async () => {
+		const response = await POST(
+			`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftIsCreatedByMe,DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
+			{}
+		);
+		expect(response.status).to.eql(200);
+	});
 
-	// it("Test the verfication status", async () => {
-	// 	const response = await GET(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`);
-	// 	expect(response.status).to.eql(200);
-	// 	expect(response.data).to.deep.contains({ verificationStatus_code: "V" });
-	// });
+	it("Test the verfication status", async () => {
+		const response = await GET(`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)`);
+		expect(response.status).to.eql(200);
+		expect(response.data).to.deep.contains({ verificationStatus_code: "C" });
+	});
 });
 
 describe("Push new Notification directly to Completed state and Verify", () => {
@@ -175,16 +174,24 @@ describe("Push new Notification to Invalid state and Verify", () => {
 		expect(response.status).to.eql(200);
 	});
 
-	// it("Activate the draft notification", async () => {
-	// 	const response = await POST(
-	// 		"/odata/v4/sales/Notifications(ID=16f00c9c-323f-4ce4-876f-efaefe1c6f69,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate",
-	// 		{}
-	// 	);
-	// 	expect(response.status).to.eql(201);
-	// });
+	it("Activate the draft notification", async () => {
+		const response = await POST(
+			"/odata/v4/sales/Notifications(ID=16f00c9c-323f-4ce4-876f-efaefe1c6f69,IsActiveEntity=false)/service.businessPartnerValidation.SalesService.draftActivate",
+			{}
+		);
+		expect(response.status).to.eql(200);
+	});
 });
 
 describe("PATCH call for updating Address and verifying postal code", () => {
+	it("Pushing active notification back to draft mode", async () => {
+		const response = await POST(
+			`/odata/v4/sales/Notifications(ID=2c728381-72ce-4fdd-8293-8add71579666,IsActiveEntity=true)/service.businessPartnerValidation.SalesService.draftEdit?$select=HasActiveEntity,HasDraftEntity,ID,IsActiveEntity,businessPartnerId,businessPartnerName,verificationStatus_code&$expand=DraftAdministrativeData($select=DraftUUID,InProcessByUser),verificationStatus($select=code,updateCode)`,
+			{ PreserveChanges: true }    
+		);
+		expect(response.status).to.eql(201);
+	});
+
 	it("Should return 200 for updating the valid postal code", async () => {
 		const payload = {
 			country: "DE",

@@ -107,18 +107,28 @@ const cds = require('@sap/cds');
     }
 
   async emitEvent(bupaSrv, result, LOG){
-    const {BusinessPartner, BusinessPartnerAddress} = this.entities;
-    const resultJoin =  await cds.run(SELECT.one("my.businessPartnerValidation.Notifications as N").leftJoin("my.businessPartnerValidation.Addresses as A").on("N.businessPartnerId = A.businessPartnerId").where({"N.ID": result.ID}));
+    const {BusinessPartner, BusinessPartnerAddress, Notifications} = this.entities;
+    const resultJoin = await cds.run(
+      SELECT.one(Notifications, notification => {
+          notification('*'),
+          notification.addresses((addresses) => {
+              addresses('*')
+            });
+        })
+        .where({"ID": result.ID})
+    )
+
+    const addressResult = resultJoin.addresses[0];
     const statusValues={"N":"NEW", "P":"PROCESS", "INV":"INVALID", "V":"VERIFIED"}
 
-    if(resultJoin.isModified){
+    if(addressResult.isModified){
       let payload = {
-        streetName: resultJoin.streetName,
-        postalCode: resultJoin.postalCode
+        streetName: addressResult.streetName,
+        postalCode: addressResult.postalCode
       }
 
       LOG.info("<<<<payload address", payload)
-      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:resultJoin.addressId}));
+      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:addressResult.addressId}));
       
       LOG.info(`address update to S/4 Backend system`, res);
     }

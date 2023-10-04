@@ -33,8 +33,10 @@ describe("Unit Test suite for methods", () => {
 
         const payload = {
             "businessPartnerId": "123",
-            "addressId": "1",
-            "isModified": false
+            "addresses": [{
+                "addressId": "1",
+                "isModified": false,
+            }]
         }
         cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload)
         await salesService.emitEvent(bupaSrv, {}, LOG);
@@ -50,7 +52,9 @@ describe("Unit Test suite for methods", () => {
             "searchTerm1": "V",
             "streetName": "XX",
             "postalCode": "XX",
-            "isModified": true
+            "addresses": [{
+                "isModified": true
+            }]
         }
         cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload)
         await salesService.emitEvent(bupaSrv, {}, LOG);
