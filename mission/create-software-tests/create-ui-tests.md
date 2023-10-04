@@ -15,11 +15,10 @@ Another set of tests that can be executed are the UI tests, where the applicatio
 
 For this mission the [Webdriver.IO framework](https://webdriver.io/), also known as WDIO, is used to perform the browser automation. It is rooted in node.js and is built on top of the selenium webdriver API using javascript. This means that node.js functions as the runtime environment, responsible for executing the test scripts. 
 The framework is designed to automate not only web applications but mobile and native desktop apps as well. Webdriver.IO offers features such as :
-
-...- **Cross-browser testing** : Supports applications to be tested across multiple browsers
-...- **Built-in logging and reporting** : Provides an effective manner to comprehend test outcomes in the form of detailed reports
-...- **Compatibility with other frameworks and services** : Allows for seamless integration thus satisfying varied project requirements
-...- **Protocol support** : Compatible with both the Webdriver and Devtools protocols which are supported by most modern browsers
+···- **Cross-browser testing** : Supports applications to be tested across multiple browsers
+···- **Built-in logging and reporting** : Provides an effective manner to comprehend test outcomes in the form of detailed reports
+···- **Compatibility with other frameworks and services** : Allows for seamless integration thus satisfying varied project requirements
+···- **Protocol support** : Compatible with both the Webdriver and Devtools protocols which are supported by most modern browsers
     
 The WDIO test runner **'@wdio/cli'**, allows users to configure their testing environment in a straight-forward manner with the help of just a few commands. This setup would do the following:
 - Creates a **wdio.conf.js** file which holds all of the necessary environment configuration details
