@@ -129,6 +129,6 @@ This section describes how to configure and run a predefined continuous integrat
   Finally you should also see the same report
   ![report](./images/ci-cd-9.png)
 
-25. Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destinations **ui5** and **bupa-s4-test** from the **Destinations** section of the BTP Cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
+25. Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destinations **ui5** and **bupa** from the **Destinations** section of the BTP Cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
 
   ![test](./images/ci-cd-7.png)
