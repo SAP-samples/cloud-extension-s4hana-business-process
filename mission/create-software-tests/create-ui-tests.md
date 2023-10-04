@@ -90,20 +90,20 @@ Ensure the mock-srv folder is not empty and has this structure.
 2. Now you need to deploy both the application and mock server. For this you need to make use of the mta_Test.yaml file which has the **mock-srv** module defined to deploy the mock server. So first change the name of the current file **mta.yaml to mta_Prod.yaml** and change **mta_Test.yaml to mta.yaml**. You file structure should now look like:
 ![mtaFileName](./images/ui-test-6.png).
 
-4. Now open your terminal login to any subaccount and space of your choice :
+3. Now open your terminal login to any subaccount and space of your choice :
     ```
         cf api <API-ENDPOINT>
         cf login -u <USER-ID> -p <PASSWORD>
         cf target -o <ORG> -s <SPACE>
     ```
 
-6. Deploy your application as :
+4. Deploy your application as :
     ```
     mbt build 
     cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
     ```
 
-6. In the root folder, create a **.env** file. In this file you need to define some of the urls needed as evironment variables. For this you will need both the org and space name. In your terminal execute:
+5. In the root folder, create a **.env** file. In this file you need to define some of the urls needed as evironment variables. For this you will need both the org and space name. In your terminal execute:
     ```
         cf target
     ```
@@ -142,7 +142,7 @@ Add them in the following manner:
 This is what your .env file should look like:
 ![envFile](./images/ui-test-12.png)
 
-7. Now in your terminal run this command to navigate to the folder from where we need to trigger the tests:
+6. Now in your terminal run this command to navigate to the folder from where we need to trigger the tests:
     ```
         cd app/BusinessPartners
     ```
@@ -162,12 +162,12 @@ For example according to this image, the browser version is 117.
         npm i
     ```
 
-8. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (using ctrl+C) the following portions under **Capabilities** as shown below.
+7. Now its time to run your tests. First lets run it normally i.e., in non-headless mode. For this open the wdio.conf.js file in app/BusinessPartners and comment out (using ctrl+C) the following portions under **Capabilities** as shown below.
 ![nonHeadless](./images/ui-test-14.png)
 
 If you do not have SSO enabled in your browser, leave the wdi5:authentication portion uncommented.
 
-9. To run the tests you need to pass the url of the application with the command. The template of the url is mentioned beloew. In your terminal run:
+8. To run the tests you need to pass the url of the application with the command. The template of the url is mentioned beloew. In your terminal run:
 ```
     npm run wdi5 -- --baseUrl:https//{orgName}.launchpad.cfapps.{endPoint}/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell=home
 ```
@@ -183,9 +183,9 @@ Once the excution is done, you should be able to see a report of the tests.
 ![report](./images/ui-test-18.png)
 
 
-10. To execute the tests in a headless manner, ensure you have mentioned your subaccount credentials in the .env file (explained in step 6)
+9. To execute the tests in a headless manner, ensure you have mentioned your subaccount credentials in the .env file (explained in step 5)
 
-11. Now go back to the wdio.conf.js file and uncomment the portion commented above. Tests can be executed in the same manner again. Note that headless mode means the test execution will not be visible i.e., a browser window will not pop up. 
+10. Now go back to the wdio.conf.js file and uncomment the portion commented above. Tests can be executed in the same manner again. Note that headless mode means the test execution will not be visible i.e., a browser window will not pop up. 
  ```
     npm run wdi5
  ```

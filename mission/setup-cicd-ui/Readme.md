@@ -6,10 +6,13 @@ This section describes how to configure and run a predefined continuous integrat
 
 ### Changes to application files
 
-1. Firstly we need to make changes to the some files. This is documented in the [UI-tests](../create-software-tests/create-ui-tests.md) chapter. Please follow steps 2-4 under the **Run UI tests in Your Terminal** section. Ignore this step if done already.
+1. Firstly we need to make changes to the some files. This is documented in the [UI-tests](../create-software-tests/create-ui-tests.md) chapter. Please follow steps 2 under the **Run UI tests in Your Terminal** section. Ignore this step if done already.
 
-2. Additionally open the app/BusinessPartners/package.json file and change the version of the chromderiver dependency to 114. Now push these changes to your repository. 
+2. Open the app/BusinessPartners/package.json file and ensure the version of the chromderiver dependency to 114. If not make the necessary change. 
 
+3. Open app/BusinessPartners/wdio.conf.js and make sure the 'goog:chromeOptions' and "wdi5:authentication" are uncommented.
+
+4. Now please push these changes to your repository.
 
 ### Setup your pipeline
 
@@ -95,7 +98,7 @@ This section describes how to configure and run a predefined continuous integrat
 **NOTE: The org, space and endpoint names used for stringing together the url of the application should be the same as that mentioned under the **Deploy to Cloud Foundry section** mentioned above.**
 
 
-13. Next go to **Additional Variables** and click the **+** icon and add environment variables as mentioned in the chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal**, **Setp 6**. Additionally also create the **wdi5_username** variable as mentioned in **Step 10**. Your variables list should look like:
+13. Next go to **Additional Variables** and click the **+** icon and add environment variables, except for wdi5_password, as mentioned in the chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal**, **Step 5**. Please make sure you haven't created a variable for wdi5_password. Your variables list should look like:
 ![vars](./images/ci-cd-4.png)
 
 14. Finally add **Additional Credentials** by clicking the **+** icon and mention the name as **wdi5_password** and choose the Secret Text credential created above called wdi5-password. This should result in :
@@ -117,9 +120,14 @@ This section describes how to configure and run a predefined continuous integrat
 
   ![test](../setup-cicd/images/ci-cd-15.png)
 
-24. You can go to the Acceptance Stage and view the same logs you did when running the tests locally on your terminal.
+24. You can go to the Acceptance Stage and view the same logs you did if you ran the tests locally on your terminal.
 
   ![test](./images/ci-cd-6.png)
+
+  ![logs](./images/ci-cd-8.png)
+
+  Finally you should also see the same report
+  ![report](./images/ci-cd-9.png)
 
 25. Now you can go back and undeploy your application using the cf undeploy command. Please ensure to manually delete the destinations **ui5** and **bupa-s4-test** from the **Destinations** section of the BTP Cockpit as it would not be removed during the undeployment stage due it being a subaccount level destination.
 
