@@ -33,8 +33,10 @@ describe("Unit Test suite for methods", () => {
 
         const payload = {
             "businessPartnerId": "123",
-            "addressId": "1",
-            "isModified": false
+            "addresses": [{
+                "addressId": "1",
+                "isModified": false,
+            }]
         }
         cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload)
         await salesService.emitEvent(bupaSrv, {}, LOG);
@@ -50,7 +52,9 @@ describe("Unit Test suite for methods", () => {
             "searchTerm1": "V",
             "streetName": "XX",
             "postalCode": "XX",
-            "isModified": true
+            "addresses": [{
+                "isModified": true
+            }]
         }
         cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload)
         await salesService.emitEvent(bupaSrv, {}, LOG);
@@ -68,5 +72,37 @@ describe("Unit Test suite for methods", () => {
         const msg = { data: { BusinessPartner: "1234" }, headers: { specversion: "1.0" } };
         let bp = salesService.readMsg(msg)
         expect(bp).toBe("1234")
+    })
+
+    it("validatePostcode returns true for correct postal code", async () => {
+        const payload = {
+            addressId: '124462',
+            country: 'DE',
+            cityName: 'Walldorf'
+        }
+        const cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload);
+        const data = {
+            postalCode: '99998',
+            isModified: true
+        }
+        const isValidPinCode = await salesService.validatePostcode(data, LOG);
+        expect(cdsSpy).toBeCalled();
+        expect(isValidPinCode).toBe(true)
+    })
+
+    it("validatePostcode returns false for incorrect postal code", async () => {
+        const payload = {
+            addressId: '1234',
+            country: 'DE',
+            cityName: 'Walldorf'
+        }
+        const cdsSpy = jest.spyOn(cds, 'run').mockResolvedValue(payload);
+        const data = {
+            postalCode: '123456',
+            isModified: true
+        }
+        const isValidPinCode = await salesService.validatePostcode(data, LOG);
+        expect(cdsSpy).toBeCalled();
+        expect(isValidPinCode).toBe(false)
     })
 })

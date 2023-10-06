@@ -69,12 +69,16 @@ const cds = require('@sap/cds');
         req.data.isModified = true;
       });
     
-      srv.after("PATCH", "Addresses", (data, req) => {
-        const isValidPinCode = postcodeValidator(data.postalCode, data.country);
-        if(!isValidPinCode){
-          return req.error({code: '400', message: "invalid postal code", numericSeverity:2, target: 'postalCode'});
-        } 
-        return req.info({numericSeverity:1, target: 'postalCode'});  
+      srv.after("PATCH", "Addresses", async (data, req) => {
+        srv.LOG.info("Received address in PATCH", data);
+        let isValidPinCode = true;
+        if(data && data.postalCode){
+          isValidPinCode = await this.validatePostcode(data, this.LOG);
+        }
+        
+        if(!isValidPinCode) {
+          return req.error({ code: '400', message: "invalid postal code", numericSeverity: 2, target: 'postalCode' });
+        }
       });
       
       await super.init()
@@ -90,19 +94,41 @@ const cds = require('@sap/cds');
       }
     }
 
+    async validatePostcode(data, LOG){
+      const {Addresses} = this.entities;
+      const {postcodeValidator} = require('postcode-validator');
+      let isValidPinCode;
+      if(data.postalCode){
+        const address = await cds.run(SELECT.one(Addresses).where({ ID: data.ID }));
+        isValidPinCode = postcodeValidator(data.postalCode, address.country);
+        LOG.info("isValidPinCode ",isValidPinCode);
+        return isValidPinCode;
+      }
+    }
+
   async emitEvent(bupaSrv, result, LOG){
-    const {BusinessPartner, BusinessPartnerAddress} = this.entities;
-    const resultJoin =  await cds.run(SELECT.one("my.businessPartnerValidation.Notifications as N").leftJoin("my.businessPartnerValidation.Addresses as A").on("N.businessPartnerId = A.businessPartnerId").where({"N.ID": result.ID}));
+    const {BusinessPartner, BusinessPartnerAddress, Notifications} = this.entities;
+    const resultJoin = await cds.run(
+      SELECT.one(Notifications, notification => {
+          notification('*'),
+          notification.addresses((addresses) => {
+              addresses('*')
+            });
+        })
+        .where({"ID": result.ID})
+    )
+
+    const addressResult = resultJoin.addresses[0];
     const statusValues={"N":"NEW", "P":"PROCESS", "INV":"INVALID", "V":"VERIFIED"}
 
-    if(resultJoin.isModified){
+    if(addressResult.isModified){
       let payload = {
-        streetName: resultJoin.streetName,
-        postalCode: resultJoin.postalCode
+        streetName: addressResult.streetName,
+        postalCode: addressResult.postalCode
       }
 
       LOG.info("<<<<payload address", payload)
-      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:resultJoin.addressId}));
+      let res = await bupaSrv.run(UPDATE(BusinessPartnerAddress).set(payload).where({businessPartnerId:resultJoin.businessPartnerId, addressId:addressResult.addressId}));
       
       LOG.info(`address update to S/4 Backend system`, res);
     }
