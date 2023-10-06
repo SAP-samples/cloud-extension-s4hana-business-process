@@ -105,7 +105,7 @@ This section describes how to configure and run a predefined continuous integrat
           cf undpeloy BusinessPartnerValidation --delete-service-keys --delete-services
       
 
-12. Next switch the toggle of the WebdriverIO tests section and mention the script as **wdi5**. For the Base URL, go to chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal** and string together your URL as :
+12. Next switch the toggle of the WebdriverIO tests section and mention the script as **wdi5**. For the Base URL, string together your URL as :
         
     ```
     https://org-name.launchpad.cfapps.end.point.com/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell-home
