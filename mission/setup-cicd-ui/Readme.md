@@ -8,15 +8,13 @@ This section describes how to configure and run a predefined continuous integrat
 
 ### Changes to application files
 
-1. Firstly we need to make changes to the some files. This is documented in the [UI-tests](../create-software-tests/create-ui-tests.md) chapter. Please follow step 2 under the **Run UI tests in Your Terminal** section. Ignore this step if done already.
+1. Firstly we need to make changes to a few files. This is documented in the [UI-tests](../create-software-tests/create-ui-tests.md#run-ui-tests) chapter. Please follow only step 2 under this section. Ignore this step if done already.
 
-2. Open the app/BusinessPartners/package.json file and ensure the version of the **chromderiver dependency is 114**. If not make the necessary change. 
-
-3. Open app/BusinessPartners/wdio.conf.js and make sure the 'goog:chromeOptions' and 'wdi5:authentication' in Capabilities are uncommented. ie., it should like :
+2. Open app/BusinessPartners/wdio.conf.js and make sure the 'goog:chromeOptions' and 'wdi5:authentication' in Capabilities are uncommented. ie., it should like :
 
     ![wdioConf](./images/ci-cd-10.png)
 
-4. Now please push these changes to your repository.
+3. Now push these changes to your repository.
 
 <br>
 
@@ -108,15 +106,15 @@ This section describes how to configure and run a predefined continuous integrat
 12. Next switch the toggle of the WebdriverIO tests section and mention the script as **wdi5**. For the Base URL, string together your URL as :
         
     ```
-    https://org-name.launchpad.cfapps.end.point.com/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell-home
+    https://<org-name>.launchpad.cfapps.<end.point.com>/comsapbpBusinessPartnersone.comsapbpBusinessPartners-1.0.1/index.html#Shell-home
     ```
 
     ![wdioTest](./images/ci-cd-3.png)
 
-        NOTE: The org, space and endpoint names used for stringing together the url of the application should be the same as that mentioned under the Deploy to Cloud Foundry section mentioned above.
+        NOTE: The org, space and endpoint names used for stringing together the url of the application should be the same as that mentioned under the Deploy to Cloud Foundry Space section mentioned above.
 
 
-13. Next go to **Additional Variables** and click the **+** icon and add environment variables, except for wdi5_password, as mentioned in the chapter [UI Tests](../create-software-tests/create-ui-tests.md), section **Run UI tests in Your Terminal**, **Step 5**. Please make sure you haven't created a variable for wdi5_password. Your variables list should look like:
+13. Next go to **Additional Variables** and click the **+** icon and add environment variables, except for wdi5_password, as mentioned in the chapter [Run UI Tests in your Terminal](../create-software-tests/create-ui-tests.md#run-ui-tests-in-your-terminal) **Step 5**. Please make sure you haven't created a variable for wdi5_password. Your variables list should look like:
 ![vars](./images/ci-cd-4.png)
 
 14. Finally add **Additional Credentials** by clicking the **+** icon and mention the name as **wdi5_password** and choose the Secret Text credential created above called wdi5-password. This should result in :

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Another set of tests that can be executed are the UI tests, where the application's interface is assessed on the basis of performance and functionality. The main objective would be to test the features that a user would interact with. This is done by mimicing the user actions and automating them on the browser with help of some automation framework. These tests would ensure optimal user experience by minimizing glitches and slow load times and validate whether the desired functionalities can be carried out.
+Another set of tests that can be executed are the UI tests, where the application's interface is assessed on the basis of performance and functionality. The main objective is to test the features with which a user would interact. This is achieved by automating user actions within the browser using an automation framework. These tests are essential to guarantee an optimal user experience by reducing glitches and minimizing slow load times. They also verify whether the desired functionalities can be executed as intended.
 
 <br>
 
@@ -15,14 +15,14 @@ Another set of tests that can be executed are the UI tests, where the applicatio
 
 <br>
 
-## An introduction to the Webdriver.IO (WDIO) framework
+## An Introduction to the Webdriver.IO (WDIO) Framework
 
-For this mission the [Webdriver.IO framework](https://webdriver.io/), also known as WDIO, is used to perform the browser automation. It is rooted in node.js and is built on top of the selenium webdriver API using javascript. This means that node.js functions as the runtime environment, responsible for executing the test scripts. 
-The framework is designed to automate not only web applications but mobile and native desktop apps as well. Webdriver.IO offers features such as :
-- <u>**Cross-browser testing**</u> : Supports applications to be tested across multiple browsers
-- **Built-in logging and reporting** : Provides an effective manner to comprehend test outcomes in the form of detailed reports
-- **Compatibility with other frameworks and services** : Allows for seamless integration thus satisfying varied project requirements
-- **Protocol support** : Compatible with both the Webdriver and Devtools protocols which are supported by most modern browsers
+In this mission, we utilize the [Webdriver.IO framework](https://webdriver.io/), commonly referred to as WDIO, to automate browser actions. Rooted in node.js and built on top of the selenium webdriver API using JavaScript, this framework operates within the node.js runtime environment, enabling the execution of test scripts. 
+The framework is designed to automate not only web applications but mobile and native desktop apps as well. Webdriver.IO offers features such as:
+- **Cross-browser testing**: Supports applications to be tested across multiple browsers
+- **Built-in logging and reporting**: Provides an effective manner to comprehend test outcomes in the form of detailed reports
+- **Compatibility with other frameworks and services**: Allows for seamless integration thus satisfying varied project requirements
+- **Protocol support**: Compatible with both the Webdriver and Devtools protocols which are supported by most modern browsers
     
 The WDIO test runner **'@wdio/cli'**, allows users to configure their testing environment in a straight-forward manner with the help of just a few commands. This setup would do the following:
 - Creates a **wdio.conf.js** file which holds all of the necessary environment configuration details
@@ -31,38 +31,35 @@ The WDIO test runner **'@wdio/cli'**, allows users to configure their testing en
 
 <br>
 
-## The wdi5 service
+## The wdi5 Service
 
-The [wdi5 service](https://ui5-community.github.io/wdi5/#/) is available as a part of the Webdriver.IO framework. It is built on top of the UI5 test API and bridges the gap between WDIO and the UI5 framework by being more aware of UI5 contols and viewa. As a result better synchronisation is achieved between the two frameworks. SAP BTP's Business Application Studio also extends wdi5 support through the Headless Testing Framework. Adding this framework to your space downloads the firefox browser thus allowing you to execute browser based tests.
+The [wdi5 service](https://ui5-community.github.io/wdi5/#/) is available as a part of the Webdriver.IO framework. It is built on top of the UI5 test API and bridges the gap between WDIO and the UI5 framework by being more aware of UI5 contols and viewa. As a result better synchronization is achieved between the two frameworks. SAP BTP's Business Application Studio also extends wdi5 support through the Headless Testing Framework. Adding this framework to your space downloads the firefox browser thus allowing you to execute browser based tests.
 ![headless-testing-framework](./images/ui-test-1.png)
 
 With wdi5, users can test both traditional UI5 and fiori applications. For the purpose of testing fiori apps, the service is integrated with the [OData V4 Test Library](https://sapui5.hana.ondemand.com/#/api/sap.fe.test), making it convenient to write the test scripts. This test library was originally used for running OPA5 based tests but now is extended for wdi5 usage as well. 
 
 The library has a set of 'Actions' and 'Assertions' defined for different Fiori templates using which the browser can be controlled. This minimizes the need to explicitly define the controls and views of a page making the test scripts more UI5 friendly.
 
-    NOTE : For this mission wdi5^1.5.0 will beused and thus wdio^7 will also be used**
-
 <br>
 
 ## Environment Configuration
 
-As mentioned above, the wdio.conf.js file inside app/BusinessPartners holds all the configuration details in the config object. 
+As mentioned above, all the relevant configuration details are added in the `wdio.conf.js` file located within the `app/BusinessPartners` directory.
 
-The package.json, in the same folder, has the corresponding dependencies which supports the configurations mentioned. The entire set up was done using the WDIO test runner's @wdio/cli. 
+In the same folder, the package.json file contains the necessary dependencies that support the mentioned configurations. The entire setup was accomplished using the WDIO test runner's @wdio/cli.
 
 For this mission, below is the set up:
 
 | Configuration in the wdio.conf.js file        | Corresponding package.json dependency         | Brief Explanation         |
 | :-------------------------------------------  |:-------------                                 | :-----                    |
-| **Capabilities** : Chrome browser         | chromedriver                                  | Executes the tests on the chrome browser, the chromedriver dependency is needed to create the browser sessions |
-| **Framework** : Mocha          | @wdio/mocha-framework                         | Allows us to write tests using the framework, the dependency acts like an adapter package  |
+| **Capabilities** : Chrome browser         | wdio-chromedriver-service                                  | Enables the test scripts to communicate with the browser thus allowing the tests to be executed on chrome |
+| **Framework** : Mocha          | @wdio/mocha-framework                         | Allows users to write tests using the framework, the dependency acts like an adapter package  |
 | **Reporters** : Spec             | @wdio/spec-reporter                           | To generate reports in spec style |
-| **Services** : Chromedriver       | wdio-chromedriver-service                     | Enables communications with the chrome browser drivers |
 | **Services** : UI5               | wdio-ui5-service                              | Allows the usage of wdi5 |
 
-Other details mentioned in the configuration file includes : the path of the test files, browser timeouts, hooks to be executed etc.
+Other details mentioned in the configuration file includes : the path of the test files, browser timeouts, protocol to be used, hooks to be executed etc.
 
-If you would like to try writing your own tests, [this would be the place to start](https://v7.webdriver.io/docs/gettingstarted/). You can follow the steps mentioned here to set up your testing environment. 
+If you're interested in writing your own tests, [this link](https://v7.webdriver.io/docs/gettingstarted/) is a great starting point. You can follow the steps provided there to set up your testing environment.
 
 <br>
 
@@ -70,7 +67,7 @@ If you would like to try writing your own tests, [this would be the place to sta
 
 Now lets understand the structure of the tests in brief.
 
-1. The test.spec.js file insider tests/ui/specs, includes:
+1.  The `test.spec.js` file insider `tests/ui/specs`, includes:
     - the fiori page configurations which are required for making use of the testing library (The details required for this can be found in the manifest.json file inside app/BusinessPartners)
 
 
@@ -80,9 +77,9 @@ Now lets understand the structure of the tests in brief.
     
 2. In order to test the working of the application entirely, the testing begins with creating **test data**. In this case this means creating **mock business partners**. 
 
-    Since this is only a testing environment, actual S4 systems will not be used but rather a 'mock-server', which is a CAP application that will enable us to create entities and emit events. 
+    ince this is a test environment, actual SAP S/4HANA system will not be used but rather a 'mock-server', which is a CAP application that will enable us to create Business Partner data and emit events. 
     
-    This is mentioned as a **Git Submodule** in this repository as can be seen in the .gitmodules file in the root folder. The test data is created using axios calls to this mock server. (These calls can be found in the tests/ui/services/bpApi.js file) 
+    This is referenced as a **Git Submodule** within this repository, as indicated in the **`.gitmodules`** file located in the root folder. The test data is generated through axios calls made to this mock server (you can find these calls in the `tests/ui/services/bpApi.js` file). 
 
 3. Following this the application page functionalities are validated. This is done by making use of the library functions mentioned above:
 
@@ -121,20 +118,20 @@ Now lets understand the structure of the tests in brief.
 
     ![mockfolder](./images/ui-test-4.png)
 
-2. Now you need to deploy both the application and mock server. For this you need to make use of the mta_Test.yaml file. This file is a bit different from the mta.yaml file because of the following mentioned:
+2. Now you need to deploy both the application and mock server. For this you need to make use of the `tests/ui/mta.yaml` file. This file is a bit different from the `mta.yaml` file in the root because of the following mentioned:
     - **mock-srv** module defined to deploy the mock server [Check modules]
     - **bupa** destination to make use of the deployed mock server [Check resource BusinessPartnerValidation-dest]
     - all destinations being created at the **subaccount** level instead of the instance level, to prevent the deployed application from having a guid in its url [Check resource BusinessPartnerValidation-dest and module BusinessPartnerValidation-launchpad]
 
-    So first change the name of the current file **mta.yaml to mta_Prod.yaml** and change **mta_Test.yaml to mta.yaml**. You file structure should now look like:
+    So first change the name of the current file **mta.yaml to mta_Prod.yaml** and move the **tests/ui/mta.yaml** file to the root. You file structure should now look like:
 
     ![mtaFileName](./images/ui-test-6.png)
 
 3. Now open your terminal login to any subaccount and space of your choice :
     ```
-        cf api <API-ENDPOINT>
-        cf login -u <USER-ID> -p <PASSWORD>
-        cf target -o <ORG> -s <SPACE>
+    cf api <API-ENDPOINT>
+    cf login -u <USER-ID> -p <PASSWORD>
+    cf target -o <ORG> -s <SPACE>
     ```
 
 4. Deploy your application as :
@@ -197,23 +194,12 @@ This is what your .env file should look like:
 
 6. Now in your terminal run this command to navigate to the folder from where you will need to trigger the tests:
     ```
-        cd app/BusinessPartners
+    cd app/BusinessPartners
     ```
-    Next, you will need to find out the current version of your chrome browser. For this open your chrome browser and search for :
-
-    ```
-    chrome://settings/help
-    ```
-    Here you will find the exact version.
-
-    ![browser](./images/ui-test-13.png)
-For example according to this image, the browser version is 117.
-
-    Open the package.json file in app/BusinessPartners and modify the chromedriver dependency version to the value of your chrome browser. In this case it should be "chromedriver" : "117".
 
     After this install the dependenices as :
     ```
-        npm i
+    npm i
     ```
 
 7. Now its time to run your tests. First lets run it normally i.e., in **non-headless mode**. For this open the wdio.conf.js file in app/BusinessPartners and comment out (using ctrl+C) the following portions under **Capabilities** as shown below.
