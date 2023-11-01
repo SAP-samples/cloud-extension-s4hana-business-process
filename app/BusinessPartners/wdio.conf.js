@@ -28,6 +28,8 @@ exports.config = {
     },
   ],
 
+  automationProtocol: "devtools",
+
   // Test Configurations
   logLevel: "error",
   
@@ -42,7 +44,7 @@ exports.config = {
   connectionRetryCount: 3,
   
   // Test runner services
-  services: ["ui5", "chromedriver"],
+  services: ["ui5"],
 
   // Framework you want to run your specs with.
   framework: "mocha",
@@ -109,16 +111,13 @@ exports.config = {
 
   //Login into the app and get to the main page
   before: async function (capabilities, specs, browser) {
-
-      console.log(await browser.getWindowSize())
+      
       await browser.waitUntil(async() => {
           return((await browser.getUrl()) === endPoint.auth)
       })
       await (await $("=Default Identity Provider")).click();
 
       console.log("Logging in...")    
-
-      console.log(browser.options.baseUrl)
 
       await browser.waitUntil(async() => {
           return((await browser.getUrl()) === browser.options.baseUrl)
@@ -129,7 +128,7 @@ exports.config = {
       endPoint.main = browser.options.baseUrl.split("#")[0]+"#fe-lrop-v4";
 
       const tile = await $("span=Business Partner Validation");
-      if(await tile.waitForDisplayed({ timeout: 10000 }) && await tile.waitForClickable({ timeout: 10000 })){
+      if(await tile.waitForDisplayed({ timeout: 20000 }) && await tile.waitForClickable({ timeout: 20000 })){
         
         console.log("Navigating from Home Page")  
         await tile.click();

@@ -64,7 +64,7 @@ describe("After test data is created", () => {
 
             //ensure the man page has loaded
             Then.onTheMainPage.iSeeThisPage()
-            //display all rows of the table and verify : no. of rows, working of Column adaptation and sorting
+            //display all rows of the table 
             When.onTheMainPage.onFilterBar().iExecuteSearch()
 
             //verify data of the mock BP created
