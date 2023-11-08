@@ -183,6 +183,6 @@ create-services:
  24. Navigate to mta_archives folder and run the below command from CLI
  
   ```
-  deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
+  cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
   ``` 
                
