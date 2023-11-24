@@ -62,7 +62,7 @@ Now we will setup the SAP Business Application Studio and use it to develop our 
   ```
          
 
-14. In a next step you will create SAP HANA Cloud instance. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/docs/HANA_CLOUD/db19c7071e5f4101837e23f06e576495/03982b3b93664f089b084713285e3c81.html?locale=en-US&state=DRAFT&version=2020_04_QRC).
+14. In a next step you will create SAP HANA Cloud instance. You can either follow the steps below or follow the more detailed tutorial for creating a SAP HANA Cloud instance [at SAP Help Portal](https://help.sap.com/docs/hana-cloud/sap-hana-cloud-administration-guide/creating-sap-hana-cloud-instances).
 
  ```
   cf create-service hana-cloud hana my_hana_db -c '{"data":{"edition":"cloud","memory":30,"systempassword":"<PASSWORD>"}}'
