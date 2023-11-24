@@ -134,7 +134,7 @@ applications:
 
 ```
 
-22. Also, modify services-manifest.yml as below:
+21. Also, modify services-manifest.yml as below:
 
 ```
 ---
@@ -163,24 +163,14 @@ create-services:
     plan: lite
 ```
 
- 21. Now use the installed plugin to create services: DB, XSUAA, Event Mesh, Destination and Connectivity
- 
-```
-  cf create-service-push
-```
 
- 22. Use terminal to create service key
- 
- ```
-  cf create-service-key BusinessPartnerValidation-ems emkey
-```   
- 23. Generate the MTAR file. Alternatively, you can also right-click on mta.yaml file in the Explorer view and select Build MTA Project to build the project.
+ 22. Generate the MTAR file. Alternatively, you can also right-click on mta.yaml file in the Explorer view and select Build MTA Project to build the project.
 
 ```
  mbt build -p=cf 
 ```
 
- 24. Navigate to mta_archives folder and run the below command from CLI
+ 23. Navigate to mta_archives folder and run the below command from CLI
  
   ```
   cf deploy mta_archives/BusinessPartnerValidation_1.0.0.mtar
