@@ -27,7 +27,7 @@ In this section, the application will be connected to SAP Build Work Zone, stand
 
     <img src="./images/integrate_launchpad_4.png" width="80%">
 
-8. Navigate back to **My Content** and choose on role **Everyone** in items table 
+8. Navigate back to **Content Manager** and choose on role **Everyone** in items table 
 
     <img src="./images/integrate_launchpad_5.png" width="80%">
 
