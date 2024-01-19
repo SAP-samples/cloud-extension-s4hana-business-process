@@ -19,8 +19,7 @@ In this section, you will configure the Cloud Connector for connecting the on-pr
     Click Login.
 
     You can find detail information on installing the Cloud Connector in your system landscape here: 
-    https://developers.sap.com/tutorials/cp-connectivity-install-cloud-connector.html
-
+    https://help.sap.com/docs/connectivity/sap-btp-connectivity-cf/installation
 
 2.	Choose *Add Subaccount* and then fill out the needed input:
 3.	Enter the following data:
