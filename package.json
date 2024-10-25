@@ -6,8 +6,8 @@
     "dependencies": {
         "@sap-cloud-sdk/http-client": "^3.2.0",
         "@sap-cloud-sdk/util": "^3.2.0",
-        "@sap/cds": "^7",
-        "@sap/cds-hana": "^2",
+        "@sap/cds": "^8",
+        "@cap-js/hana": "^1",
         "@sap/xb-msg-amqp-v100": "^0.9.39",
         "@sap/xsenv": "^3.1.1",
         "@sap/xssec": "^3.6.0",
