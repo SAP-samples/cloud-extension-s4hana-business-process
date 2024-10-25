@@ -121,7 +121,7 @@ const cds = require('@sap/cds');
     const addressResult = resultJoin.addresses[0];
     const statusValues={"N":"NEW", "P":"PROCESS", "INV":"INVALID", "V":"VERIFIED"}
 
-    if(addressResult.isModified){
+    if(addressResult && addressResult.isModified){
       let payload = {
         streetName: addressResult.streetName,
         postalCode: addressResult.postalCode
