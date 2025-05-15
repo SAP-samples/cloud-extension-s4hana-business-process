@@ -36,9 +36,10 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 7. On the next screen you can add your needed Users:
  - Enter Administor's ID (you can enter IDs of people you would like to have the admin role)
  - Enter developer's ID
+ - Select custom IDP. In case if there is no custom IDP and have chosen SAP IDP, the subscription fails. Refer the SAP Note "3580261" to resolve the subscription fail.
 8. Click on *Next*
 
- ![Add Users](./images/booster5.png)
+ ![Add Users](./images/booster5.png) 
 
 
 9. After you reviewed your account click on *Finish* 
