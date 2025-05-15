@@ -45,6 +45,9 @@ You will now prepare your SAP Business Technology Platform, configure your entit
 
 ![Review Account](./images/booster6.png)
 
+Note : Subscription to Workzone will fail as IAS is not linked. Follow this link to establish trust and subscribe to workzone
+https://me.sap.com/notes/0003580261 [3580261 - Subscribing to SAP Build Work Zone fails with error: To subscribe this application link an Identity Authentication tenant to the subaccount with the "Establish Trust" option]
+
 10. Now click on your Subaccounts Name to open 
 
 12. Navigate to *Entitlements* and click on *Configure Entitlements* 
