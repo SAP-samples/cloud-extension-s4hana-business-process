@@ -1,3 +1,10 @@
+# Important Notice
+
+This public repository is read-only and no longer maintained.
+
+![](https://img.shields.io/badge/STATUS-NOT%20CURRENTLY%20MAINTAINED-red.svg?longCache=true&style=flat)
+
+---
 # SAP S/4HANA Extended Business Process Scenario
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cloud-extension-s4hana-business-process)](https://api.reuse.software/info/github.com/SAP-samples/cloud-extension-s4hana-business-process)
 ## Description
